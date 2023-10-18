@@ -1,0 +1,7 @@
+---
+- name: Set nsmb.conf
+  become: true
+  copy:
+    src: files/smb/nsmb.conf
+    dest: /etc
+    

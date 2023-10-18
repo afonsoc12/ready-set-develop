@@ -1,0 +1,173 @@
+---
+downloads: ~/.ansible-downloads/
+
+# ==================================================
+# Role: dotfiles
+# ==================================================
+dotfiles_repo: git@github.com:afonsoc12/dotfiles.git
+
+# ==================================================
+# Role: homebrew
+# ==================================================
+homebrew_installed_packages:
+  # - ansible # Installed via Pip.
+  - git
+  - gh
+  - gpg
+#  - iperf3
+#  - nmap
+  - htop
+  #- telnet
+ # - terraform
+  - tree
+ # - yq
+  # - dockutil
+  # Kubernetes
+  - okta-aws-cli
+  - aws-iam-authenticator
+  - derailed/k9s/k9s
+  - kubectx
+  - helm
+  - fzf
+  - stern
+  - awscli
+
+
+homebrew_taps: []
+
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+  - docker
+  - iterm2
+  - keepassxc
+#  - slack
+  - logi-options-plus
+#  - visual-studio-code
+  - rectangle
+  - spotify
+  - obsidian
+
+
+# ==================================================
+# Role: mas
+# ==================================================
+
+# See `geerlingguy.mas` role documentation for usage instructions.
+mas_installed_apps:
+#- { id: 409201541,  name: Pages }
+#- { id: 409203825,  name: Numbers }
+#- { id: 409203825,  name: Keynote }
+#- { id: 462054704,  name: Microsoft Word }
+#- { id: 462058435,  name: Microsoft Excel }
+#- { id: 462062816,  name: Microsoft PowerPoint }
+#- { id: 425264550,  name: Disk Speed Test }
+- { id: 1147396723, name: WhatsApp }
+#- { id: 1168254295, name: AmorphousDiskMark }
+- { id: 937984704,  name: Amphetamine }
+#- { id: 409203825,  name: Numbers }
+
+# Uninstall does not work: https://github.com/mas-cli/mas/issues/313
+mas_uninstalled_apps: []
+# - { id: 408981434,  name: iMovie }
+# - { id: 682658836,  name: GarageBand }
+
+# ==================================================
+# Role: python
+# ==================================================
+pyenv_python_versions:
+  - 3.9.16
+  - 3.10.10
+  - 3.11.2
+
+pyenv_global:
+  - 3.10.10
+  - 3.11.2
+
+# ==================================================
+# Role: dock
+# ==================================================
+configure_dock: false
+dockitems_remove:
+# - Launchpad
+# - Maps
+# - Contacts
+# - Notes
+# - Freeform
+# - Music
+# - News
+# - Keynote
+# - Pages
+# - Numbers
+# - TV
+# - Podcasts
+# - App Store
+- iTerm2
+dockitems_persist:
+- name: "iTerm"
+  path: "/Applications/iTerm.app"
+  pos: 1
+- name: "Activity Monitor"
+  path: "/System/Applications/Utilities/Activity Monitor.app"
+  pos: 2
+- name: "Google Chrome"
+  path: "/Applications/Google Chrome.app"
+  pos: 3
+- name: KeePassXC
+  path: /Applications/KeePassXC.app
+  pos: 4
+- name: Messages
+  path: /System/Applications/Messages.app
+  pos: 5
+- name: WhatsApp
+  path: /Applications/WhatsApp.app
+  pos: 6
+- name: Calendar
+  path: /System/Applications/Calendar.app
+  pos: 7
+- name: Spotify
+  path: /Applications/Spotify.app
+  pos: 8
+- name: Preview
+  path: /System/Applications/Preview.app
+  pos: 9
+- name: Books
+  path: /System/Applications/Books.app
+  pos: 10
+- name: Reminders
+  path: /System/Applications/Reminders.app
+  pos: 11
+- name:
+  path:
+  pos: 12
+
+- name:
+  path:
+  pos: 13
+
+- name:
+  path:
+  pos: 14
+
+- name:
+  path:
+  pos: 10
+
+- name:
+  path:
+  pos: 10
+
+- name:
+  path:
+  pos: 10
+
+- name:
+  path:
+  pos: 10
+
+- name:
+  path:
+  pos: 10
+
+- name:
+  path:
+  pos: 10
