@@ -13,9 +13,14 @@ jobs:
   integraton-tests:
     name: Integration Tests
     runs-on: ${{ matrix.os }}
+
     strategy:
       matrix:
         os: [ macos-13, macos-12 ]
+
+    defaults:
+      run:
+        shell: zsh
 
     steps:
       - name: Checkout repo
