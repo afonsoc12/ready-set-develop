@@ -41,3 +41,20 @@
     scope: global
     name: pull.rebase
     value: "true"
+
+- name: Set gpgsign commits by default
+  git_config:
+    scope: global
+    name: commit.gpgsign
+    value: "true"
+
+- name: Set gpgsign tags by default
+  git_config:
+    scope: global
+    name: tag.gpgsign
+    value: "true"
+- name: Set default branch name to master
+  git_config:
+    scope: global
+    name: init.defaultBranch
+    value: master

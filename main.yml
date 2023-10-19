@@ -18,15 +18,13 @@
       tags: ['dotfiles']
     - role: geerlingguy.mac.homebrew
       tags: ['homebrew']
-    - role: python
-      when: mas_installed_apps
-      tags: ['python']
     - role: mas
       when: mas_installed_apps
       tags: ['mas']
-    # - role: geerlingguy.mac.dock
-    #   when: configure_dock
-    #   tags: ['dock']
+    - role: python
+      tags: ['python']
+    - role: geerlingguy.mac.dock
+      tags: ['dock']
 
   tasks:
     - import_tasks: tasks/osx.yml
