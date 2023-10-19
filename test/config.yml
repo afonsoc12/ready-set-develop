@@ -4,8 +4,8 @@
 # ==================================================
 dotfiles_repo: https://github.com/afonsoc12/dotfiles
 # dotfiles_version: HEAD
-# dotfiles_work_tree: "{{ lookup('env','XDG_CONFIG_HOME') }}"
-# dotfiles_repo_dest: "{{ lookup('env','XDG_CONFIG_HOME') }}/dotfiles"
+# dotfiles_work_tree: "{{ lookup('env','HOME') }}/.config"
+# dotfiles_repo_dest: "{{ lookup('env','HOME') }}/.config/dotfiles"
 # dotfiles_extra_zshrc:
 
 # ==================================================
