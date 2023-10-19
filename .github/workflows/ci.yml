@@ -32,10 +32,10 @@ jobs:
       - name: Install dependencies
         run: |
           echo "$HOME/Library/Python/3.9/bin:/opt/homebrew/bin" >> $GITHUB_PATH
+          echo "XDG_CONFIG_HOME=$HOME/.config" >> $GITHUB_ENV
           sudo pip3 install --upgrade pip
           sudo pip3 install ansible
           ansible-galaxy install -r requirements.yml
-
       - name: DELenv
         run: env
 
