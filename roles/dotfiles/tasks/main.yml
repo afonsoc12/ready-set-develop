@@ -10,7 +10,6 @@
     dest: "{{ dotfiles_repo_dest }}"
     bare: true
     version: "{{ dotfiles_version }}"
-    # update: no
   environment:
     GIT_TERMINAL_PROMPT: "0" # reports "terminal prompts disabled" on missing password
 
@@ -42,6 +41,13 @@
   register: repo_status_after
   changed_when: repo_status_before.stdout_lines != repo_status_after.stdout_lines
 
-- name: Run installation scripts (scripts/*.sh)
-  script: "{{ item }}"
-  with_items: "{{ lookup('fileglob', '{{ dotfiles_repo_dest }}/scripts/*.sh') }}"
+- name: Run installation tasks (tasks/*.yml)
+  include_tasks: "{{ item }}"
+  with_fileglob:
+    - "{{ dotfiles_repo_dest }}/tasks/*.yml"
+
+- name: Append extra block to .zshrc
+  blockinfile:
+    path: "{{ ansible_env.ZDOTDIR }}/.zshrc"
+    block: "{{ dotfiles_extra_zshrc }}"
+  when: dotfiles_extra_zshrc

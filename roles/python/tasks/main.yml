@@ -4,6 +4,13 @@
     name: pyenv
     state: present
 
+- name: Create folder for PYENV_ROOT
+  become: true
+  file:
+    # path: "{{ lookup('env', 'PYENV_ROOT') }}"
+    path: "{{ ansible_env.PYENV_ROOT }}"
+    state: directory
+    mode: '0777'
 - name: Install development packages necessary for building Python
   homebrew:
     name: "{{ pyenv_osx_packages }}"

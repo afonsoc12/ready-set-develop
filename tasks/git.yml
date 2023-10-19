@@ -1,0 +1,43 @@
+---
+- name: Create git directory
+  file:
+    path: "{{ ansible_env.XDG_CONFIG_HOME }}/git"
+    state: directory
+
+- name: Create git global config file if not exists
+  file:
+    path: "{{ ansible_env.XDG_CONFIG_HOME }}/git/config"
+    state: touch
+    modification_time: preserve
+    access_time: preserve
+
+- name: Set global name
+  git_config:
+    scope: global
+    name: user.name
+    value: "{{ git_global_name }}"
+  when: git_global_name is defined
+- name: Set global email
+  git_config:
+    scope: global
+    name: user.email
+    value: "{{ git_global_email }}"
+  when: git_global_email is defined
+- name: Set global gpg format
+  git_config:
+    scope: global
+    name: gpg.format
+    value: "{{ git_global_gpg_format }}"
+  when: git_global_gpg_format is defined
+- name: Set global signing key
+  git_config:
+    scope: global
+    name: user.signingkey
+    value: "{{ git_global_signing_key }}"
+  when: git_global_signing_key is defined
+
+- name: Set global pull rebase
+  git_config:
+    scope: global
+    name: pull.rebase
+    value: "true"

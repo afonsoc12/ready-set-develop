@@ -1,0 +1,54 @@
+---
+name: Continuous Integration
+on:
+  workflow_call:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: "0 0 * * 0"
+
+jobs:
+
+  integraton-tests:
+    name: Integration Tests
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ macos-13, macos-12 ]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Uninstall GitHub Actions' built-in Homebrew
+        run: curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh | NONINTERACTIVE=1 bash -
+
+      - name: Install dependencies
+        run: |
+          echo "$HOME/Library/Python/3.9/bin:/opt/homebrew/bin" >> $GITHUB_PATH
+          sudo pip3 install --upgrade pip
+          sudo pip3 install ansible
+          ansible-galaxy install -r requirements.yml
+
+      - name: DELenv
+        run: env
+
+      - name: Set up test environment
+        run: cp test/config.yml ./config.yml
+
+      - name: Test the playbook's syntax.
+        run: ansible-playbook main.yml --syntax-check
+
+      - name: Test the playbook.
+        run: ansible-playbook main.yml
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
+
+      - name: Idempotence check.
+        run: |
+          idempotence=$(mktemp)
+          ansible-playbook main.yml | tee -a ${idempotence}
+          tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
+        env:
+          ANSIBLE_FORCE_COLOR: '1'

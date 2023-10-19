@@ -1,0 +1,9 @@
+- name: Clone repositories to location if not exist
+  # block:
+  # - name: Make sure directory exists
+  git:
+    repo: "{{ item.repo }}"
+    dest: "{{ item.dest }}"
+    update: no
+  with_items: "{{ git_clone_repos }}"
+  when: git_clone_repos is defined

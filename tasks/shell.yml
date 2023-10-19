@@ -1,0 +1,8 @@
+---
+- name: Check if oh-my-zsh is already installed
+  stat: 
+    path: "{{ ansible_env.ZSH }}"
+  register: zsh_dir
+- name: Install oh-my-zsh
+  shell: curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash -
+  when: zsh_dir.stat.exists is false

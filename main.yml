@@ -1,6 +1,6 @@
 ---
-- name: Configure host.
-  hosts: all
+- name: Configure local host
+  hosts: localhost
 
   vars_files:
     - default.config.yml
@@ -15,6 +15,7 @@
   roles:
     - role: elliotweiser.osx-command-line-tools
     - role: dotfiles
+      tags: ['dotfiles']
     - role: geerlingguy.mac.homebrew
       tags: ['homebrew']
     - role: python
@@ -28,28 +29,8 @@
     #   tags: ['dock']
 
   tasks:
-  #   - import_tasks: tasks/sudoers.yml
-  #     when: configure_sudoers
-  #     tags: ['sudoers']
-
-  #   - import_tasks: tasks/terminal.yml
-  #     when: configure_terminal
-  #     tags: ['terminal']
-
     - import_tasks: tasks/osx.yml
-
-  #   - import_tasks: tasks/extra-packages.yml
-  #     tags: ['extra-packages']
-
-  #   - import_tasks: tasks/sublime-text.yml
-  #     when: configure_sublime
-  #     tags: ['sublime-text']
-
-  #   - name: Run post-provision task files in a block.
-  #     tags: ['post']
-  #     block:
-  #       - name: Run configured post-provision ansible task files.
-  #         include_tasks: "{{ outer_item }}"
-  #         loop_control:
-  #           loop_var: outer_item
-  #         with_fileglob: "{{ post_provision_tasks | default(omit) }}"
+    - import_tasks: tasks/shell.yml
+    - import_tasks: tasks/git.yml
+    - import_tasks: tasks/git_clone.yml
+    - import_tasks: tasks/vscode.yml
