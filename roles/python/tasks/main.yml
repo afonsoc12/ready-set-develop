@@ -1,45 +1,48 @@
 ---
-- name: Install pyenv (homebrew)
-  homebrew:
-    name: pyenv
-    state: present
+- environment:
+    PYENV_ROOT: "{{ zshenv.PYENV_ROOT | expandvars }}"
+  block:
+  - name: Install pyenv (homebrew)
+    homebrew:
+      name: pyenv
+      state: present
 
-- name: Create folder for PYENV_ROOT
-  become: true
-  file:
-    # path: "{{ lookup('env', 'PYENV_ROOT') }}"
-    path: "{{ ansible_env.PYENV_ROOT }}"
-    state: directory
-    mode: '0777'
-- name: Install development packages necessary for building Python
-  homebrew:
-    name: "{{ pyenv_osx_packages }}"
-    state: present
+  - name: Create folder for PYENV_ROOT
+    become: true
+    file:
+      # path: "{{ lookup('env', 'PYENV_ROOT') }}"
+      path: "{{ zshenv.PYENV_ROOT | expandvars }}"
+      state: directory
+      mode: '0777'
+  - name: Install development packages necessary for building Python
+    homebrew:
+      name: "{{ pyenv_osx_packages }}"
+      state: present
 
-- name: Test pyenv command works
-  shell: pyenv --version
-  register: result
-  changed_when: false
-  failed_when: result.rc != 0 or "pyenv" not in result.stdout
+  - name: Test pyenv command works
+    shell: pyenv --version
+    register: result
+    changed_when: false
+    failed_when: result.rc != 0 or "pyenv" not in result.stdout
 
-- name: "Install Python {{ pyenv_python_versions | join(' ') }}"
-  shell: "pyenv install {{ item }} --skip-existing"
-  register: result
-  with_items: "{{ pyenv_python_versions }}"
-  changed_when:
-  - result.rc == 0
-  - result.stdout != ''
+  - name: "Install Python {{ pyenv_python_versions | join(' ') }}"
+    shell: "pyenv install {{ item }} --skip-existing"
+    register: result
+    with_items: "{{ pyenv_python_versions }}"
+    changed_when:
+    - result.rc == 0
+    - result.stdout != ''
 
-- name: "Set pyenv global {{ pyenv_global | join(' ') }}"
-  copy:
-    content: "{{ pyenv_global | join('\n')  }}"
-    dest: /usr/local/pyenv/version
-  when: pyenv_global is defined
+  - name: "Set pyenv global {{ pyenv_global | join(' ') }}"
+    copy:
+      content: "{{ pyenv_global | join('\n')  }}"
+      dest: /usr/local/pyenv/version
+    when: pyenv_global is defined
 
-- name: Install global Pip packages
-  pip:
-    name: "{{ item.name | default(item) }}"
-    state: present
-    version: "{{ item.version | default(omit) }}"
-    executable: "{{ item.executable | default('pip') }}"
-  loop: "{{ pip_packages }}"
+  - name: Install global Pip packages
+    pip:
+      name: "{{ item.name | default(item) }}"
+      state: present
+      version: "{{ item.version | default(omit) }}"
+      executable: "{{ item.executable | default('pip') }}"
+    loop: "{{ pip_packages }}"

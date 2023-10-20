@@ -1,12 +1,12 @@
 ---
 - name: Create git directory
   file:
-    path: "{{ ansible_env.XDG_CONFIG_HOME }}/git"
+    path: "{{ zshenv.XDG_CONFIG_HOME | expandvars }}/git"
     state: directory
 
 - name: Create git global config file if not exists
   file:
-    path: "{{ ansible_env.XDG_CONFIG_HOME }}/git/config"
+    path: "{{ zshenv.XDG_CONFIG_HOME | expandvars }}/git/config"
     state: touch
     modification_time: preserve
     access_time: preserve

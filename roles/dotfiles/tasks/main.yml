@@ -43,13 +43,12 @@
 
 - name: Run installation tasks (tasks/*.yml)
   include_tasks: "{{ task }}"
-  with_fileglob:
-    - "{{ dotfiles_repo_dest }}/tasks/*.yml"
+  loop: "{{ query('fileglob', dotfiles_repo_dest ~ '/tasks/*.yml') | sort }}"
   loop_control:
     loop_var: task
 
 - name: Append extra block to .zshrc
   blockinfile:
-    path: "{{ ansible_env.ZDOTDIR }}/.zshrc"
+    path: "{{ zshenv.ZDOTDIR | expandvars }}/.zshrc"
     block: "{{ dotfiles_extra_zshrc }}"
   when: dotfiles_extra_zshrc
