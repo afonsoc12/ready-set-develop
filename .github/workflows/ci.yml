@@ -22,6 +22,10 @@ jobs:
       run:
         shell: zsh {0}
 
+    env:
+      ANSIBLE_HOME: $HOME/.local/share/ansible
+      ANSIBLE_FORCE_COLOR: '1'
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -31,7 +35,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          echo "$HOME/Library/Python/3.9/bin:/opt/homebrew/bin" >> $GITHUB_PATH
+          export "$HOME/Library/Python/3.9/bin:/opt/homebrew/bin" >> $GITHUB_PATH
           sudo pip3 install --upgrade pip
           sudo pip3 install ansible
           ansible-galaxy install -r requirements.yml
@@ -46,20 +50,14 @@ jobs:
           cp config.default.yml config.yml
           ansible-galaxy collection list
           ansible-playbook main.yml
-        env:
-          ANSIBLE_FORCE_COLOR: '1'
 
       - name: Test playbook.
         run: |
           cp test/config.yml config.yml
           ansible-playbook main.yml --skip-tags dock
-        env:
-          ANSIBLE_FORCE_COLOR: '1'
 
       - name: Idempotence check.
         run: |
           idempotence=$(mktemp)
           ansible-playbook main.yml --skip-tags dock | tee -a ${idempotence}
           tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
-        env:
-          ANSIBLE_FORCE_COLOR: '1'
