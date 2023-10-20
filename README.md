@@ -34,6 +34,7 @@ Ready, Set, Develop™ is a collection of automation scripts to streamline setti
 5. Run playbook
 
     ```bash
+    export ANSIBLE_HOME=$HOME/.local/share/ansible
     ansible-playbook main.yml --ask-become-pass
     # Enter your macOS account password
     ```

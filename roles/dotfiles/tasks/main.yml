@@ -42,9 +42,11 @@
   changed_when: repo_status_before.stdout_lines != repo_status_after.stdout_lines
 
 - name: Run installation tasks (tasks/*.yml)
-  include_tasks: "{{ item }}"
+  include_tasks: "{{ task }}"
   with_fileglob:
     - "{{ dotfiles_repo_dest }}/tasks/*.yml"
+  loop_control:
+    loop_var: task
 
 - name: Append extra block to .zshrc
   blockinfile:
