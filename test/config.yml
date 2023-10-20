@@ -21,7 +21,6 @@ homebrew_installed_packages:
   - helm
 homebrew_cask_apps:
   - docker
-  - google-chrome
 
 # ==================================================
 # Role: mas
