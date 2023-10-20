@@ -44,7 +44,10 @@ jobs:
       - name: Test playbook with config.default.yml
         run: |
           cp config.default.yml config.yml
+          ansible-galaxy collection list
           ansible-playbook main.yml
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
 
       - name: Test playbook.
         run: |
