@@ -23,8 +23,8 @@ jobs:
         shell: zsh {0}
 
     env:
-      ANSIBLE_HOME: $HOME/.local/share/ansible
       ANSIBLE_FORCE_COLOR: '1'
+      ANSIBLE_HOME: $HOME/.local/share/ansible
 
     steps:
       - name: Checkout repo
@@ -33,9 +33,8 @@ jobs:
       - name: Uninstall GitHub Actions' built-in Homebrew
         run: curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh | NONINTERACTIVE=1 bash -
 
-      - name: Install dependencies
+      - name: Install dependencies and set environment
         run: |
-          export "$HOME/Library/Python/3.9/bin:/opt/homebrew/bin" >> $GITHUB_PATH
           sudo pip3 install --upgrade pip
           sudo pip3 install ansible
           ansible-galaxy install -r requirements.yml
