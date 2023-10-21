@@ -29,41 +29,34 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-      - name: DELcheck python
-        run: |
-          which python
-          python --version
-          python3 --version
-          which pip
-          pip --version
-          pip3 --version
 
-      # - name: Uninstall GitHub Actions' built-in Homebrew
-      #   run: curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh | NONINTERACTIVE=1 bash -
+      - name: Uninstall GitHub Actions' built-in Homebrew
+        run: curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh | NONINTERACTIVE=1 bash -
 
       - name: Install dependencies and set environment
         run: |
           sudo pip3 install --upgrade pip
           sudo pip3 install ansible
-          ansible localhost -m setup | grep ansible_python_version
-        # ansible-galaxy install -r requirements.yml
+          ansible-galaxy install -r requirements.yml
 
-      # - name: Test playbook's syntax.
-      #   run: ansible-playbook main.yml --syntax-check
+      - name: Test playbook's syntax
+        run: ansible-playbook main.yml --syntax-check
 
-      # - name: Test playbook with config.default.yml
-      #   run: |
-      #     cp config.default.yml config.yml
-      #     ansible-galaxy collection list
-      #     ansible-playbook main.yml
+      - name: Playbook dry-run
+        run: ansible-playbook main.yml --check
 
-      # - name: Test playbook.
-      #   run: |
-      #     cp test/config.yml config.yml
-      #     ansible-playbook main.yml --skip-tags dock
+      - name: Test playbook with config.default.yml
+        run: |
+          cp config.default.yml config.yml
+          ansible-playbook main.yml
 
-      # - name: Idempotence check.
-      #   run: |
-      #     idempotence=$(mktemp)
-      #     ansible-playbook main.yml --skip-tags dock | tee -a ${idempotence}
-      #     tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
+      - name: Test playbook
+        run: |
+          cp test/config.yml config.yml
+          ansible-playbook main.yml --skip-tags dock
+
+      - name: Idempotence check
+        run: |
+          idempotence=$(mktemp)
+          ansible-playbook main.yml --skip-tags dock | tee -a ${idempotence}
+          tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)

@@ -44,5 +44,5 @@
       name: "{{ item.name | default(item) }}"
       state: present
       version: "{{ item.version | default(omit) }}"
-      executable: "{{ item.executable | default('pip') }}"
+      executable: pip3
     loop: "{{ pip_packages }}"

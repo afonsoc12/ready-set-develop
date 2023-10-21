@@ -6,6 +6,10 @@
     - default.config.yml
 
   pre_tasks:
+    - name: Ensure python3
+      assert:
+        that: ansible_python_version > "2"
+
     - name: Include playbook configuration.
       include_vars: "{{ item }}"
       with_fileglob:
