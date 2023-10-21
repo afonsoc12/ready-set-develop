@@ -9,6 +9,11 @@
       name: pyenv
       state: present
 
+  - name: Install pyenv-virtualenv plugin (homebrew)
+    homebrew:
+      name: pyenv-virtualenv
+      state: present
+
   - name: Create folder for PYENV_ROOT
     become: true
     file:
