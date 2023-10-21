@@ -30,10 +30,13 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Uninstall GitHub Actions' built-in Homebrew
+      - name: DELlist mas
         run: |
           brew install mas
           mas list
+
+      - name: Uninstall GitHub Actions' built-in Homebrew
+        run: |
           mas install 408981434
           mas list
         # run: curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh | NONINTERACTIVE=1 bash -
