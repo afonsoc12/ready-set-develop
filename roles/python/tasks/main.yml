@@ -1,6 +1,8 @@
 ---
-- environment:
-    PYENV_ROOT: "{{ zshenv.PYENV_ROOT | expandvars }}"
+- vars:
+    pyenv_root: "{{ ansible_env.PYENV_ROOT | default(zshenv.PYENV_ROOT) | expandvars }}"
+  environment:
+    PYENV_ROOT: "{{ pyenv_root }}"
   block:
   - name: Install pyenv (homebrew)
     homebrew:
@@ -10,10 +12,10 @@
   - name: Create folder for PYENV_ROOT
     become: true
     file:
-      # path: "{{ lookup('env', 'PYENV_ROOT') }}"
-      path: "{{ ansible_env.PYENV_ROOT | default(zshenv.PYENV_ROOT) | expandvars }}"
+      path: "{{ pyenv_root }}"
       state: directory
       mode: '0777'
+
   - name: Install development packages necessary for building Python
     homebrew:
       name: "{{ pyenv_osx_packages }}"
@@ -44,5 +46,5 @@
       name: "{{ item.name | default(item) }}"
       state: present
       version: "{{ item.version | default(omit) }}"
-      executable: pip3
+      executable: "{{ pyenv_root ~ '/shims/pip' | default('pip3') }}"
     loop: "{{ pip_packages }}"

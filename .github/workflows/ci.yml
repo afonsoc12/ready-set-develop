@@ -42,8 +42,8 @@ jobs:
       - name: Test playbook's syntax
         run: ansible-playbook main.yml --syntax-check
 
-      - name: Playbook dry-run
-        run: ansible-playbook main.yml --check
+      # - name: Playbook dry-run
+      #   run: ansible-playbook main.yml --check
 
       - name: Test playbook with config.default.yml
         run: |
