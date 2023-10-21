@@ -11,7 +11,7 @@
     become: true
     file:
       # path: "{{ lookup('env', 'PYENV_ROOT') }}"
-      path: "{{ zshenv.PYENV_ROOT | expandvars }}"
+      path: "{{ ansible_env.PYENV_ROOT | default(zshenv.PYENV_ROOT) | expandvars }}"
       state: directory
       mode: '0777'
   - name: Install development packages necessary for building Python

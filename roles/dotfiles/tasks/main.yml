@@ -49,6 +49,6 @@
 
 - name: Append extra block to .zshrc
   blockinfile:
-    path: "{{ zshenv.ZDOTDIR | expandvars }}/.zshrc"
+    path: "{{ ansible_env.ZDOTDIR | default(zshenv.ZDOTDIR) | expandvars }}/.zshrc"
     block: "{{ dotfiles_extra_zshrc }}"
   when: dotfiles_extra_zshrc

@@ -80,8 +80,16 @@ config_files:
 # ==================================================
 git_global_name: John Doe
 git_global_email: johndoe@test.com
-git_global_gpg_format: ssh
 git_global_signing_key: ~/.ssh/my-ssh-key.pub
+git_global_present_configs:
+- { name: user.email, value: "{{ git_global_email }}" }
+- { name: user.signingkey, value: "{{ git_global_signing_key }}" }
+- { name: pull.rebase, value: "true" }
+- { name: commit.gpgsign, value: "true" }
+- { name: tag.gpgsign, value: "true" }
+- { name: init.defaultBranch, value: master }
+git_global_absent_configs:
+- gpg.format
 
 # ==================================================
 # Task: git_clone

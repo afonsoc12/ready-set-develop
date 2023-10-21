@@ -1,60 +1,28 @@
 ---
 - name: Create git directory
   file:
-    path: "{{ zshenv.XDG_CONFIG_HOME | expandvars }}/git"
+    path: "{{ ansible_env.XDG_CONFIG_HOME | default(zshenv.XDG_CONFIG_HOME) | expandvars }}/git"
     state: directory
 
 - name: Create git global config file if not exists
   file:
-    path: "{{ zshenv.XDG_CONFIG_HOME | expandvars }}/git/config"
+    path: "{{ ansible_env.XDG_CONFIG_HOME | default(zshenv.XDG_CONFIG_HOME) | expandvars }}/git/config"
     state: touch
     modification_time: preserve
     access_time: preserve
 
-- name: Set global name
+- name: Unset global configs
   git_config:
     scope: global
-    name: user.name
-    value: "{{ git_global_name }}"
-  when: git_global_name is defined
-- name: Set global email
-  git_config:
-    scope: global
-    name: user.email
-    value: "{{ git_global_email }}"
-  when: git_global_email is defined
-- name: Set global gpg format
-  git_config:
-    scope: global
-    name: gpg.format
-    value: "{{ git_global_gpg_format }}"
-  when: git_global_gpg_format is defined
-- name: Set global signing key
-  git_config:
-    scope: global
-    name: user.signingkey
-    value: "{{ git_global_signing_key }}"
-  when: git_global_signing_key is defined
+    name: "{{ item }}"
+    state: absent
+  with_items: "{{ git_global_absent_configs }}"
+  when: git_global_absent_configs is defined
 
-- name: Set global pull rebase
+- name: Set global configs
   git_config:
     scope: global
-    name: pull.rebase
-    value: "true"
-
-- name: Set gpgsign commits by default
-  git_config:
-    scope: global
-    name: commit.gpgsign
-    value: "true"
-
-- name: Set gpgsign tags by default
-  git_config:
-    scope: global
-    name: tag.gpgsign
-    value: "true"
-- name: Set default branch name to master
-  git_config:
-    scope: global
-    name: init.defaultBranch
-    value: master
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+  when: git_global_present_configs is defined
+  loop: "{{ git_global_present_configs }}"

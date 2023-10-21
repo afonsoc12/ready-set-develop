@@ -28,7 +28,12 @@
 
   tasks:
     - import_tasks: tasks/osx.yml
+      tags: ['osx']
     - import_tasks: tasks/terminal.yml
+      tags: ['terminal']
     - import_tasks: tasks/git.yml
+      tags: ['git']
     - import_tasks: tasks/git_clone.yml
+      tags: ['git']
     - import_tasks: tasks/vscode.yml
+      tags: ['vscode']
