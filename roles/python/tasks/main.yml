@@ -1,55 +1,56 @@
 ---
-- vars:
+- vars:  # noqa name[missing]
     pyenv_root: "{{ ansible_env.PYENV_ROOT | default(zshenv.PYENV_ROOT) | expandvars }}"
   environment:
     PYENV_ROOT: "{{ pyenv_root }}"
   block:
-  - name: Install pyenv (homebrew)
-    homebrew:
-      name: pyenv
-      state: present
+    - name: Install pyenv (homebrew)
+      homebrew:
+        name: pyenv
+        state: present
 
-  - name: Install pyenv-virtualenv plugin (homebrew)
-    homebrew:
-      name: pyenv-virtualenv
-      state: present
+    - name: Install pyenv-virtualenv plugin (homebrew)
+      homebrew:
+        name: pyenv-virtualenv
+        state: present
 
-  - name: Create folder for PYENV_ROOT
-    become: true
-    file:
-      path: "{{ pyenv_root }}"
-      state: directory
-      mode: '0777'
+    - name: Create folder for PYENV_ROOT
+      become: true
+      file:
+        path: "{{ pyenv_root }}"
+        state: directory
+        mode: "0777"
 
-  - name: Install development packages necessary for building Python
-    homebrew:
-      name: "{{ pyenv_osx_packages }}"
-      state: present
+    - name: Install development packages necessary for building Python
+      homebrew:
+        name: "{{ python_pyenv_osx_packages }}"
+        state: present
 
-  - name: Test pyenv command works
-    shell: pyenv --version
-    register: result
-    changed_when: false
-    failed_when: result.rc != 0 or "pyenv" not in result.stdout
+    - name: Test pyenv command works
+      ansible.builtin.command: pyenv --version
+      register: result
+      changed_when: false
+      failed_when: result.rc != 0 or "pyenv" not in result.stdout
 
-  - name: "Install Python {{ pyenv_python_versions | join(' ') }}"
-    shell: "pyenv install {{ item }} --skip-existing"
-    register: result
-    with_items: "{{ pyenv_python_versions }}"
-    changed_when:
-    - result.rc == 0
-    - result.stdout != ''
+    - name: Install Python {{ python_pyenv_versions | join(' ') }}
+      ansible.builtin.command: pyenv install {{ item }} --skip-existing
+      register: result
+      with_items: "{{ python_pyenv_versions }}"
+      changed_when:
+        - result.rc == 0
+        - result.stdout != ''
 
-  - name: "Set pyenv global {{ pyenv_global | join(' ') }}"
-    copy:
-      content: "{{ pyenv_global | join('\n')  }}"
-      dest: /usr/local/pyenv/version
-    when: pyenv_global is defined
+    - name: Set pyenv global {{ python_pyenv_global | join(' ') }}
+      copy:
+        content: "{{ python_pyenv_global | join('\n')  }}"
+        dest: /usr/local/pyenv/version
+        mode: "0755"
+      when: python_pyenv_global is defined
 
-  - name: Install global Pip packages
-    pip:
-      name: "{{ item.name | default(item) }}"
-      state: present
-      version: "{{ item.version | default(omit) }}"
-      executable: "{{ pyenv_root ~ '/shims/pip' | default('pip3') }}"
-    loop: "{{ pip_packages }}"
+    - name: Install global Pip packages
+      pip:
+        name: "{{ item.name | default(item) }}"
+        state: present
+        version: "{{ item.version | default(omit) }}"
+        executable: "{{ pyenv_root ~ '/shims/pip' | default('pip3') }}"
+      loop: "{{ python_pip_packages }}"

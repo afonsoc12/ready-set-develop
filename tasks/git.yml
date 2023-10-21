@@ -3,6 +3,7 @@
   file:
     path: "{{ ansible_env.XDG_CONFIG_HOME | default(zshenv.XDG_CONFIG_HOME) | expandvars }}/git"
     state: directory
+    mode: "0700"
 
 - name: Create git global config file if not exists
   file:
@@ -10,6 +11,7 @@
     state: touch
     modification_time: preserve
     access_time: preserve
+    mode: "0600"
 
 - name: Unset global configs
   git_config:

@@ -40,6 +40,10 @@ Ready, Set, Develop™ is a collection of automation scripts to streamline setti
 6. Run playbook
 
     ```bash
-    ansible-playbook main.yml --ask-become-pass
+    ansible-playbook main.yml --ask-become-pass --ask-vault-password
     # Enter your macOS account password
     ```
+
+> Note: Alternatively, the Ansible Vault password file can be passed by the environment variable
+`ANSIBLE_VAULT_PASSWORD_FILE`. However, since this is likely not in the new machine, it will be
+prompted at runtime.

@@ -4,6 +4,7 @@
   copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
+    mode: "0600"
   with_items: "{{ config_files }}"
   when: config_files is defined
 
@@ -48,7 +49,7 @@
         domain: com.apple.menuextra.clock
         key: DateFormat
         type: string
-        value: "\"EEE d MMM HH:mm:ss\""
+        value: '"EEE d MMM HH:mm:ss"'
         state: present
     - name: Flash clock time separators
       community.general.osx_defaults:
@@ -71,4 +72,3 @@
 - name: Restart Dock and Finder
   command: killall Dock && killall Finder
   changed_when: false
-

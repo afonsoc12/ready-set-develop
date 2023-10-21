@@ -1,8 +1,8 @@
 ---
-pyenv_python_versions: []
-pyenv_global: []
-pyenv_osx_packages:
+python_pyenv_versions: []
+python_pyenv_global: []
+python_pyenv_osx_packages:
   - openssl
   - readline
   - xz
-pip_packages: []
+python_pip_packages: []

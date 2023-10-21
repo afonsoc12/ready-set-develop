@@ -1,0 +1,203 @@
+---
+# ==================================================
+# Role: dotfiles
+# ==================================================
+dotfiles_repo: git@github.com:afonsoc12/dotfiles.git
+
+# ==================================================
+# Role: geerlingguy.mac.homebrew
+#   - docs: https://github.com/geerlingguy/ansible-collection-mac/blob/master/roles/homebrew/README.md
+# ==================================================
+homebrew_upgrade_all_packages: true
+homebrew_taps: []  # don't install default taps to avoid warnings in brew doctor
+homebrew_installed_packages:
+  - git
+  - gh
+  - gpg
+  - iperf3
+  - nmap
+  - htop
+  - telnet
+  - tree
+  - derailed/k9s/k9s
+  - kubectx
+  - helm
+homebrew_cask_apps:
+  - docker
+  - iterm2
+  - keepassxc
+  - logi-options-plus
+  - visual-studio-code
+  - rectangle
+  - spotify
+  - obsidian
+  - arduino
+  - balenaetcher
+  - cyberduck
+  - datagrip
+  - pycharm
+  - discord
+  - drawio
+  - nextcloud
+  - openboardview
+  - postman
+  - sigil
+  - transmission
+  - vlc
+  - yubico-yubikey-manager
+  - zerotier-one
+  - zoom
+  - google-chrome
+
+# ==================================================
+# Role: mas
+# ==================================================
+mas_upgrade_all_apps: true
+mas_installed_apps:
+  - {id: 409201541, name: Pages}
+  - {id: 409203825, name: Numbers}
+  - {id: 409203825, name: Keynote}
+  - {id: 462054704, name: Microsoft Word}
+  - {id: 462058435, name: Microsoft Excel}
+  - {id: 462062816, name: Microsoft PowerPoint}
+  - {id: 425264550, name: Blackmagic Disk Speed Test}
+  - {id: 1147396723, name: WhatsApp}
+  - {id: 1168254295, name: AmorphousDiskMark}
+  - {id: 937984704, name: Amphetamine}
+  - {id: 1437809329, name: Surfshark}
+  - {id: 408981434, name: iMovie}
+  - {id: 1489700765, name: Spherical Viewer}
+  - {id: 1465180184, name: org.snafu.GeoTag}
+  - {id: 1455214828, name: MQTT Explorer}
+  - {id: 1451685025, name: WireGuard}
+  - {id: 425264550, name: Disk Speed Test}
+  - {id: 682658836, name: GarageBand}
+  - {id: 1062350226, name: Panorama Stitcher Mini}
+  - {id: 1475387142, name: Tailscale}
+
+# Uninstall does not work: https://github.com/mas-cli/mas/issues/313
+mas_uninstalled_apps: []
+
+# ==================================================
+# Role: python
+# ==================================================
+python_pyenv_versions:
+  - 3.9.16
+  - 3.11.2
+python_pyenv_global:
+  - 3.11.2
+python_pip_packages:
+  - ansible
+  - pytest
+  - black
+  - isort
+  - firefly-cli
+
+# ==================================================
+# Role: geerlingguy.mac.dock
+#   - docs: https://github.com/geerlingguy/ansible-collection-mac/blob/master/roles/dock/README.md
+# ==================================================
+dockitems_remove:
+  - Launchpad
+  - Maps
+  - Contacts
+  - Notes
+  - Freeform
+  - Music
+  - News
+  - Keynote
+  - Pages
+  - Numbers
+  - TV
+  - Podcasts
+  - App Store
+
+dockitems_persist:
+  - name: "iTerm"
+    path: "/Applications/iTerm.app"
+    pos: 1
+  - name: "Activity Monitor"
+    path: "/System/Applications/Utilities/Activity Monitor.app"
+    pos: 2
+  - name: "Google Chrome"
+    path: "/Applications/Google Chrome.app"
+    pos: 3
+  - name: KeePassXC
+    path: /Applications/KeePassXC.app
+    pos: 4
+  - name: Messages
+    path: /System/Applications/Messages.app
+    pos: 5
+  - name: WhatsApp
+    path: /Applications/WhatsApp.app
+    pos: 6
+  - name: Calendar
+    path: /System/Applications/Calendar.app
+    pos: 7
+  - name: Spotify
+    path: /Applications/Spotify.app
+    pos: 8
+  - name: Preview
+    path: /System/Applications/Preview.app
+    pos: 9
+  - name: Books
+    path: /System/Applications/Books.app
+    pos: 10
+  - name: Reminders
+    path: /System/Applications/Reminders.app
+    pos: 11
+
+# ==================================================
+# Task: osx
+# ==================================================
+config_files:
+  - {src: files/smb/nsmb.conf, dest: /etc, become: true}
+  - {src: files/rectangle/com.knollsoft.Rectangle.plist, dest: $HOME/Library/Preferences}
+
+# ==================================================
+# Task: git
+# ==================================================
+git_global_name: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          37656631346636643032613363343064386331633935623836656138336132353763373938333862
+          3966633733643066346461646162333462613235316135300a346437376433333932393361613138
+          63646436306132356433663065326535396538666430333938386436353231626233363135643730
+          3961653434366461340a356532623636303231653737373432376238626164343364383364666439
+          3933
+git_global_email: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          36326534646534633339343639653136323036633932323339376230623363376133663065396263
+          6532333835663865393065396362386531653931653433300a623934393562626564626364363231
+          35663435363732393930643866613534643835613735383263323431643761653664356161363764
+          3365343430333732360a373530303765333666376639613536633165626239323961626335333238
+          38623930626231393662626463643363303638613034323130326261353466316334
+git_global_signing_key: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          34376264346636336637303239636363333538363532653465326461653966663165303731663737
+          3761346332356138353232633232623034323061373138370a613163383063623139313832333963
+          32313430623332376630613136663133333535653966333132343461313932343662393564643065
+          3738306663386432350a323839353064343462336466313661363633326463343738316631333962
+          66633262646636336662646131336538366465313434353766386538303030363130
+git_global_present_configs:
+  - {name: user.name, value: "{{ git_global_name }}"}
+  - {name: user.email, value: "{{ git_global_email }}"}
+  - {name: user.signingkey, value: "{{ git_global_signing_key }}"}
+  - {name: pull.rebase, value: "true"}
+  - {name: commit.gpgsign, value: "true"}
+  - {name: tag.gpgsign, value: "true"}
+  - {name: init.defaultBranch, value: master}
+git_global_absent_configs:
+  - gpg.format
+
+# ==================================================
+# Task: git_clone
+# ==================================================
+# git_clone_repos:
+# - { repo: git@github.com:<USER>/<REPO>.git, dest: $HOME/git/<REPO> }
+
+# ==================================================
+# Task: vscode
+# ==================================================
+# vscode_extensions:
+# - GitHub.copilot
+# - GitHub.vscode-pull-request-github

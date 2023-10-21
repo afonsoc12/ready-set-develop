@@ -1,8 +1,9 @@
 ---
-- name: Ensure {{ dotfiles_repo_dest | dirname }} directory exists
+- name: "Ensure directory exists: {{ dotfiles_repo_dest | dirname }}"
   file:
     path: "{{ dotfiles_repo_dest | dirname }}"
     state: directory
+    mode: "0755"
 
 - name: Clone dotfiles repo to {{ dotfiles_repo_dest }}
   git:
@@ -11,7 +12,7 @@
     bare: true
     version: "{{ dotfiles_version }}"
   environment:
-    GIT_TERMINAL_PROMPT: "0" # reports "terminal prompts disabled" on missing password
+    GIT_TERMINAL_PROMPT: "0"  # reports "terminal prompts disabled" on missing password
 
 - name: Set git to not show untracked files
   git_config:

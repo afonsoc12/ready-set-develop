@@ -1,15 +1,15 @@
 ---
-- vars:
+- vars:  # noqa name[missing]
     zsh_path: "{{ ansible_env.ZSH | default(zshenv.ZSH) | expandvars }}"
 
   block:
-  - name: Check if oh-my-zsh is already installed
-    stat:
-      path: "{{ zsh_path }}"
-    register: zsh_dir
+    - name: Check if oh-my-zsh is already installed
+      stat:
+        path: "{{ zsh_path }}"
+      register: zsh_dir
 
-  - name: Install oh-my-zsh
-    shell: curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash -
-    environment:
-      ZSH: "{{ zsh_path }}"
-    when: zsh_dir.stat.exists is false
+    - name: Install oh-my-zsh
+      shell: curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash -
+      environment:
+        ZSH: "{{ zsh_path }}"
+      when: zsh_dir.stat.exists is false

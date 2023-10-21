@@ -13,7 +13,7 @@
 #   - docs: https://github.com/geerlingguy/ansible-collection-mac/blob/master/roles/homebrew/README.md
 # ==================================================
 # homebrew_upgrade_all_packages: false
-homebrew_taps: [] # don't install default taps to avoid warnings in brew doctor
+homebrew_taps: []  # don't install default taps to avoid warnings in brew doctor
 # homebrew_installed_packages:
 #   - git
 #   - gh
@@ -46,12 +46,12 @@ mas_installed_apps: []
 # ==================================================
 # Role: python
 # ==================================================
-# pyenv_python_versions:
+# python_pyenv_versions:
 #   - 3.9.16
 #   - 3.11.2
-# pyenv_global:
+# python_pyenv_global:
 #   - 3.11.2
-# pip_packages:
+# python_pip_packages:
 #   - pytest
 #   - black
 #   - isort
