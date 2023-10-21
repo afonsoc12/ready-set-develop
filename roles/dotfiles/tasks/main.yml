@@ -21,7 +21,9 @@
     name: status.showUntrackedFiles
     value: "no"
 
-- name: Repo status before checkout
+# No option to use git module with --git-dir and --work-tree
+# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/git_module.html
+- name: Repo status before checkout  # noqa command-instead-of-module
   command: >-
     git
     --git-dir={{ dotfiles_repo_dest }}
@@ -30,8 +32,10 @@
   register: repo_status_before
   changed_when: false
 
-- name: Perform git checkout in the bare repository
-  shell: |
+# No option to use git module with --git-dir and --work-tree
+# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/git_module.html
+- name: Perform git checkout in the bare repository  # noqa command-instead-of-module
+  command: |
     git --git-dir={{ dotfiles_repo_dest }} \
         --work-tree={{ dotfiles_work_tree }} \
         checkout \

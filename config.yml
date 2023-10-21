@@ -198,6 +198,6 @@ git_global_absent_configs:
 # ==================================================
 # Task: vscode
 # ==================================================
-# vscode_extensions:
-# - GitHub.copilot
-# - GitHub.vscode-pull-request-github
+vscode_extensions:
+  - redhat.ansible
+  - vscode-icons-team.vscode-icons

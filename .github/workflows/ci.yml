@@ -36,8 +36,13 @@ jobs:
       - name: Install dependencies and set environment
         run: |
           sudo pip3 install --upgrade pip
-          sudo pip3 install ansible
+          sudo pip3 install -r requirements.txt
           ansible-galaxy install -r requirements.yml
+
+      - name: Linting
+        run: |
+          yamllint .
+          ansible-lint
 
       - name: Test playbook's syntax
         run: ansible-playbook main.yml --syntax-check
