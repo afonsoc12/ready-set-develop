@@ -186,6 +186,8 @@ git_global_present_configs:
   - {name: commit.gpgsign, value: "true"}
   - {name: tag.gpgsign, value: "true"}
   - {name: init.defaultBranch, value: master}
+  - {name: push.autoSetupRemote, value: "true"}
+
 git_global_absent_configs:
   - gpg.format
 
@@ -201,3 +203,4 @@ git_global_absent_configs:
 vscode_extensions:
   - redhat.ansible
   - vscode-icons-team.vscode-icons
+  - GitHub.vscode-github-actions
