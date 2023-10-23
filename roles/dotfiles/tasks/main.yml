@@ -1,54 +1,21 @@
 ---
-- name: "Ensure directory exists: {{ dotfiles_repo_dest | dirname }}"
+- name: Ensure dotfiles parent dir exists
   file:
-    path: "{{ dotfiles_repo_dest | dirname }}"
+    path: "{{ dotfiles_repo_dest | string | dirname }}"
     state: directory
     mode: "0755"
 
-- name: Clone dotfiles repo to {{ dotfiles_repo_dest }}
+- name: Clone dotfiles repo
   git:
     repo: "{{ dotfiles_repo }}"
     dest: "{{ dotfiles_repo_dest }}"
-    bare: true
     version: "{{ dotfiles_version }}"
   environment:
     GIT_TERMINAL_PROMPT: "0"  # reports "terminal prompts disabled" on missing password
 
-- name: Set git to not show untracked files
-  git_config:
-    repo: "{{ dotfiles_repo_dest }}"
-    scope: local
-    name: status.showUntrackedFiles
-    value: "no"
-
-# No option to use git module with --git-dir and --work-tree
-# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/git_module.html
-- name: Repo status before checkout  # noqa command-instead-of-module
-  command: >-
-    git
-    --git-dir={{ dotfiles_repo_dest }}
-    --work-tree={{ dotfiles_work_tree }}
-    status
-  register: repo_status_before
-  changed_when: false
-
-# No option to use git module with --git-dir and --work-tree
-# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/git_module.html
-- name: Perform git checkout in the bare repository  # noqa command-instead-of-module
-  shell: |
-    git --git-dir={{ dotfiles_repo_dest }} \
-        --work-tree={{ dotfiles_work_tree }} \
-        checkout \
-        --force \
-    && git --git-dir={{ dotfiles_repo_dest }} \
-           --work-tree={{ dotfiles_work_tree }} \
-           status
-  register: repo_status_after
-  changed_when: repo_status_before.stdout_lines != repo_status_after.stdout_lines
-
 - name: Run installation tasks (tasks/*.yml)
   include_tasks: "{{ task }}"
-  loop: "{{ query('fileglob', dotfiles_repo_dest ~ '/tasks/*.yml') | sort }}"
+  loop: "{{ query('fileglob', dotfiles_repo_dest | string | expandvars ~ '/tasks/*.yml') | sort }}"
   loop_control:
     loop_var: task
 

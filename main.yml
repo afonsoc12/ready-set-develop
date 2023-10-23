@@ -27,13 +27,10 @@
     - {role: geerlingguy.mac.dock, tags: [dock]}
 
   tasks:
-  # Import custom tasks
-  # Block necessary for include_takss to inherit tags
-  # https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html#tag-inheritance-for-includes-blocks-and-the-apply-keyword
-  - block:
-    - name: Import custom tasks
-      include_tasks: "{{ item }}"
-      with_fileglob: 
-      - "extra_tasks/**.y*ml"
-    tags: [extras]
-    
+    # Import custom tasks
+    - tags: [extras]
+      block:  # noqa name[missing]
+        - name: Import custom tasks
+          include_tasks: "{{ item }}"
+          with_fileglob:
+            - "extra_tasks/**.y*ml"
