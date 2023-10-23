@@ -21,8 +21,8 @@ homebrew_installed_packages:
   - ffmpeg
   - fzf
   - gh
+  - ghorg
   - git
-  - gnupg
   - gpg
   - helm
   - htop
@@ -64,6 +64,7 @@ homebrew_cask_apps:
   - transmission
   - visual-studio-code
   - vlc
+  - whatsapp
   - yubico-yubikey-manager
   - zerotier-one
   - zoom
@@ -90,7 +91,6 @@ mas_installed_apps:
   - {name: Spherical Viewer, id: 1489700765}
   - {name: Surfshark, id: 1437809329}
   - {name: Tailscale, id: 1475387142}
-  - {name: WhatsApp, id: 1147396723}
   - {name: WireGuard, id: 1451685025}
 
 # Uninstall does not work: https://github.com/mas-cli/mas/issues/313
@@ -131,6 +131,7 @@ dockitems_remove:
   - App Store
 
 dockitems_persist:
+  #TODO
   - name: "iTerm"
     path: "/Applications/iTerm.app"
     pos: 1
@@ -166,14 +167,14 @@ dockitems_persist:
     pos: 11
 
 # ==================================================
-# Task: osx
+# Role: macos
 # ==================================================
-config_files:
+macos_config_files:
   - {src: files/smb/nsmb.conf, dest: /etc, become: true}
   - {src: files/rectangle/com.knollsoft.Rectangle.plist, dest: $HOME/Library/Preferences}
 
 # ==================================================
-# Task: git
+# Role: git
 # ==================================================
 git_global_name: !vault |
           $ANSIBLE_VAULT;1.1;AES256
@@ -210,13 +211,7 @@ git_global_absent_configs:
   - gpg.format
 
 # ==================================================
-# Task: git_clone
-# ==================================================
-# git_clone_repos:
-# - { repo: git@github.com:<USER>/<REPO>.git, dest: $HOME/git/<REPO> }
-
-# ==================================================
-# Task: vscode
+# Role: ide
 # ==================================================
 vscode_extensions:
   - github.vscode-github-actions

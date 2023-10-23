@@ -1,23 +1,15 @@
 ---
-- vars:  # noqa name[missing]
-    pyenv_root: "{{ ansible_env.PYENV_ROOT | default(zshenv.PYENV_ROOT) | expandvars }}"
-  environment:
-    PYENV_ROOT: "{{ pyenv_root }}"
+- environment:  # noqa name[missing]
+    PYENV_ROOT: "{{ python_pyenv_root }}"
   block:
-    - name: Install pyenv (homebrew)
-      homebrew:
-        name: pyenv
-        state: present
-
-    - name: Install pyenv-virtualenv plugin (homebrew)
-      homebrew:
-        name: pyenv-virtualenv
-        state: present
+    - name: Install
+      import_tasks: install_pyenv.yml
+      tags: [install]
 
     - name: Create folder for PYENV_ROOT
       become: true
       file:
-        path: "{{ pyenv_root }}"
+        path: "{{ python_pyenv_root }}"
         state: directory
         mode: "0777"
 
@@ -45,12 +37,12 @@
         content: "{{ python_pyenv_global | join('\n')  }}"
         dest: /usr/local/pyenv/version
         mode: "0755"
-      when: python_pyenv_global is defined
+      when: python_pyenv_global
 
     - name: Install global Pip packages
       pip:
         name: "{{ item.name | default(item) }}"
         state: present
         version: "{{ item.version | default(omit) }}"
-        executable: "{{ pyenv_root ~ '/shims/pip' | default('pip3') }}"
+        executable: "{{ python_pyenv_root ~ '/shims/pip' | default('pip3') }}"
       loop: "{{ python_pip_packages }}"

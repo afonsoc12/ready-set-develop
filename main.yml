@@ -17,32 +17,23 @@
       tags: [always]
 
   roles:
-    - role: elliotweiser.osx-command-line-tools
-    - role: dotfiles
-      tags: [dotfiles]
-    - role: geerlingguy.mac.homebrew
-      tags: [homebrew]
-    - role: mas
-      when: mas_installed_apps
-      tags: [mas]
-    - role: python
-      tags: [python]
-    - role: geerlingguy.mac.dock
-      tags: [dock]
+    - {role: elliotweiser.osx-command-line-tools, tags: [install]}
+    - {role: dotfiles, tags: [dotfiles]}
+    - {role: geerlingguy.mac.homebrew, tags: [homebrew]}
+    - {role: mas, tags: [mas]}
+    - {role: python, tags: [python]}
+    - {role: macos, tags: [macos]}
+    - {role: git, tags: [git]}
+    - {role: geerlingguy.mac.dock, tags: [dock]}
 
   tasks:
-    - name: Task OSX
-      import_tasks: tasks/osx.yml
-      tags: [osx]
-    - name: Task Terminal
-      import_tasks: tasks/terminal.yml
-      tags: [terminal]
-    - name: Task Git
-      import_tasks: tasks/git.yml
-      tags: [git]
-    - name: Task Git Clone
-      import_tasks: tasks/git_clone.yml
-      tags: [git]
-    - name: Task VSCode
-      import_tasks: tasks/vscode.yml
-      tags: [vscode]
+  # Import custom tasks
+  # Block necessary for include_takss to inherit tags
+  # https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html#tag-inheritance-for-includes-blocks-and-the-apply-keyword
+  - block:
+    - name: Import custom tasks
+      include_tasks: "{{ item }}"
+      with_fileglob: 
+      - "extra_tasks/**.y*ml"
+    tags: [extras]
+    

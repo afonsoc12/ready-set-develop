@@ -5,8 +5,8 @@
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     mode: "0600"
-  with_items: "{{ config_files }}"
-  when: config_files is defined
+  with_items: "{{ macos_config_files }}"
+  when: macos_config_files
 
 - name: Configure dock
   block:

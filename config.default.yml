@@ -37,7 +37,6 @@ mas_installed_apps: []
 # - { id: 409201541,  name: Pages }
 # - { id: 409203825,  name: Numbers }
 # - { id: 409203825,  name: Keynote }
-# - { id: 1147396723, name: WhatsApp }
 # - { id: 1475387142, name: Tailscale }
 
 # Uninstall does not work: https://github.com/mas-cli/mas/issues/313
@@ -76,14 +75,14 @@ mas_installed_apps: []
 #   pos: 3
 
 # ==================================================
-# Task: osx
+# Role: macos
 # ==================================================
-# config_files:
+# macos_config_files:
 # - { src: files/smb/nsmb.conf, dest: /etc, become: true }
 # - { src: files/rectangle/com.knollsoft.Rectangle.plist, dest: $HOME/Library/Preferences }
 
 # ==================================================
-# Task: git
+# Role: git
 # ==================================================
 # git_global_name: John Doe
 # git_global_email: johndoe@test.com
@@ -97,15 +96,11 @@ mas_installed_apps: []
 # - { name: init.defaultBranch, value: master }
 # git_global_absent_configs:
 # - gpg.format
-
-# ==================================================
-# Task: git_clone
-# ==================================================
 # git_clone_repos:
 # - { repo: git@github.com:<USER>/<REPO>.git, dest: $HOME/git/<REPO> }
 
 # ==================================================
-# Task: vscode
+# Role: vscode
 # ==================================================
 # vscode_extensions:
 # - GitHub.copilot

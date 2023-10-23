@@ -1,0 +1,10 @@
+---
+- name: Install pyenv (homebrew)
+  homebrew:
+    name: pyenv
+    state: present
+
+- name: Install pyenv-virtualenv plugin (homebrew)
+  homebrew:
+    name: pyenv-virtualenv
+    state: present

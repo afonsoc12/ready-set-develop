@@ -19,12 +19,20 @@
     name: "{{ item }}"
     state: absent
   with_items: "{{ git_global_absent_configs }}"
-  when: git_global_absent_configs is defined
+  when: git_global_absent_configs
 
 - name: Set global configs
   git_config:
     scope: global
     name: "{{ item.name }}"
     value: "{{ item.value }}"
-  when: git_global_present_configs is defined
+  when: git_global_present_configs
   loop: "{{ git_global_present_configs }}"
+
+- name: Clone repositories to location if not exist
+  git:  # noqa: latest[git]
+    repo: "{{ item.repo }}"
+    dest: "{{ item.dest }}"
+    update: false
+  with_items: "{{ git_clone_repos }}"
+  when: git_clone_repos

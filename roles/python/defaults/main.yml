@@ -1,4 +1,5 @@
 ---
+python_pyenv_root: "{{ ansible_env.PYENV_ROOT | default(zshenv.PYENV_ROOT) | expandvars }}"
 python_pyenv_versions: []
 python_pyenv_global: []
 python_pyenv_osx_packages:

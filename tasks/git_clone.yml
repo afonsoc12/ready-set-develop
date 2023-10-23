@@ -1,8 +1,0 @@
----
-- name: Clone repositories to location if not exist
-  git:  # noqa: latest[git]
-    repo: "{{ item.repo }}"
-    dest: "{{ item.dest }}"
-    update: false
-  with_items: "{{ git_clone_repos }}"
-  when: git_clone_repos is defined

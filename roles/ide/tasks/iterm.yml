@@ -1,0 +1,26 @@
+---
+- name: Check if oh-my-zsh is already installed
+  stat:
+    path: "{{ ide_zsh_path }}"
+  register: zsh_dir
+
+- name: Create temporary file
+  ansible.builtin.tempfile:
+    state: file
+    suffix: oh-my-zsh-install.sh
+  register: tempfile
+  when: zsh_dir.stat.exists is false
+
+- name: Download oh-my-zsh installation script
+  get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: "{{ tempfile.path }}"
+    mode: "0755"
+  when: zsh_dir.stat.exists is false
+
+- name: Install oh-my-zsh
+  command: bash {{ tempfile.path }} --unattended --keep-zshrc
+  environment:
+    ZSH: "{{ ide_zsh_path }}"
+  changed_when: true
+  when: zsh_dir.stat.exists is false

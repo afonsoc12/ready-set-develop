@@ -1,0 +1,9 @@
+---
+- name: Install VSCode extensions
+  command: "{{ ide_code_bin }} --install-extension {{ item }}"
+  with_items: "{{ vscode_extensions }}"
+  register: code_install
+  changed_when:
+    - code_install.rc == 0
+    - "'successfully installed' in code_install.stdout"
+  when: vscode_extensions
