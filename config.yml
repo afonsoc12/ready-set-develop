@@ -21,6 +21,7 @@ homebrew_taps:
   - derailed/k9s
   - teamookla/speedtest
 homebrew_installed_packages:
+  - act
   - argocd
   - cloudflared
   - cmctl
@@ -114,10 +115,12 @@ python_pyenv_global:
   - 3.11.2
 python_pip_packages:
   - ansible
-  - pytest
   - black
-  - isort
   - firefly-cli
+  - isort
+  - pipenv
+  - pytest
+  - requests
 
 # ==================================================
 # Role: geerlingguy.mac.dock
