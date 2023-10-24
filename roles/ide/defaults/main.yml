@@ -7,5 +7,6 @@ ide_zsh_path: "{{ ansible_env.ZSH | default(zshenv.ZSH) | expandvars }}"
 # ==================================================
 # Task: vscode
 # ==================================================
-ide_code_bin: "{{ homebrew_cask_appdir | default('/Applications') }}/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+ide_vscode_code_bin: "{{ homebrew_cask_appdir | default('/Applications') }}/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+ide_vscode_code_dest_dir: /usr/local/bin
 ide_vscode_extensions: []

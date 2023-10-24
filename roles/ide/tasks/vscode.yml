@@ -1,6 +1,14 @@
 ---
+- name: Add code binary to {{ ide_vscode_code_dest_dir }}
+  become: true
+  file:
+    src: "{{ ide_vscode_code_bin }}"
+    dest: "{{ ide_vscode_code_dest_dir }}/code"
+    state: link
+    mode: "0755"
+
 - name: Install VSCode extensions
-  command: "{{ ide_code_bin }} --install-extension {{ item }}"
+  command: "code --install-extension {{ item }}"
   with_items: "{{ vscode_extensions }}"
   register: code_install
   changed_when:

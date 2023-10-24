@@ -23,6 +23,7 @@
     - {role: mas, tags: [mas]}
     - {role: python, tags: [python]}
     - {role: macos, tags: [macos]}
+    - {role: ide, tags: [ide]}
     - {role: git, tags: [git]}
     - {role: geerlingguy.mac.dock, tags: [dock]}
 
