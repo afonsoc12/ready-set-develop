@@ -24,3 +24,36 @@
     path: "{{ ansible_env.ZDOTDIR | default(zshenv.ZDOTDIR) | expandvars }}/.zshrc"
     block: "{{ dotfiles_extra_zshrc }}"
   when: dotfiles_extra_zshrc
+
+- name: Check volume with secrets is mounted
+  stat:
+    path: "{{ dotfiles_secrets_src }}"
+  register: secrets_volume
+  when: dotfiles_secrets_src
+
+- name: Copy secrets
+  copy:
+    src: "{{ dotfiles_secrets_src }}"
+    dest: "{{ dotfiles_secrets_dest }}"
+    directory_mode: "0700"
+    mode: "0400"
+  when:
+    - dotfiles_secrets_dest
+    - secrets_volume.stat.exists
+
+- name: Permissions for gnupg
+  when:
+    - secrets_volume.stat.exists
+    - gnupg_present.stat.exists
+  block:
+    - name: Check gnupg folder is present
+      stat:
+        path: "{{ dotfiles_secrets_dest }}/{{ dotfiles_secrets_src | basename }}/gnupg"
+      register: gnupg_present
+
+    - name: Set gnupg permissions
+      copy:
+        src: "{{ dotfiles_secrets_src }}/gnupg"
+        dest: "{{ dotfiles_secrets_dest }}/{{ dotfiles_secrets_src | basename }}"
+        directory_mode: "0700"
+        mode: "0600"

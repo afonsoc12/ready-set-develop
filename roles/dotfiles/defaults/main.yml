@@ -5,3 +5,5 @@ dotfiles_version: HEAD
 dotfiles_work_tree: "{{ lookup('env', 'HOME') }}/.config"
 dotfiles_repo_dest: "{{ lookup('env', 'HOME') }}/.config/dotfiles"
 dotfiles_extra_zshrc: null
+dotfiles_secrets_src:  # /Volumes/myvolume/.mysecrets
+dotfiles_secrets_dest: "{{ ansible_env.HOME }}"
