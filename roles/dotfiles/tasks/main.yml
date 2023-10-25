@@ -31,29 +31,28 @@
   register: secrets_volume
   when: dotfiles_secrets_src
 
-- name: Copy secrets
-  copy:
-    src: "{{ dotfiles_secrets_src }}"
-    dest: "{{ dotfiles_secrets_dest }}"
-    directory_mode: "0700"
-    mode: "0400"
+- name: Copy secrets from volume and set permissions
   when:
-    - dotfiles_secrets_dest
+    - secrets_volume.stat is defined
     - secrets_volume.stat.exists
-
-- name: Permissions for gnupg
-  when:
-    - secrets_volume.stat.exists
-    - gnupg_present.stat.exists
   block:
+    - name: Copy secrets
+      copy:
+        src: "{{ dotfiles_secrets_src }}"
+        dest: "{{ dotfiles_secrets_dest }}"
+        directory_mode: "0700"
+        mode: "0400"
+
     - name: Check gnupg folder is present
       stat:
-        path: "{{ dotfiles_secrets_dest }}/{{ dotfiles_secrets_src | basename }}/gnupg"
+        path: "{{ dotfiles_secrets_dest }}/{{ dotfiles_secrets_src | string | basename }}/gnupg"
       register: gnupg_present
 
     - name: Set gnupg permissions
       copy:
         src: "{{ dotfiles_secrets_src }}/gnupg"
-        dest: "{{ dotfiles_secrets_dest }}/{{ dotfiles_secrets_src | basename }}"
+        dest: "{{ dotfiles_secrets_dest }}/{{ dotfiles_secrets_src | string | basename }}"
         directory_mode: "0700"
         mode: "0600"
+      when:
+        - gnupg_present.stat.exists
