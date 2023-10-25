@@ -231,7 +231,7 @@ git_global_absent_configs:
 # ==================================================
 # Role: ide
 # ==================================================
-vscode_extensions:
+ide_vscode_extensions:
   - github.vscode-github-actions
   - ms-python.python
   - ms-python.vscode-pylance

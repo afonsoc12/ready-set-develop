@@ -95,6 +95,6 @@ git_clone_repos:
 # ==================================================
 # Role: ide
 # ==================================================
-# vscode_extensions:
+# ide_vscode_extensions:
 # - GitHub.copilot
 # - GitHub.vscode-pull-request-github
