@@ -7,3 +7,4 @@ dotfiles_repo_dest: "{{ lookup('env', 'HOME') }}/.config/dotfiles"
 dotfiles_extra_zshrc: null
 dotfiles_secrets_src:  # /Volumes/myvolume/.mysecrets
 dotfiles_secrets_dest: "{{ ansible_env.HOME }}"
+dotfiles_use_links: true

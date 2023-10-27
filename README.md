@@ -1,5 +1,7 @@
 # Ready, Set, Develop
 
+[![CI](https://github.com/afonsoc12/ready-set-develop/actions/workflows/ci.yml/badge.svg)](https://github.com/afonsoc12/ready-set-develop/actions/workflows/ci.yml)
+
 Ready, Set, Develop™ is a collection of automation scripts to streamline setting up new machines (almost) from scratch or to synchronising configs across computers, powered by [Ansible](https://ansible.com).
 
 ## Motivation
@@ -70,10 +72,15 @@ prompted at runtime.
 
 ## Usage
 
+By default, the playbook will look for a `config.yml` variables file in the root of the repository. It contains my default settings for most of my machine.
+However, since some of these cannot be shared, they are encrypted with [ansible-vault](https://docs.ansible.com/ansible/latest/vault_guide/index.html).
+
+To override these, you can either replace the `config.yml` with the contents of `config.default.yml` or append the argument `-e myconfig.yml` to `ansible-playbook` command, pointing to your new config file.
+
 ### Extra Tasks
 
 These extras tasks that can be placed in `extra_tasks/`, will be executed after all roles in the playbook, without any particular order.
-To skip roles, the flag `--tags extra` can be added to the playbook.
+To skip all roles and jump straight to the extra tasks, the flag `--tags extra` can be added to the playbook.
 This folder is excluded in `.gitignore`. This is where I specify a few tasks that are only specific to one machine, if any.
 
 ## Roles Overview

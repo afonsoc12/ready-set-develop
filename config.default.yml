@@ -6,7 +6,8 @@
 # dotfiles_version: HEAD
 # dotfiles_work_tree: "{{ lookup('env','HOME') }}/.config"
 # dotfiles_repo_dest: "{{ lookup('env','HOME') }}/.config/dotfiles"
-# dotfiles_extra_zshrc:
+# dotfiles_use_links: true
+# dotfiles_extra_zshrc:  # If set, must set dotfiles_use_links to true
 
 # ==================================================
 # Role: geerlingguy.mac.homebrew
