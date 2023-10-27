@@ -4,3 +4,6 @@ extends: default
 rules:
   line-length:
     max: 180
+
+ignore:
+  - /config.enc.yml
