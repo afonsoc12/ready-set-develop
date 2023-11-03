@@ -78,6 +78,7 @@ homebrew_cask_apps:
   - rectangle
   - sigil
   - spotify
+  - terraform
   - transmission
   - visual-studio-code
   - vlc
@@ -118,6 +119,7 @@ mas_uninstalled_apps: []
 # ==================================================
 python_pyenv_versions:
   - 3.9.16
+  - 3.10.13
   - 3.11.2
 python_pyenv_global:
   - 3.11.2
@@ -130,6 +132,7 @@ python_pip_packages:
   - pipenv
   - pytest
   - requests
+  - versioneer 
 
 # ==================================================
 # Role: geerlingguy.mac.dock
