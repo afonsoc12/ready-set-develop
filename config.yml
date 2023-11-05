@@ -109,6 +109,7 @@ mas_installed_apps:
   - {name: Spherical Viewer, id: 1489700765}
   - {name: Surfshark, id: 1437809329}
   - {name: Tailscale, id: 1475387142}
+  - {name: Trello, id: 1278508951}
   - {name: WireGuard, id: 1451685025}
 
 # Uninstall does not work: https://github.com/mas-cli/mas/issues/313
@@ -132,7 +133,7 @@ python_pip_packages:
   - pipenv
   - pytest
   - requests
-  - versioneer 
+  - versioneer
 
 # ==================================================
 # Role: geerlingguy.mac.dock
