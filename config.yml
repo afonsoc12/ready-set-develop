@@ -196,6 +196,12 @@ dockitems_persist:
 macos_config_files:
   - {src: files/smb/nsmb.conf, dest: /etc, become: true}
   - {src: files/rectangle/com.knollsoft.Rectangle.plist, dest: $HOME/Library/Preferences}
+# macos_hosts:
+# - {ip: 127.0.0.1, hosts: tst}
+# - {ip: 127.0.0.1, hosts: tst2}
+# - {ip: 127.0.0.1, hosts: tst3}
+# - {ip: 127.0.0.1, hosts: tst4}
+macos_add_adobe_hosts: true
 
 # ==================================================
 # Role: git

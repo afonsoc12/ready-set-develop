@@ -29,12 +29,16 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
       - name: Uninstall GitHub Actions' built-in Homebrew
         run: curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh | NONINTERACTIVE=1 bash -
 
       - name: Install dependencies and set environment
         run: |
-          sudo pip3 install --upgrade pip
           sudo pip3 install -r requirements.txt
           ansible-galaxy install -r requirements.yml
 

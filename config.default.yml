@@ -81,6 +81,10 @@ mas_installed_apps: []
 # macos_config_files:
 # - { src: files/smb/nsmb.conf, dest: /etc, become: true }
 # - { src: files/rectangle/com.knollsoft.Rectangle.plist, dest: $HOME/Library/Preferences }
+# macos_hosts:
+# - {ip: 127.0.0.1, hosts: tst.com}
+# macos_add_adobe_hosts: false
+# macos_adobe_hosts_file: https://raw.githubusercontent.com/Ruddernation-Designs/Adobe-URL-Block-List/master/hosts
 
 # ==================================================
 # Role: git

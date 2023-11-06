@@ -32,10 +32,15 @@
         - result.rc == 0
         - result.stdout != ''
 
+    - name: Set pyenv root fact
+      command: pyenv root
+      changed_when: false
+      register: pyenv_root
+
     - name: Set pyenv global {{ python_pyenv_global | join(' ') }}
       copy:
         content: "{{ python_pyenv_global | join('\n')  }}"
-        dest: /usr/local/pyenv/version
+        dest: "{{ pyenv_root.stdout }}/version"
         mode: "0755"
       when: python_pyenv_global
 
@@ -44,5 +49,5 @@
         name: "{{ item.name | default(item) }}"
         state: present
         version: "{{ item.version | default(omit) }}"
-        executable: "{{ python_pyenv_root ~ '/shims/pip' | default('pip3') }}"
+        executable: "{{ pyenv_root.stdout }}/shims/pip"
       loop: "{{ python_pip_packages }}"

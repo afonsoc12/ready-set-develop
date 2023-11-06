@@ -1,2 +1,6 @@
 ---
 macos_config_files: []
+macos_hosts: []
+# - {ip: 127.0.0.1, hosts: tst.com}
+macos_add_adobe_hosts: false
+macos_adobe_hosts_file: https://raw.githubusercontent.com/Ruddernation-Designs/Adobe-URL-Block-List/master/hosts

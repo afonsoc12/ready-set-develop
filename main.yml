@@ -6,10 +6,14 @@
     - default.config.yml
 
   pre_tasks:
+    - name: Python interpreter
+      debug:
+        var: ansible_python_interpreter
+      tags: [always]
     - name: Ensure python3
       assert:
         that: ansible_python_version > "2"
-
+      tags: [always]
     - name: Include playbook configuration.
       include_vars: "{{ item }}"
       with_fileglob:

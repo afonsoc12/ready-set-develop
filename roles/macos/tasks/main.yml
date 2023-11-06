@@ -8,6 +8,32 @@
   with_items: "{{ macos_config_files }}"
   when: macos_config_files
 
+- name: Configure /etc/hosts
+  become: true
+  blockinfile:
+    path: /etc/hosts
+    block: |
+      {% for item in macos_hosts %}
+      {{ item.ip }} {{ item.hosts }}
+      {% endfor %}
+  when: macos_hosts
+
+- name: Add Adobe hosts to /etc/hosts
+  when: macos_add_adobe_hosts
+  block:
+    - name: Download Adobe hosts file
+      get_url:
+        url: "{{ macos_adobe_hosts_file }}"
+        dest: "{{ ansible_env.TMPDIR }}/adobe_hosts.txt"
+        mode: "0644"
+
+    - name: Add Adobe hosts file to /etc/hosts
+      become: true
+      blockinfile:
+        path: /etc/hosts
+        block: "{{ lookup('file', ansible_env.TMPDIR ~ '/adobe_hosts.txt') }}"
+        marker: "# {mark} ANSIBLE MANAGED BLOCK: BLOCK ADOBE HOSTS"
+
 - name: Configure dock
   block:
     - name: Show recents
