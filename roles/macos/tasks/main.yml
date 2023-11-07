@@ -8,6 +8,26 @@
   with_items: "{{ macos_config_files }}"
   when: macos_config_files
 
+- name: Configure ssh config
+  block:
+    - name: Install paramiko on system python
+      pip:
+        name: paramiko
+        executable: "{{ ansible_python_interpreter | dirname }}/pip3"
+
+    - name: Add ssh config entries
+      community.general.ssh_config:
+        user: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_gid }}"
+        host: "{{ item.host }}"
+        remote_user: "{{ item.user | default(omit) }}"
+        hostname: "{{ item.hostname }}"
+        port: "{{ item.port | default(omit) }}"
+        identity_file: "{{ item.key_file | default(omit) }}"
+        proxycommand: "{{ item.proxy_command | default(omit) }}"
+        strict_host_key_checking: "{{ item.strict_host_key_checking | default(omit) }}"
+      with_items: "{{ macos_ssh_config }}"
+
 - name: Configure /etc/hosts
   become: true
   blockinfile:

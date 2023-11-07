@@ -30,7 +30,7 @@
   loop: "{{ git_global_present_configs }}"
 
 - name: Clone repositories to location if not exist
-  git:  # noqa: latest[git]
+  git:  # noqa latest[git]
     repo: "{{ item.repo }}"
     dest: "{{ item.dest }}"
     update: false

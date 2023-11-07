@@ -2,6 +2,9 @@
 - name: Configure local host
   hosts: localhost
 
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
   vars_files:
     - default.config.yml
 
@@ -18,6 +21,10 @@
       include_vars: "{{ item }}"
       with_fileglob:
         - "{{ playbook_dir }}/config.yml"
+      tags: [always]
+    - name: Include secret playbook configuration.  # noqa ignore-errors
+      include_vars: "ssh_config.enc.yml"
+      ignore_errors: true
       tags: [always]
 
   roles:

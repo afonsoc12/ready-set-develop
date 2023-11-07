@@ -85,6 +85,14 @@ mas_installed_apps: []
 # - {ip: 127.0.0.1, hosts: tst.com}
 # macos_add_adobe_hosts: false
 # macos_adobe_hosts_file: https://raw.githubusercontent.com/Ruddernation-Designs/Adobe-URL-Block-List/master/hosts
+# macos_ssh_config: []
+#  - host: example.com
+#    user: test
+#    hostname: test.com
+#    port: 22
+#    key_file: ~/.ssh/id_rsa
+#    proxy_command: ssh -W %h:%p jumphost
+#    strict_host_key_checking: false
 
 # ==================================================
 # Role: git

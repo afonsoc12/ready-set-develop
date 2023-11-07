@@ -202,6 +202,8 @@ macos_config_files:
 # - {ip: 127.0.0.1, hosts: tst3}
 # - {ip: 127.0.0.1, hosts: tst4}
 macos_add_adobe_hosts: true
+# macos_ssh_config:  # Moved to vars/ssh_config.enc.yml
+
 
 # ==================================================
 # Role: git

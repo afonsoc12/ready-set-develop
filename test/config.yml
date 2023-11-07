@@ -78,6 +78,10 @@ macos_hosts:
   - {ip: 127.0.0.1, hosts: tst2.com}
 macos_add_adobe_hosts: true
 macos_adobe_hosts_file: https://raw.githubusercontent.com/Ruddernation-Designs/Adobe-URL-Block-List/master/hosts
+macos_ssh_config:
+  - {host: "test1", user: test, hostname: "example.com", key_file: "~/.ssh/id_rsa"}
+  - {host: "test2", user: test2, hostname: "example2.com", port: 1234, key_file: "~/.ssh/id_rsa2", strict_host_key_checking: false}
+  - {host: "test3", user: test2, hostname: "example2.com", proxy_command: ssh -W %h:%p jumphost}
 
 # ==================================================
 # Role: git
