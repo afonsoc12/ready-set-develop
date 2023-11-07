@@ -6,5 +6,5 @@ rules:
     max: 180
 
 ignore:
-  - /config.enc.yml
+  - '*.enc.yml'
   - venv/
