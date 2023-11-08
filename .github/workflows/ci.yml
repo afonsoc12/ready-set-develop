@@ -61,6 +61,7 @@ jobs:
       - name: Test playbook
         run: |
           cp test/config.yml config.yml
+          bash test/setup.sh
           ansible-playbook main.yml --skip-tags dock
 
       - name: Idempotence check
