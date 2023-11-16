@@ -56,6 +56,7 @@ homebrew_installed_packages:
   - telnet
   - tree
   - wakeonlan
+  - watch
   - yq
 homebrew_cask_apps:
   - arduino
@@ -93,7 +94,6 @@ homebrew_cask_apps:
 mas_upgrade_all_apps: true
 mas_installed_apps:
   - {name: AmorphousDiskMark, id: 1168254295}
-  - {name: Amphetamine, id: 937984704}
   - {name: Disk Speed Test, id: 425264550}
   - {name: GarageBand, id: 682658836}
   - {name: iMovie, id: 408981434}
