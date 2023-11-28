@@ -46,6 +46,7 @@ homebrew_installed_packages:
   - iperf3
   - jq
   - k9s
+  - kopia
   - kubectx
   - kubeseal
   - nmap
@@ -54,6 +55,7 @@ homebrew_installed_packages:
   - rsync
   - speedtest
   - telnet
+  - terraform
   - tree
   - wakeonlan
   - watch
@@ -70,6 +72,7 @@ homebrew_cask_apps:
   - google-chrome
   - iterm2
   - keepassxc
+  - kopiaui
   - logi-options-plus
   - nextcloud
   - obsidian
@@ -79,7 +82,6 @@ homebrew_cask_apps:
   - rectangle
   - sigil
   - spotify
-  - terraform
   - transmission
   - visual-studio-code
   - vlc
