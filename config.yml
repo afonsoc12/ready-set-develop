@@ -65,7 +65,7 @@ homebrew_cask_apps:
   - balenaetcher
   - bruno
   - cyberduck
-  - datagrip
+  - datagrip-ce
   - discord
   - docker
   - drawio
@@ -78,7 +78,7 @@ homebrew_cask_apps:
   - obsidian
   - openboardview
   - postman
-  - pycharm
+  - pycharm-ce
   - rectangle
   - sigil
   - spotify
@@ -198,6 +198,39 @@ dockitems_persist:
 macos_config_files:
   - {src: files/smb/nsmb.conf, dest: /etc, become: true}
   - {src: files/rectangle/com.knollsoft.Rectangle.plist, dest: $HOME/Library/Preferences}
+
+macos_ini_properties:
+  # KeePassXC
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: General, option: AutoReloadOnChange, value: "false"}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: General, option: AutoSaveAfterEveryChange, value: "false"}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: General, option: AutoSaveNonDataChanges, value: "false"}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: General, option: AutoSaveOnExit, value: "false"}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: General, option: AutoTypeDelay, value: 50}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: General, option: AutoTypeStartDelay, value: 300}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: General, option: BackupBeforeSave, value: "true"}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: General, option: ConfigVersion, value: 2}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: General, option: GlobalAutoTypeKey, value: 80}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: General, option: GlobalAutoTypeModifiers, value: 201326592}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: General, option: UpdateCheckMessageShown, value: "true"}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: GUI, option: TrayIconAppearance, value: monochrome}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: PasswordGenerator, option: AdvancedMode, value: "true"}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: PasswordGenerator, option: ExcludeAlike, value: "false"}
+  # yamllint disable rule:line-length
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: PasswordGenerator, option: ExcludedChars, value: !vault "$ANSIBLE_VAULT;1.1;AES256\r\n346439373132326533303166313535613439393736646538363764623033616138373032373563356261653136363131663439663062636233363731613534320a303366336236663031313437613438626165623033623630313561356331643934626230613331613436306533346434346365656239613931656330303232620a6563323632613837643734376631383263666163333032336532343333353439"}  # noqa: yaml[line-length]
+  # yamllint enable rule:line-length
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: PasswordGenerator, option: Length, value: 20}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: PasswordGenerator, option: Logograms, value: "true"}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: PasswordGenerator, option: LowerCase, value: "true"}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: PasswordGenerator, option: Math, value: "true"}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: PasswordGenerator, option: Type, value: 0}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: PasswordGenerator, option: WordCount, value: 2}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: Security, option: ClearClipboardTimeout, value: 60}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: Security, option: EnableCopyOnDoubleClick, value: "true"}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: Security, option: HidePasswordPreviewPanel, value: "false"}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: Security, option: IconDownloadFallback, value: "true"}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: Security, option: PasswordsHidden, value: "false"}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: Security, option: PasswordsRepeatVisible, value: "false"}
+
 # macos_hosts:
 # - {ip: 127.0.0.1, hosts: tst}
 # - {ip: 127.0.0.1, hosts: tst2}

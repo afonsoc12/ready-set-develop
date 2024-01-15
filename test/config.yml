@@ -73,6 +73,10 @@ dockitems_persist:
 macos_config_files:
   - {src: files/smb/nsmb.conf, dest: /etc, become: true}
   - {src: files/rectangle/com.knollsoft.Rectangle.plist, dest: $HOME/Library/Preferences}
+macos_ini_properties:
+  # KeePassXC
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: General, option: AutoReloadOnChange, value: "false"}
+  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: General, option: AutoSaveAfterEveryChange, value: "false"}
 macos_hosts:
   - {ip: 127.0.0.1, hosts: tst.com}
   - {ip: 127.0.0.1, hosts: tst2.com}

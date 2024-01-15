@@ -8,6 +8,18 @@
   with_items: "{{ macos_config_files }}"
   when: macos_config_files
 
+- name: Copy configuration (INI) properties
+  become: "{{ item.become | default(false) }}"
+  ini_file:
+    path: "{{ item.path }}"
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+    no_extra_spaces: true
+    mode: "0644"
+  with_items: "{{ macos_ini_properties }}"
+  when: macos_ini_properties
+
 - name: Configure ssh config
   block:
     - name: Install paramiko on system python

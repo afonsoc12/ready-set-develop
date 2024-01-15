@@ -83,6 +83,10 @@ These extras tasks that can be placed in `extra_tasks/`, will be executed after 
 To skip all roles and jump straight to the extra tasks, the flag `--tags extra` can be added to the playbook.
 This folder is excluded in `.gitignore`. This is where I specify a few tasks that are only specific to one machine, if any.
 
+### Potential Problems
+
+- Issues with docker plugins not linked: [GitHub Issue](https://github.com/docker/for-mac/issues/6569#issuecomment-1312244210)
+
 ## Roles Overview
 
 > TODO
