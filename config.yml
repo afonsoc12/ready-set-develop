@@ -65,7 +65,6 @@ homebrew_cask_apps:
   - balenaetcher
   - bruno
   - cyberduck
-  - datagrip-ce
   - discord
   - docker
   - drawio
