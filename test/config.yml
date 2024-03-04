@@ -56,8 +56,8 @@ java_versions:
   - 21
 
 java_jenv_global:
-- 11
-- 21
+  - 11
+  - 21
 
 # ==================================================
 # Role: geerlingguy.mac.dock
