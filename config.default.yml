@@ -69,6 +69,7 @@ mas_installed_apps: []
 # Role: geerlingguy.mac.dock
 #   - docs: https://github.com/geerlingguy/ansible-collection-mac/blob/master/roles/dock/README.md
 # ==================================================
+# dockutil_install: false
 # dockitems_remove:
 # - Launchpad
 # - Maps

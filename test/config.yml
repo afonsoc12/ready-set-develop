@@ -19,6 +19,7 @@ homebrew_installed_packages:
   - gpg
   - kubectx
   - helm
+  - dockutil
 homebrew_cask_apps:
   - docker
 
@@ -63,6 +64,7 @@ java_jenv_global:
 # Role: geerlingguy.mac.dock
 #   - docs: https://github.com/geerlingguy/ansible-collection-mac/blob/master/roles/dock/README.md
 # ==================================================
+dockutil_install: false
 dockitems_remove:
   - Launchpad
   - Maps
