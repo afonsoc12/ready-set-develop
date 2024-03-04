@@ -1,0 +1,29 @@
+---
+- name: Install jEnv
+  homebrew:
+    name: jenv
+
+- name: Set jEnv root fact
+  command: jenv root
+  changed_when: false
+  register: jenv_root
+
+- name: Install Temurin versions
+  loop: "{{ java_versions }}"
+  include_tasks: install_temurin.yml
+
+- name: Set jEnv global {{ java_jenv_global | join(' ') }}
+  copy:
+    content: "{{ java_jenv_global | join('\n')  }}"
+    dest: "{{ jenv_root.stdout }}/version"
+    mode: "0755"
+  when: java_jenv_global
+
+- name: Add jEnv plugins
+  shell:
+    cmd: eval "$(jenv init -)" && jenv enable-plugin {{ item }}
+    executable: /bin/zsh
+  register: jenv_plugin
+  changed_when: "'plugin activated' in jenv_plugin.stdout"
+  failed_when: "jenv_plugin.rc != 0 or ('plugin activated' not in jenv_plugin.stdout and 'plugin already enabled' not in jenv_plugin.stdout)"
+  loop: "{{ java_jenv_plugins }}"

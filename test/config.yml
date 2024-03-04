@@ -48,6 +48,18 @@ python_pip_packages:
   - isort
 
 # ==================================================
+# Role: java
+# ==================================================
+java_versions:
+  - 11
+  - 17
+  - 21
+
+java_jenv_global:
+- 11
+- 21
+
+# ==================================================
 # Role: geerlingguy.mac.dock
 #   - docs: https://github.com/geerlingguy/ansible-collection-mac/blob/master/roles/dock/README.md
 # ==================================================

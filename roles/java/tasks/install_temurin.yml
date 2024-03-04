@@ -1,0 +1,24 @@
+---
+- name: "Install Temurin version {{ item }}"
+  homebrew:
+    name: "temurin{{ item }}"
+  register: brew_temurin
+  changed_when: "'was successfully installed!' in brew_temurin.msg"
+  failed_when: "'was successfully installed!' not in brew_temurin.msg and 'is already installed' not in brew_temurin.msg and '' not in brew_temurin.msg"
+
+- name: jEnv init  # noqa: name[casing]
+  shell: eval "$(jenv init -)"
+  changed_when: false
+
+- name: Add Java version {{ item }} to jEnv  # noqa: name[template]
+  shell: set -o pipefail && jenv add "$(/usr/libexec/java_home -v {{ item }} | grep {{ item }})"
+  register: jenv_add
+  changed_when: "'added' in jenv_add.stdout"
+  failed_when: "jenv_add.rc !=0 or 'is not a valid path to java installation' in jenv_add.stdout"
+
+- name: Add Java version {{ item }} (major version alias) to jEnv  # noqa: name[template]
+  file:
+    src: "/Library/Java/JavaVirtualMachines/temurin-{{ item }}.jdk/Contents/Home"
+    dest: "~/.jenv/versions/{{ item }}"
+    state: link
+    mode: "0755"

@@ -1,0 +1,6 @@
+---
+java_versions: []
+java_jenv_global: []
+java_jenv_plugins:
+  - maven
+  - export

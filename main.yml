@@ -33,6 +33,7 @@
     - {role: geerlingguy.mac.homebrew, tags: [homebrew]}
     - {role: mas, tags: [mas]}
     - {role: python, tags: [python]}
+    - {role: java, tags: [java]}
     - {role: macos, tags: [macos]}
     - {role: ide, tags: [ide]}
     - {role: git, tags: [git]}
