@@ -146,6 +146,7 @@ python_pip_packages:
 # Role: geerlingguy.mac.dock
 #   - docs: https://github.com/geerlingguy/ansible-collection-mac/blob/master/roles/dock/README.md
 # ==================================================
+dockutil_install: false
 dockitems_remove:
   - Launchpad
   - Maps
@@ -203,7 +204,6 @@ dockitems_persist:
 macos_config_files:
   - {src: files/smb/nsmb.conf, dest: /etc, become: true}
   - {src: files/rectangle/com.knollsoft.Rectangle.plist, dest: $HOME/Library/Preferences}
-
 
 macos_ini_properties:
   # KeePassXC
