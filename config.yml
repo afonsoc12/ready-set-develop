@@ -81,6 +81,7 @@ homebrew_cask_apps:
   - rectangle
   - sigil
   - spotify
+  - tailscale
   - transmission
   - visual-studio-code
   - vlc
@@ -109,7 +110,6 @@ mas_installed_apps:
   - {name: Panorama Stitcher Mini, id: 1062350226}
   - {name: Spherical Viewer, id: 1489700765}
   - {name: Surfshark, id: 1437809329}
-  - {name: Tailscale, id: 1475387142}
   - {name: Trello, id: 1278508951}
   - {name: WireGuard, id: 1451685025}
 
