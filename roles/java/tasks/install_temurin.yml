@@ -3,15 +3,29 @@
   homebrew:
     name: "temurin{{ item }}"
   register: brew_temurin
-  changed_when: "'was successfully installed!' in brew_temurin.msg"
-  failed_when: "'was successfully installed!' not in brew_temurin.msg and 'is already installed' not in brew_temurin.msg and '' not in brew_temurin.msg"
+  changed_when: brew_temurin.msg == ''
+  failed_when: >-
+    ('was successfully installed!' not in brew_temurin.msg
+    and 'is already installed' not in brew_temurin.msg
+    and '' not in brew_temurin.msg)
+    or 'No available formula' in brew_temurin.msg
 
 - name: jEnv init  # noqa: name[casing]
   shell: eval "$(jenv init -)"
   changed_when: false
 
+- name: Get home path for Java {{ item }}
+  shell: set -o pipefail && /usr/libexec/java_home -v {{ item }} | grep {{ item }}
+  register: java_home
+  changed_when: false
+  failed_when: >-
+    java_home.rc != 0
+    or java_home.stdout == ""
+    or java_home.stdout_lines | length != 1
+    or ("-" ~ item ~ "." not in java_home.stdout and "/" ~ item ~ "." not in java_home.stdout)
+
 - name: Add Java version {{ item }} to jEnv  # noqa: name[template]
-  shell: set -o pipefail && jenv add "$(/usr/libexec/java_home -v {{ item }} | grep {{ item }})"
+  command: jenv add {{ java_home.stdout }}
   register: jenv_add
   changed_when: "'added' in jenv_add.stdout"
   failed_when: "jenv_add.rc !=0 or 'is not a valid path to java installation' in jenv_add.stdout"
