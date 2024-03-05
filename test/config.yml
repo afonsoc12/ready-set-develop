@@ -13,7 +13,8 @@ dotfiles_repo: https://github.com/afonsoc12/dotfiles
 #   - docs: https://github.com/geerlingguy/ansible-collection-mac/blob/master/roles/homebrew/README.md
 # ==================================================
 homebrew_upgrade_all_packages: true
-homebrew_taps: []  # don't install default taps to avoid warnings in brew doctor
+homebrew_taps:
+  - homebrew/cask-versions
 homebrew_installed_packages:
   - git
   - gpg
