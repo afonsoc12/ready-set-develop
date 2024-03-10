@@ -6,7 +6,7 @@
     ansible_python_interpreter: /usr/bin/python3
 
   vars_files:
-    - default.config.yml
+    - config.default.yml
 
   pre_tasks:
     - name: Python interpreter
