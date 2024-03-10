@@ -2,11 +2,13 @@
 - name: Install jEnv
   homebrew:
     name: jenv
+  when: java_versions
 
 - name: Set jEnv root fact
   command: jenv root
   changed_when: false
   register: jenv_root
+  when: java_versions
 
 - name: Install Temurin versions
   loop: "{{ java_versions }}"

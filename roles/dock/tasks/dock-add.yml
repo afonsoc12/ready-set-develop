@@ -1,0 +1,17 @@
+---
+
+- name: "Add to dock: {{ item.name }}"
+  shell: |
+    {% if 'type' in item %}
+      dockutil --add '' --type '{{ item.type }}' --section apps --after '{{ dock_persistent_apps[index - 1].name }}'
+    {% else %}
+      dockutil --find '{{ item.name }}' || dockutil --add '{{ item.path }}' --label '{{ item.name }}'
+    {% endif %}
+  register: dockutil_add
+  changed_when: "'was found in' not in dockutil_add.stdout"
+
+- name: Pause for 5 seconds if added  # noqa no-handler
+  pause:
+    seconds: 5
+  when: dockutil_add.changed
+...

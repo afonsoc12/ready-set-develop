@@ -62,15 +62,9 @@ java_jenv_global:
   - 21
 
 # ==================================================
-# Role: geerlingguy.mac.dock
-#   - docs: https://github.com/geerlingguy/ansible-collection-mac/blob/master/roles/dock/README.md
+# Role: dock
 # ==================================================
-dockutil_install: false
-dockitems_remove:
-  - Launchpad
-  - Maps
-  - Contacts
-dockitems_persist:
+dock_persistent_apps:
   - name: "iTerm"
     path: "/Applications/iTerm.app"
     pos: 1
@@ -80,6 +74,10 @@ dockitems_persist:
   - name: "Google Chrome"
     path: "/Applications/Google Chrome.app"
     pos: 3
+
+dock_persistent_others:
+  - {name: Applications, path: /Applications}
+  - {name: Downloads, path: "/Users/{{ ansible_env.USER }}/Downloads"}
 
 # ==================================================
 # Role: macos

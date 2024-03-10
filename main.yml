@@ -37,7 +37,7 @@
     - {role: macos, tags: [macos]}
     - {role: ide, tags: [ide]}
     - {role: git, tags: [git]}
-    - {role: geerlingguy.mac.dock, tags: [dock]}
+    - {role: dock, tags: [dock]}
 
   tasks:
     # Import custom tasks

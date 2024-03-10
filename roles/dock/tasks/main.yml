@@ -1,0 +1,41 @@
+---
+- name: List dock items and extract first column
+  shell: set -o pipefail && dockutil --list | awk -F'\t' '{print $1}'
+  register: dockutil_items
+  changed_when: false
+
+- name: Set fact with current dock items
+  set_fact:
+    dockutil_items: "{{ dockutil_items.stdout | split('\n') | select('!=', '')}}"
+
+- name: Remove all spacers
+  command: dockutil --remove spacer-tiles
+  changed_when: false
+
+- name: Remove items from dock if not to be persisted
+  command: dockutil --remove '{{ item }}'
+  with_items: "{{ dockutil_items }}"
+  when: "item not in (dock_persistent_apps + dock_persistent_others) | map(attribute='name', default='')"
+  register: dockutil_remove
+  failed_when: false
+  changed_when: dockutil_remove.rc == 0 and dockutil_remove.stdout == ""
+
+- name: Add all to dock
+  include_tasks: dock-add.yml
+  loop: "{{ dock_persistent_apps + dock_persistent_others }}"
+  loop_control:
+    index_var: index
+
+- name: Move persistent-apps
+  include_tasks: dock-move.yml
+  loop: "{{ dock_persistent_apps }}"
+  loop_control:
+    index_var: index
+    pause: 1
+
+- name: Move persistent-others
+  include_tasks: dock-move.yml
+  loop: "{{ dock_persistent_others }}"
+  loop_control:
+    index_var: index
+...
