@@ -1,5 +1,5 @@
 ---
-- name: dockutil
+- name: Setup dock
   when: "dock_persistent_apps + dock_persistent_others"
   block:
   - name: List dock items and extract first column
