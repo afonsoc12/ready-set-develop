@@ -1,0 +1,60 @@
+---
+- name: Configure dock
+  block:
+    - name: Show recents
+      osx_defaults:
+        domain: com.apple.dock
+        key: show-recents
+        type: bool
+        value: false
+    - name: Change icon size
+      osx_defaults:
+        domain: com.apple.dock
+        key: tilesize
+        type: float
+        value: 30
+    - name: Magnification size
+      osx_defaults:
+        domain: com.apple.dock
+        key: largesize
+        type: int
+        value: 128
+    - name: Dock orientation right
+      osx_defaults:
+        domain: com.apple.dock
+        key: orientation
+        type: string
+        value: right
+
+- name: Configure trackpad
+  block:
+    - name: Enable dragging with three finger drag
+      osx_defaults:
+        domain: com.apple.AppleMultitouchTrackpad
+        key: orienTrackpadThreeFingerDragtation
+        type: bool
+        value: "true"
+
+- name: Configure Menu Bar
+  block:
+    - name: Set clock
+      osx_defaults:
+        domain: com.apple.menuextra.clock
+        key: DateFormat
+        type: string
+        value: '"EEE d MMM HH:mm:ss"'
+    - name: Flash clock time separators
+      osx_defaults:
+        domain: com.apple.menuextra.clock
+        key: FlashDateSeparators
+        type: bool
+        value: "true"
+
+- name: Configure Desktop
+  block:
+    - name: Keep folders on top
+      osx_defaults:
+        domain: om.apple.finder
+        key: _FXSortFoldersFirstOnDesktop
+        type: bool
+        value: "true"

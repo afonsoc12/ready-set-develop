@@ -66,66 +66,8 @@
         block: "{{ lookup('file', ansible_env.TMPDIR ~ '/adobe_hosts.txt') }}"
         marker: "# {mark} ANSIBLE MANAGED BLOCK: BLOCK ADOBE HOSTS"
 
-- name: Configure dock
-  block:
-    - name: Show recents
-      osx_defaults:
-        domain: com.apple.dock
-        key: show-recents
-        type: bool
-        value: false
-        state: present
-    - name: Change icon size
-      osx_defaults:
-        domain: com.apple.dock
-        key: tilesize
-        type: float
-        value: 30
-        state: present
-    - name: Dock orientation right
-      community.general.osx_defaults:
-        domain: com.apple.dock
-        key: orientation
-        type: string
-        value: right
-        state: present
-
-- name: Configure trackpad
-  block:
-    - name: Enable dragging with three finger drag
-      community.general.osx_defaults:
-        domain: com.apple.AppleMultitouchTrackpad
-        key: orienTrackpadThreeFingerDragtation
-        type: bool
-        value: "true"
-        state: present
-
-- name: Configure Menu Bar
-  block:
-    - name: Set clock
-      community.general.osx_defaults:
-        domain: com.apple.menuextra.clock
-        key: DateFormat
-        type: string
-        value: '"EEE d MMM HH:mm:ss"'
-        state: present
-    - name: Flash clock time separators
-      community.general.osx_defaults:
-        domain: com.apple.menuextra.clock
-        key: FlashDateSeparators
-        type: bool
-        value: "true"
-        state: present
-
-- name: Configure Desktop
-  block:
-    - name: Keep folders on top
-      community.general.osx_defaults:
-        domain: om.apple.finder
-        key: _FXSortFoldersFirstOnDesktop
-        type: bool
-        value: "true"
-        state: present
+- name: OSX defaults
+  include_tasks: osx_defaults.yml
 
 - name: Restart Dock and Finder
   command: killall Dock && killall Finder

@@ -228,7 +228,6 @@ macos_ini_properties:
 macos_add_adobe_hosts: true
 # macos_ssh_config:  # Moved to vars/ssh_config.enc.yml
 
-
 # ==================================================
 # Role: git
 # ==================================================
