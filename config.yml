@@ -59,6 +59,7 @@ homebrew_installed_packages:
   - restic
   - rsync
   - speedtest
+  - stern
   - telnet
   - terraform
   - tree
