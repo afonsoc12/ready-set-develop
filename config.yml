@@ -39,6 +39,7 @@ homebrew_installed_packages:
   - exiftool
   - eza
   - ffmpeg
+  - fluxcd/tap/flux
   - fzf
   - gh
   - ghorg
@@ -58,6 +59,7 @@ homebrew_installed_packages:
   - rclone
   - restic
   - rsync
+  - sops
   - speedtest
   - stern
   - telnet
@@ -79,6 +81,7 @@ homebrew_cask_apps:
   - iterm2
   - keepassxc
   - kopiaui
+  - lens
   - logi-options-plus
   - nextcloud
   - obsidian
