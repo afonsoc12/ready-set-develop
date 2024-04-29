@@ -82,6 +82,7 @@ homebrew_cask_apps:
   - keepassxc
   - kopiaui
   - logi-options-plus
+  - megasync
   - nextcloud
   - obsidian
   - openboardview
