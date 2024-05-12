@@ -1,7 +1,7 @@
 ---
 - name: "Install Temurin version {{ item }}"
-  homebrew:
-    name: "temurin{{ item }}"
+  homebrew_cask:
+    name: "temurin@{{ item }}"
   register: brew_temurin
   changed_when: brew_temurin.msg == ''
   failed_when: >-
