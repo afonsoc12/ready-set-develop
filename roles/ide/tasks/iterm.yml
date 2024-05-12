@@ -24,3 +24,7 @@
     ZSH: "{{ ide_zsh_path }}"
   changed_when: true
   when: zsh_dir.stat.exists is false
+
+- name: Install pure theme
+  homebrew:
+    name: pure

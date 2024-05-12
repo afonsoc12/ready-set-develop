@@ -13,7 +13,7 @@ dotfiles_repo: https://github.com/afonsoc12/dotfiles
 # ==================================================
 homebrew_upgrade_all_packages: true
 homebrew_taps:
-  - homebrew/cask-versions
+  - derailed/k9s
 homebrew_installed_packages:
   - git
   - gpg
