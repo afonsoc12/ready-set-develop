@@ -1,10 +1,14 @@
 ---
 creation_rules:
   - path_regex: "config.sops.yml"
+<<<<<<< HEAD
     encrypted_regex: ^(dotfiles_auth_home|dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets)$
     key_groups:
       - age: [age1n2g0g2z9jdgnqx826e8d0d78y8z0lc7ngdadm3jw9gzpxj2nf5rs0hm6p6]
   - path_regex: "config.work.sops.yml"
+=======
+    encrypted_regex: ^(dotfiles_repo)$
+>>>>>>> adb52b6 (Installed pre-commit, sops and updated linters)
     key_groups:
       - age: [age1n2g0g2z9jdgnqx826e8d0d78y8z0lc7ngdadm3jw9gzpxj2nf5rs0hm6p6]
   - age: age1n2g0g2z9jdgnqx826e8d0d78y8z0lc7ngdadm3jw9gzpxj2nf5rs0hm6p6

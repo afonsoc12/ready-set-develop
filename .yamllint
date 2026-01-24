@@ -4,7 +4,11 @@ extends: default
 ignore:
   - .venv/
   - .ansible/
+<<<<<<< HEAD
   - "*.sops.y*ml"
+=======
+  - '*.sops.y*ml'
+>>>>>>> adb52b6 (Installed pre-commit, sops and updated linters)
 
 rules:
   comments:
