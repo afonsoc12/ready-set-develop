@@ -1,6 +1,9 @@
 {
   "explorer.confirmDragAndDrop": false,
+<<<<<<< HEAD
   "files.autoSave": "onFocusChange",
+=======
+>>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)
   "files.exclude": {
     "**/.git": false
   },
@@ -10,6 +13,7 @@
   "git.confirmSync": false,
   "git.enableCommitSigning": true,
   "security.workspace.trust.untrustedFiles": "open",
+<<<<<<< HEAD
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.cursorWidth": 2,
@@ -20,10 +24,17 @@
   "window.title": "${activeRepositoryName}",
   "window.zoomLevel": 1,
   "window.zoomPerWindow": false,
+=======
+  "window.zoomLevel": 2,
+  "workbench.iconTheme": "vscode-icons",
+  "files.autoSave": "onFocusChange",
+  "workbench.colorTheme": "Default Dark+",
+>>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)
   "workbench.colorCustomizations": {
     "editorCursor.foreground": "#ff0000",
     "editorMultiCursor.primary.foreground": "#ff0000",
     "editorMultiCursor.secondary.foreground": "#ff8000",
+<<<<<<< HEAD
     "editor.findMatchHighlightBackground": "#dba80daa",
     "editor.findMatchHighlightForeground": "#000000",
     "editor.findMatchBackground": "#0ddb10aa",
@@ -33,4 +44,12 @@
   "workbench.colorTheme": "JetBrains Darcula Theme",
   "workbench.iconTheme": "vscode-icons",
   "workbench.tree.indent": 16
+=======
+    "terminalCursor.foreground": "#ff0000"
+
+  },
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorWidth": 2
+>>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)
 }

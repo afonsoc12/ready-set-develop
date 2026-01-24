@@ -5,7 +5,12 @@ editor: nano
 prompt: enabled
 pager: cat
 aliases:
+<<<<<<< HEAD
   prc: pr create -f
   prcd: pr create -f --draft
   prdy: pr ready
   v: pr view --web
+=======
+  co: pr checkout
+  ghw: pr view --web
+>>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)

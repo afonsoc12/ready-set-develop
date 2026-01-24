@@ -7,19 +7,27 @@ alias cdd="cd ~/Desktop"
 alias cdh="cd ~"
 command -v eza >/dev/null && alias v="eza -lah" || alias v="ls -lah"
 
+<<<<<<< HEAD
 # ─────────── Tools ───────────
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 
+=======
+>>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)
 # ─────────── Kubernetes ───────────
 alias k="kubectl"
 export do="--dry-run=client -oyaml"
 export now="--grace-period=0 --force"
+<<<<<<< HEAD
+=======
+
+>>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)
 alias kn="kubectl config set-context --current --namespace"
 alias ka="kubectl apply -f"
 alias kc="kubectl create"
 alias kr="kubectl run"
 alias kg="kubectl get"
 alias kd="kubectl describe"
+<<<<<<< HEAD
 alias kdel="kubectl delete"
 alias kdebug="kubectl run --rm -i --restart=Never"
 alias hi="helm install --update"
@@ -46,3 +54,7 @@ alias gst="git stash"
 alias gsta="git stash apply"
 gcm() { git commit -m "$*"; }
 gcmp() { gcm "$@" && git push ; }
+=======
+alias kdebug="kubectl run --rm -i --restart=Never"
+alias kubeseal="kubeseal --controller-name=sealed-secrets --controller-namespace=utils"
+>>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)

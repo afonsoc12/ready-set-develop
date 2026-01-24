@@ -10,7 +10,10 @@
   find:
     paths: "{{ dotfiles_dir }}"
     file_type: file
+<<<<<<< HEAD
     hidden: true
+=======
+>>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)
     recurse: true
   register: dotfiles_found
   changed_when: false
@@ -68,7 +71,11 @@
       {{
         XDG_BASE_DIRS.XDG_CONFIG_HOME ~ '/' ~
         (item.path | dirname | regex_replace('^' + dotfiles_dir + '/','')) ~ '/' ~
+<<<<<<< HEAD
         (item.path | basename | regex_replace('\.j2$', ''))
+=======
+        (item.path | basename | regex_replace('\\.j2$',''))
+>>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)
       }}
     mode: "0644"
   loop: "{{ dotfiles_templates }}"

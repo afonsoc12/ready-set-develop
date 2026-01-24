@@ -5,6 +5,7 @@
     state: directory
     mode: "0755"
 
+<<<<<<< HEAD
 - name: Build list of VS Code files for symlinking
   set_fact:
     dotfiles_vscode_files: >-
@@ -58,3 +59,21 @@
   loop: "{{ dotfiles_gnupg_files }}"
   loop_control:
     label: "{{ item.basename }}"
+=======
+- name: Find VS Code config files
+  find:
+    paths: "{{ dotfiles_links_vscode_settings_src }}"
+    file_type: "{{ 'link' if dotfiles_use_links is truthy else 'file' }}"
+    recurse: false
+  register: dotfiles_vscode_files
+
+- name: Symlink VS Code config files
+  file:
+    src: "{{ item.path }}"
+    dest: "{{ dotfiles_links_vscode_settings_dir }}/{{ item.path | basename }}"
+    state: link
+    force: true
+  loop: "{{ dotfiles_vscode_files.files }}"
+  loop_control:
+    label: "{{ item.path | basename }}"
+>>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)
