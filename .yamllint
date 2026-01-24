@@ -3,6 +3,8 @@ extends: default
 
 ignore:
   - .venv/
+  - .ansible/
+  - '*.sops.y*ml'
 
 rules:
   comments:

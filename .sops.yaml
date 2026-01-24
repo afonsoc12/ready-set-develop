@@ -1,0 +1,7 @@
+---
+creation_rules:
+  - path_regex: "config.sops.yml"
+    encrypted_regex: ^(dotfiles_repo)$
+    key_groups:
+      - age: [age1n2g0g2z9jdgnqx826e8d0d78y8z0lc7ngdadm3jw9gzpxj2nf5rs0hm6p6]
+  - age: age1n2g0g2z9jdgnqx826e8d0d78y8z0lc7ngdadm3jw9gzpxj2nf5rs0hm6p6

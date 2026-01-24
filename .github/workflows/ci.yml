@@ -1,73 +1,87 @@
 ---
 name: CI
-on:  # yamllint disable-line rule:truthy
+on: # yamllint disable-line rule:truthy
   workflow_dispatch:
-  push:
   pull_request:
+  push:
+    branches:
+      - master
   schedule:
     - cron: "0 0 * * 0"
 
 jobs:
 
-  integraton-tests:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          activate-environment: "true"
+
+      - name: Install dependencies
+        run: uv sync --dev
+
+      - name: Lint YAML
+        run: yamllint .
+
+      - name: Lint Ansible
+        run: ansible-lint
+
+      - name: Check playbook syntax
+        run: ansible-playbook dotfiles.yml --syntax-check
+
+  integration-tests:
     name: Integration Tests
     runs-on: ${{ matrix.os }}
+    needs: lint
 
     strategy:
+      fail-fast: false
       matrix:
-        os: [macos-13, macos-12]
-
-    defaults:
-      run:
-        shell: zsh {0}
-
+        os: [ubuntu-latest, macos-26]
     env:
-      ANSIBLE_FORCE_COLOR: '1'
-      ANSIBLE_HOME: $HOME/.local/share/ansible
+      ANSIBLE_FORCE_COLOR: "1"
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
+      - name: Set up Python
+        uses: actions/setup-python@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
         with:
-          python-version: 3.11
+          activate-environment: "true"
 
-      - name: Uninstall GitHub Actions' built-in Homebrew
-        run: curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh | NONINTERACTIVE=1 bash -
+      - name: Install dependencies
+        run: uv sync --dev
 
-      - name: Install dependencies and set environment
+      - name: Playbook dry-run
+        run: ansible-playbook dotfiles.yml --check
+
+      - name: Execute playbook
+        run: ansible-playbook dotfiles.yml
+
+      - name: Check idempotence
         run: |
-          sudo pip3 install -r requirements.txt
-          ansible-galaxy install -r requirements.yml
+          ansible-playbook main.yml --skip-tags dock | tee /tmp/idempotence.log
+          grep -q 'changed=0.*failed=0' /tmp/idempotence.log \
+            && echo "✓ Playbook is idempotent" \
+            || (echo "✗ Playbook is not idempotent" && exit 1)
 
-      - name: Linting
-        run: |
-          yamllint .
-          ansible-lint
-
-      - name: Test playbook's syntax
-        run: ansible-playbook main.yml --syntax-check
-
-      # - name: Playbook dry-run
-      #   run: ansible-playbook main.yml --check
-
-      - name: Test playbook with config.default.yml
-        run: |
-          cp config.default.yml config.yml
-          ansible-playbook main.yml
-
-      - name: Test playbook
-        run: |
-          cp test/config.yml config.yml
-          bash test/setup.sh
-          ansible-playbook main.yml --skip-tags dock
-
-      - name: Idempotence check
-        run: |
-          idempotence=$(mktemp)
-          ansible-playbook main.yml --skip-tags dock | tee -a ${idempotence}
-          tail ${idempotence} | grep -q 'changed=0.*failed=0' \
-              && (echo 'Idempotence test: pass' && exit 0) \
-              || (echo 'Idempotence test: fail' && exit 1)
+      - name: Upload test logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ansible-logs-${{ matrix.os }}
+          path: /tmp/idempotence.log
+          retention-days: 7

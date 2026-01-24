@@ -1,3 +1,6 @@
 .DS_Store
 ._*
-venv
+.venv/
+.ansible/
+.vscode/
+.decrypted~*
