@@ -1,0 +1,6 @@
+---
+sops_file:
+sops_version: "3.11.0"
+sops_repo: "https://github.com/getsops/sops"
+sops_tmp_dir: "/tmp/ansible_sops"
+sops_binary: "sops"

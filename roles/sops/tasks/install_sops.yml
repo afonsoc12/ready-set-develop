@@ -1,0 +1,29 @@
+---
+- name: Ensure temp directory exists
+  file:
+    path: "{{ sops_tmp_dir }}"
+    state: directory
+    mode: "0755"
+
+- name: Construct download URL if SOPS not installed
+  set_fact:
+    sops_download_url: >-
+      {{ (
+        (sops_repo | default('https://github.com/getsops/sops'))
+        ~ '/releases/download/v' ~ sops_version
+        ~ '/sops-v' ~ sops_version
+        ~ '.' ~ ('darwin' if ansible_facts['os_family'] == 'Darwin' else 'linux')
+        ~ '.' ~ ('amd64' if ansible_facts['architecture'] == 'x86_64' else ansible_facts['architecture'])
+      ) | trim }}
+
+- name: Download SOPS binary if not installed
+  get_url:
+    url: "{{ sops_download_url }}"
+    dest: "{{ sops_tmp_dir }}"
+    mode: "0755"
+  register: sops_download
+
+- name: Set sops_binary
+  set_fact:
+    sops_binary: "{{ sops_download.dest }}"
+  when: sops_download.status_code == 200
