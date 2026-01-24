@@ -1,9 +1,11 @@
 ---
-python_pyenv_root: "{{ ansible_env.PYENV_ROOT | default(zshenv.PYENV_ROOT) | expandvars }}"
+python_pyenv_root: "{{ (ansible_facts.env.XDG_DATA_HOME | default(ansible_facts.env.HOME ~ '/.local')) ~ '/pyenv' }}"
 python_pyenv_versions: []
-python_pyenv_global: []
+python_pyenv_global:
 python_pyenv_osx_packages:
   - openssl
   - readline
   - xz
 python_pip_packages: []
+python_uv_versions: []
+python_uv_tools: []

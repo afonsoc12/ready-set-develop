@@ -1,0 +1,62 @@
+---
+- environment: # noqa name[missing]
+    python_pyenv_root: "{{ python_pyenv_root }}"
+  block:
+    - name: Debug python_pyenv_root
+      debug:
+        var: python_pyenv_root
+        verbosity: 1
+
+    - name: Confirm python_pyenv_root
+      pause:
+      when: ansible_verbosity | int >= 1
+
+    - name: Install pyenv (homebrew)
+      homebrew:
+        name: pyenv
+        state: present
+
+    - name: Create folder for python_pyenv_root
+      file:
+        path: "{{ python_pyenv_root }}"
+        state: directory
+        mode: "0755"
+
+    - name: Install development packages necessary for building Python
+      homebrew:
+        name: "{{ python_pyenv_osx_packages }}"
+        state: present
+
+    - name: Test pyenv command works
+      ansible.builtin.command: pyenv --version
+      register: python_pyenv_test
+      changed_when: false
+      failed_when: python_pyenv_test.rc != 0 or "pyenv" not in python_pyenv_test.stdout
+
+    - name: Install Python versions {{ python_pyenv_versions | join(', ') }}
+      ansible.builtin.command: pyenv install {{ item }} --skip-existing
+      loop: "{{ python_pyenv_versions }}"
+      register: python_pyenv_install
+      changed_when:
+        - python_pyenv_install.rc == 0
+        - python_pyenv_install.stdout != ''
+
+    - name: Set pyenv root fact
+      command: pyenv root
+      changed_when: false
+      register: python_pyenv_root
+
+    - name: Set pyenv global {{ python_pyenv_global }}
+      copy:
+        content: "{{ python_pyenv_global ~ '\n'  }}"
+        dest: "{{ python_pyenv_root.stdout }}/version"
+        mode: "0755"
+      when: python_pyenv_global is truthy
+
+    - name: Install global Pip packages
+      pip:
+        name: "{{ item.name | default(item) }}"
+        state: present
+        version: "{{ item.version | default(omit) }}"
+        executable: "{{ python_pyenv_root.stdout }}/shims/pip"
+      loop: "{{ python_pip_packages }}"
