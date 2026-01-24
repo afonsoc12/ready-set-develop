@@ -5,10 +5,14 @@ ignore:
   - .venv/
   - .ansible/
 <<<<<<< HEAD
+<<<<<<< HEAD
   - "*.sops.y*ml"
 =======
   - '*.sops.y*ml'
 >>>>>>> adb52b6 (Installed pre-commit, sops and updated linters)
+=======
+  - "*.sops.y*ml"
+>>>>>>> 16f169a (SOPS role to provision and load sops secrets)
 
 rules:
   comments:
