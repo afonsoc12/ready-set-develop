@@ -1,0 +1,9 @@
+---
+version: "1"
+git_protocol: ssh
+editor: nano
+prompt: enabled
+pager: cat
+aliases:
+  co: pr checkout
+  ghw: pr view --web

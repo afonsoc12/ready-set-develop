@@ -2,10 +2,6 @@
 # ==================================================
 # Role: dotfiles
 # ==================================================
-dotfiles_repo: https://github.com/afonsoc12/dotfiles
-# dotfiles_version: HEAD
-# dotfiles_repo_dest: "{{ lookup('env','HOME') }}/.config/dotfiles"
-# dotfiles_extra_zshrc:
 
 # ==================================================
 # Role: geerlingguy.mac.homebrew
@@ -27,7 +23,7 @@ homebrew_cask_apps:
 # Role: mas
 # ==================================================
 mas_upgrade_all_apps: true
-mas_installed_apps: []  # mas-cli makes in GitHub Actions runner hang
+mas_installed_apps: [] # mas-cli makes in GitHub Actions runner hang
 # - { id: 409201541,  name: Pages }
 # - { id: 409203825,  name: Numbers }
 # - { id: 409203825,  name: Keynote }
@@ -75,46 +71,28 @@ dock_persistent_apps:
     pos: 3
 
 dock_persistent_others:
-  - {name: Applications, path: /Applications}
-  - {name: Downloads, path: "/Users/{{ ansible_env.USER }}/Downloads"}
+  - { name: Applications, path: /Applications }
+  - { name: Downloads, path: "/Users/{{ ansible_env.USER }}/Downloads" }
 
 # ==================================================
 # Role: macos
 # ==================================================
 macos_config_files:
-  - {src: files/smb/nsmb.conf, dest: /etc, become: true}
-  - {src: files/rectangle/com.knollsoft.Rectangle.plist, dest: $HOME/Library/Preferences}
+  - { src: files/smb/nsmb.conf, dest: /etc, become: true }
+  - { src: files/rectangle/com.knollsoft.Rectangle.plist, dest: $HOME/Library/Preferences }
 macos_ini_properties:
   # KeePassXC
-  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: General, option: AutoReloadOnChange, value: "false"}
-  - {path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: General, option: AutoSaveAfterEveryChange, value: "false"}
+  - { path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: General, option: AutoReloadOnChange, value: "false" }
+  - { path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini, section: General, option: AutoSaveAfterEveryChange, value: "false" }
 macos_hosts:
-  - {ip: 127.0.0.1, hosts: tst.com}
-  - {ip: 127.0.0.1, hosts: tst2.com}
+  - { ip: 127.0.0.1, hosts: tst.com }
+  - { ip: 127.0.0.1, hosts: tst2.com }
 macos_add_adobe_hosts: true
 macos_adobe_hosts_file: https://raw.githubusercontent.com/Ruddernation-Designs/Adobe-URL-Block-List/master/hosts
 macos_ssh_config:
-  - {host: "test1", user: test, hostname: "example.com", key_file: "~/.ssh/id_rsa"}
-  - {host: "test2", user: test2, hostname: "example2.com", port: 1234, strict_host_key_checking: false}
-  - {host: "test3", user: test2, hostname: "example2.com", proxy_command: ssh -W %h:%p jumphost}
-
-# ==================================================
-# Role: git
-# ==================================================
-git_global_name: John Doe
-git_global_email: johndoe@test.com
-git_global_signing_key: ~/.ssh/my-ssh-key.pub
-git_global_present_configs:
-  - {name: user.email, value: "{{ git_global_email }}"}
-  - {name: user.signingkey, value: "{{ git_global_signing_key }}"}
-  - {name: pull.rebase, value: "true"}
-  - {name: commit.gpgsign, value: "true"}
-  - {name: tag.gpgsign, value: "true"}
-  - {name: init.defaultBranch, value: master}
-git_global_absent_configs:
-  - gpg.format
-git_clone_repos:
-  - {repo: https://github.com/cowsay-org/cowsay.git, dest: $HOME/git/cowsay}
+  - { host: "test1", user: test, hostname: "example.com", key_file: "~/.ssh/id_rsa" }
+  - { host: "test2", user: test2, hostname: "example2.com", port: 1234, strict_host_key_checking: false }
+  - { host: "test3", user: test2, hostname: "example2.com", proxy_command: ssh -W %h:%p jumphost }
 
 # ==================================================
 # Role: ide

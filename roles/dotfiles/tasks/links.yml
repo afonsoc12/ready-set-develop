@@ -1,0 +1,23 @@
+---
+- name: Ensure VS Code User settings directory exists
+  file:
+    path: "{{ dotfiles_links_vscode_settings_dir }}"
+    state: directory
+    mode: "0755"
+
+- name: Find VS Code config files
+  find:
+    paths: "{{ dotfiles_links_vscode_settings_src }}"
+    file_type: "{{ 'link' if dotfiles_use_links is truthy else 'file' }}"
+    recurse: false
+  register: dotfiles_vscode_files
+
+- name: Symlink VS Code config files
+  file:
+    src: "{{ item.path }}"
+    dest: "{{ dotfiles_links_vscode_settings_dir }}/{{ item.path | basename }}"
+    state: link
+    force: true
+  loop: "{{ dotfiles_vscode_files.files }}"
+  loop_control:
+    label: "{{ item.path | basename }}"

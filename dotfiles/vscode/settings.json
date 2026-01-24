@@ -1,0 +1,26 @@
+{
+  "explorer.confirmDragAndDrop": false,
+  "files.exclude": {
+    "**/.git": false
+  },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableCommitSigning": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "window.zoomLevel": 2,
+  "workbench.iconTheme": "vscode-icons",
+  "files.autoSave": "onFocusChange",
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.colorCustomizations": {
+    "editorCursor.foreground": "#ff0000",
+    "editorMultiCursor.primary.foreground": "#ff0000",
+    "editorMultiCursor.secondary.foreground": "#ff8000",
+    "terminalCursor.foreground": "#ff0000"
+
+  },
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorWidth": 2
+}

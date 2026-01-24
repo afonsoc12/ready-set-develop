@@ -1,58 +1,44 @@
 ---
-- name: Ensure dotfiles parent dir exists
-  file:
-    path: "{{ dotfiles_repo_dest | string | dirname }}"
-    state: directory
-    mode: "0755"
+- name: Install dotfiles
+  include_tasks: install.yml
 
-- name: Clone dotfiles repo
-  git:
-    repo: "{{ dotfiles_repo }}"
-    dest: "{{ dotfiles_repo_dest }}"
-    version: "{{ dotfiles_version }}"
-  environment:
-    GIT_TERMINAL_PROMPT: "0"  # reports "terminal prompts disabled" on missing password
+# - name: Link dotfiles that cannot be used from XDG_CONFIG_HOME
+#   include_tasks: links.yml
 
-- name: Run installation tasks (tasks/*.yml)
-  include_tasks: "{{ task }}"
-  loop: "{{ query('fileglob', dotfiles_repo_dest | string | expandvars ~ '/tasks/*.yml') | sort }}"
-  loop_control:
-    loop_var: task
+# - name: Append extra block to .zshrc
+#   blockinfile:
+#     path: "{{ ansible_env.ZDOTDIR | default(zshenv.ZDOTDIR) | expandvars }}/.zshrc"
+#     block: "{{ dotfiles_extra_zshrc }}"
+#   when: dotfiles_extra_zshrc
 
-- name: Append extra block to .zshrc
-  blockinfile:
-    path: "{{ ansible_env.ZDOTDIR | default(zshenv.ZDOTDIR) | expandvars }}/.zshrc"
-    block: "{{ dotfiles_extra_zshrc }}"
-  when: dotfiles_extra_zshrc
+# - name: Check volume with secrets is mounted
+#   stat:
+#     path: "{{ dotfiles_secrets_src }}"
+#   register: secrets_volume
+#   when: dotfiles_secrets_src is defined
 
-- name: Check volume with secrets is mounted
-  stat:
-    path: "{{ dotfiles_secrets_src }}"
-  register: secrets_volume
-  when: dotfiles_secrets_src
+# - name: Copy secrets from volume and set permissions
+#   when:
+#     - secrets_volume.stat is defined
+#     - secrets_volume.stat.exists
+#   block:
+#     - name: Copy secrets
+#       copy:
+#         src: "{{ dotfiles_secrets_src }}"
+#         dest: "{{ dotfiles_secrets_dest }}"
+#         directory_mode: "0700"
+#         mode: "0400"
 
-- name: Copy secrets from volume and set permissions
-  when:
-    - secrets_volume.stat is defined
-    - secrets_volume.stat.exists
-  block:
-    - name: Copy secrets
-      copy:
-        src: "{{ dotfiles_secrets_src }}"
-        dest: "{{ dotfiles_secrets_dest }}"
-        directory_mode: "0700"
-        mode: "0400"
+#     - name: Check gnupg folder is present
+#       stat:
+#         path: "{{ dotfiles_secrets_dest }}/{{ dotfiles_secrets_src | string | basename }}/gnupg"
+#       register: gnupg_present
 
-    - name: Check gnupg folder is present
-      stat:
-        path: "{{ dotfiles_secrets_dest }}/{{ dotfiles_secrets_src | string | basename }}/gnupg"
-      register: gnupg_present
-
-    - name: Set gnupg permissions
-      copy:
-        src: "{{ dotfiles_secrets_src }}/gnupg"
-        dest: "{{ dotfiles_secrets_dest }}/{{ dotfiles_secrets_src | string | basename }}"
-        directory_mode: "0700"
-        mode: "0600"
-      when:
-        - gnupg_present.stat.exists
+#     - name: Set gnupg permissions
+#       copy:
+#         src: "{{ dotfiles_secrets_src }}/gnupg"
+#         dest: "{{ dotfiles_secrets_dest }}/{{ dotfiles_secrets_src | string | basename }}"
+#         directory_mode: "0700"
+#         mode: "0600"
+#       when:
+#         - gnupg_present.stat.exists
