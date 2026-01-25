@@ -3,6 +3,7 @@
 # ==================================================
 # Recursively merges itself with the unencrypted
 # variables in this file
+<<<<<<< HEAD
 # Add this flag when running the playbook:
 #   -e sops_file=config.sops.yml
 # ==================================================
@@ -14,6 +15,17 @@ dotfiles_secrets:
     git:
         email: ENC[AES256_GCM,data:utnhj+BNEf2PY0Ac+y89JYYMwI7VqMzYhIXubtlULvgp8yT3tWpFxkKAGw==,iv:xc23TQXhp6EOPXazZR8Rjh4vFccXPBAB94oGkXyyIqg=,tag:6y+FSKORxBNr2BIHwb6Xgg==,type:str]
         signing_key: ENC[AES256_GCM,data:UWfSnN3ECfgErbHL/V0+Ag==,iv:E1ukvftoEOUZ0hlzHr9kEV2MQVbgKxl+VZRE66Sjwtk=,tag:NERv2hNd3bqYjTbQCIpuhQ==,type:str]
+=======
+sops_file: config.sops.yml
+# ==================================================
+# Role: dotfiles
+# ==================================================
+dotfiles_secrets_src: ENC[AES256_GCM,data:YeVwiPjKPpC7f3/bOldKf8pshF8TxscT6g==,iv:GBx5OyEtwSeV+JP43xvER7hlV1TpXQO/5A7gcJ8+VYs=,tag:rrHpEZhdp3KCdyJkFpzh0w==,type:str]
+dotfiles_secrets:
+    git:
+        email: ENC[AES256_GCM,data:+aCz6zdPrlgifCXbAgNK6IbL/ePVz7ib5QGa6s39XumDeYzOTWfzY6jDBg==,iv:ZGoBY0P6eqhJUoMOt09MTgrh9VAknpbTmY2h2wHV8qg=,tag:ji53Gj60pbdpEP/bNU7VaA==,type:str]
+        signing_key: ENC[AES256_GCM,data:9V744hYXxgt5a5f2RwwdUg==,iv:xeQ0uPLf7hMup2HNgsPwq3pcrYfeTLho5EkAF2NIoRY=,tag:k42hRcc22UbV8W0ZfpQskg==,type:str]
+>>>>>>> 37ec88c (Disable IT tests (for now))
 # ==================================================
 # Role: geerlingguy.mac.homebrew
 #   - docs: https://github.com/geerlingguy/ansible-collection-mac/blob/master/roles/homebrew/README.md
@@ -43,7 +55,10 @@ homebrew_installed_packages:
     - git
     - gnupg
     - pinentry-mac
+<<<<<<< HEAD
     - sops
+=======
+>>>>>>> 37ec88c (Disable IT tests (for now))
     # Kubernetes / Cloud / DevOps
     - ansible
     - argocd
@@ -164,7 +179,10 @@ python_uv_versions: []
 python_uv_tools:
     - ansible
     - black
+<<<<<<< HEAD
     - pre-commit
+=======
+>>>>>>> 37ec88c (Disable IT tests (for now))
     - firefly-cli
     - isort
     - versioneer
@@ -373,7 +391,10 @@ macos_add_adobe_hosts: true
 # Role: ide
 # ==================================================
 ide_vscode_extensions:
+<<<<<<< HEAD
     - Anan.jetbrains-darcula-theme
+=======
+>>>>>>> 37ec88c (Disable IT tests (for now))
     - github.copilot
     - github.copilot-chat
     - github.vscode-github-actions
@@ -390,6 +411,7 @@ sops:
         - recipient: age1n2g0g2z9jdgnqx826e8d0d78y8z0lc7ngdadm3jw9gzpxj2nf5rs0hm6p6
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
+<<<<<<< HEAD
             YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB4SmFVdzM2WDR4MmxxSFlG
             UWdDUzM5R0RzRkgzQXZvUGhzVmF4TU9mSmhjCkxlU2ZWWGhYS1ZpM3BHZHp3d01v
             Y1Azb3lYdjJyTzdhRVZJSmVsTlpST3MKLS0tIGgvcG4vbGNVd3RiS1ZOTFUxNFpE
@@ -399,4 +421,15 @@ sops:
     lastmodified: "2026-01-27T00:08:14Z"
     mac: ENC[AES256_GCM,data:4GWBPHWZzzbK+RW/hvJ7KsWhJS1kt4uVQPQyrU++JWNAynjvKupXL4ggraWPHA5bzxj7t3Yh0w5BAw26Mjncg6TQKM9X5rsIrqax5SaGq4Ym3og12ChbciErXEHAeSw5eNbWbej1JIfji0NLImVQypGJ4pYDfvQD9x2mqRhet0o=,iv:s60huC9tjr19rvZly3TzhDuRowJ+F+OMeaCzWjNkr+Y=,tag:sVJg7X4pUc2Hq4xbN04dqw==,type:str]
     encrypted_regex: ^(dotfiles_auth_home|dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets)$
+=======
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBUeTVvQUM5TDM3NGljYm9u
+            a3hYSmYrYUtRQlo1U3N3cnZTUlk4elMxNm1BCnFQeTJJVkdpNm5VeEREOTExNXpT
+            OW1YUDlkb3lKdmZBRU1TVDVEd1o0ODQKLS0tIDFSak5ISk9XUkNOdUVvMXlpS2Ur
+            SjlORWhPZWFtT0NubC95WlZhT1p5T3MKADyhh7HtyyH/46ypcQNb1qES1ilHjLkE
+            qY7/YPalK8FWXZ/wLwjVguczAkhRe6LuSTBsfghgkVhXtt9nUidgMA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2026-01-25T12:50:19Z"
+    mac: ENC[AES256_GCM,data:9sWTIonuFM7JCvruaBRvCh5XkVWJYfGYlEbWKuvltw3fuLxc4yn5FSb/pxvbZKyqK2AgoZj1HOzPcR76hCLfzbZbUwDU0rN06R/ysVdEwAIcNIrkP7pQeLfCShlXD00y5+piQgc7nsk/Zc9eg7PM1/uGX+FNfiXygczGOx7W/ec=,iv:/ousGrLbomSp6uEVkrHFcxerZcVsj++WNhF2WWvoWlo=,tag:0DmX9VgQGGeOCD4x1OK4HA==,type:str]
+    encrypted_regex: ^(dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets)$
+>>>>>>> 37ec88c (Disable IT tests (for now))
     version: 3.11.0
