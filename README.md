@@ -2,113 +2,185 @@
 
 [![CI](https://github.com/afonsoc12/ready-set-develop/actions/workflows/ci.yml/badge.svg)](https://github.com/afonsoc12/ready-set-develop/actions/workflows/ci.yml)
 
-Ready, Set, Develop™ is a collection of automation scripts to streamline setting up new machines (almost) from scratch or to synchronising configs across computers, powered by [Ansible](https://ansible.com).
+**Ready, Set, Develop™** is an opinionated, reproducible workstation bootstrap system built with [Ansible](https://www.ansible.com/).
 
-## Motivation
+![](./.github/images/banner.png)
 
-Throughout my journey as a human being, I've setup enough servers and computers to ignite a profound appreciation for automation. I treat all my machines like trusty tools, but I'm not one to rely entirely on them.
-In case Murphy's Law pays a visit, I take comfort in knowing my data is backed up, and I can bounce back in no time.
+Automate setting up macOS development machines from scratch and keep configuration consistent across computers — including dotfiles, tooling, system preferences, and development environments.
 
-Now, this repository? It's all about automating setting up my personal computers and synchronise configurations across them, so that I have the same dev environment across computers.
+---
+## About
 
+Over the years, I've set up enough machines to understand that **manual setup doesn't scale**. I treat computers as disposable tools: everything important is backed up, and the environment itself should be reproducible on demand.
+
+This repository codifies workstation setup with version-controlled configuration and repeatable, idempotent automation. In case Murphy's Law pays a visit, get productive in **minutes**, not days!
+
+---
 ## Features
 
-- dotfiles setup ([afonsoc12/dotfiles](https://github.com/afonsoc12/dotfiles))
-- Install homebrew and packages (formulae and casks)
-- Mac App Store apps
-- Python environment (pyenv, it's plugins and pip packages)
-- git configuration and git clone
-- macOS defaults configuration
-- macOS Dock icons setup and order
-- [Oh My Zsh](https://ohmyz.sh/) installation
-- Configure code editors/IDEs/terminal
+### 💻 Workstation Provisioning
+- **Homebrew** installation and package management (formulae & casks)
+- **Mac App Store** applications
+- **Python environment** (pyenv, uv, plugins, pip packages)
+- **Git** configuration and repository cloning
+- **Zsh** shell setup with Oh My Zsh
+- **Editor / IDE / terminal** configuration
+
+### 📁 Dotfiles Management
+Dotfiles are now **first-class citizens** of this project.
+
+- 📂 XDG Base Directory compliant (where possible)
+- 🏠 Minimal `$HOME` clutter
+- 🔗 Deploy via symlink or copy
+- ⚙️ Templated with Ansible
+- 🔐 Secrets management via SOPS
+
+**Pre-configured for:**
+- zsh, Git, GnuPG, VS Code, rclone, rsync, k9s, and more
+
+### 🎨 macOS Customization
+- 🔧 System defaults
+- 📌 Dock layout and ordering
+- 💡 Developer-focused tweaks
+
+---
+## Getting Started
+
+### Prerequisites
+
+- macOS 12 or later (tested only on 26+)
+- Approximately 30 minutes
+- Internet connection
 
 
-## Installation (virgin machine)
+## Installation Options
 
-1. Install Apple's Command Line Tools:
+### ⚡ One-Command Bootstrap
 
-    ```bash
-    xcode-select --install
-    # Agree with Xcode's license
-    ```
+This method is ideal if you want a **fully automated setup**. It will:
 
-2. Setup environment variables:
+- Install XCode Command Line Tools
+- Clone this repository to `~/.local/share/ready-set-develop` (XDG-compliant)
+- Install Python packages and Ansible with system python
+- Install Ansible Galaxy packages
+- Run the full playbook
 
-    ```shell
-    export PATH="$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$PATH"
-    export ANSIBLE_HOME="$HOME/.local/share/ansible"
-    ```
+**Run:**
 
-3. Install Ansible using the system Python:
+```bash
+curl -fsSL https://raw.githubusercontent.com/afonsoc12/ready-set-develop/main/bootstrap.zsh | SOPS_AGE_KEY_FILE=<PATH AGE KEY FILE> zsh -
+```
 
-     ```bash
-     sudo pip3 install --upgrade pip
-     pip3 install ansible
-     ```
+### Step-by-step Installation
 
-4. Clone or download this repository
+#### 1️⃣ Install Command Line Tools
 
-    ```bash
-    git clone https://github.com/afonsoc12/ready-set-develop.git
-    ```
+```bash
+xcode-select --install
+```
 
-5. Install Ansible requirements
+Accept the license when prompted.
 
-    ```bash
-    ansible-galaxy install -r requirements.yml
-    ```
+#### 2️⃣ Set Environment Variables
 
-6. Run playbook
+```bash
+export PATH="$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$PATH"
+export ANSIBLE_HOME="$HOME/.local/share/ansible"
+```
 
-    ```bash
-    ansible-playbook main.yml --ask-become-pass --ask-vault-password
-    # Enter your macOS account password
-    ```
+#### 3️⃣ Install Ansible
 
-> Note: Alternatively, the Ansible Vault password file can be passed by the environment variable
-`ANSIBLE_VAULT_PASSWORD_FILE`. However, since this is likely not in the new machine, it will be
-prompted at runtime.
+```bash
+/usr/bin/pip3 install --upgrade pip
+/usr/bin/pip3 install ansible
+```
 
-## Usage
+#### 4️⃣ Clone Repository
 
-By default, the playbook will look for a `config.yml` variables file in the root of the repository. It contains my default settings for most of my machine.
-However, since some of these cannot be shared, they are encrypted with [ansible-vault](https://docs.ansible.com/ansible/latest/vault_guide/index.html).
+```bash
+git clone https://github.com/afonsoc12/ready-set-develop.git
+cd ready-set-develop
+```
 
-To override these, you can either replace the `config.yml` with the contents of `config.default.yml` or append the argument `-e myconfig.yml` to `ansible-playbook` command, pointing to your new config file.
+#### 5️⃣ Install Ansible Requirements
 
-### Extra Tasks
+```bash
+ansible-galaxy install -r requirements.yml
+```
 
-These extras tasks that can be placed in `extra_tasks/`, will be executed after all roles in the playbook, without any particular order.
-To skip all roles and jump straight to the extra tasks, the flag `--tags extra` can be added to the playbook.
-This folder is excluded in `.gitignore`. This is where I specify a few tasks that are only specific to one machine, if any.
+#### 6️⃣ Run Playbook
 
-### Potential Problems
+```bash
+export SOPS_AGE_KEY_FILE=<PATH AGE KEY FILE>
+ansible-playbook main.yml --ask-become-pass
+```
 
-- Issues with docker plugins not linked: [GitHub Issue](https://github.com/docker/for-mac/issues/6569#issuecomment-1312244210)
+---
 
-## Roles Overview
+## Running
+
+### Standard Execution
+
+Run the full playbook:
+
+```bash
+ansible-playbook main.yml --ask-become-pass
+```
+
+### Custom Configuration
 
 > TODO
 
+Override default settings:
 
-## Testing
+```bash
+ansible-playbook main.yml -e @myconfig.yml --ask-become-pass
+```
 
-This repo uses [GitHub Actions](https://github.com/afonsoc12/ready-set-develop/actions) for CI. This workflow runs linting and integration tests against macOS 12 and 13. I cannot guarantee this will work in Linux, and it will definitely not work in windows.
+Or replace `config.yml` with your own configuration file.
 
-Linting and tests overview:
-- yamllint
-- ansible-lint
-- ansible's `--syntax-check`
-- ansible-playbook with default vars
-- ansible-playbook with vars from `test/config.yml`
-- [Idempotence](https://en.wikipedia.org/wiki/Idempotence) test
+---
 
-## Credits
+## Development
 
-Copyright 2023 Afonso Costa
+### Prerequisites
 
-Licensed under the Apache License, Version 2.0 (the "License")
+- [uv](https://docs.astral.sh/uv/)
 
-Thanks to Jeff Geerling for two excellent books: [Ansible for DevOps](https://www.ansiblefordevops.com) and [Ansible for Kubernetes](https://www.ansibleforkubernetes.com). Also, for unknowingly allowing me to borrow some pieces from [geerlingguy/mac-dev-playbook](https://github.com/geerlingguy/mac-dev-playbook). The perks of [OSS](https://en.wikipedia.org/wiki/Open-source_software)!
+### Installation
 
+#### 1️⃣ Setup development environment
+
+This project uses [uv](https://docs.astral.sh/uv/) to manage Python dev dependencies and sync them.
+
+```bash
+uv sync --dev
+pre-commit install
+```
+
+#### 2️⃣ Activate virtual environment
+
+```bash
+source .venv/bin/activate
+```
+
+#### 3️⃣ Linting & syntax checks
+
+Before committing changes, run the following checks:
+
+```bash
+pre-commit run --all-files
+
+# OR
+
+yamllint .
+ansible-lint .
+ansible-playbook main.yml --syntax-check
+```
+
+---
+## License
+
+**Copyright © 2023–2026 [Afonso Costa](https://github.com/afonsoc12)**
+
+Licensed under the Apache License 2.0. See the [LICENSE](./LICENSE) file for details.

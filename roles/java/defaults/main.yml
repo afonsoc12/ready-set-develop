@@ -1,4 +1,5 @@
 ---
+java_role_skip: true
 java_versions: []
 java_jenv_global: []
 java_jenv_plugins:

@@ -1,7 +1,7 @@
 ---
 k9s:
   liveViewAutoRefresh: false
-  screenDumpDir: {{ ansible_facts.env.XDG_STATE_HOME }}/k9s/screen-dumps
+  screenDumpDir: {{ XDG_BASE_DIRS.XDG_STATE_HOME }}/k9s/screen-dumps
   refreshRate: 2
   maxConnRetry: 5
   readOnly: false

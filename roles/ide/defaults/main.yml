@@ -2,12 +2,14 @@
 # ==================================================
 # Task: iterm
 # ==================================================
-ide_zsh_path: "{{ ansible_env.ZSH | default(zshenv.ZSH) | expandvars }}"
+ide_zsh_path: >-
+  {{
+    lookup('env', 'ZSH')
+    | default(lookup('env', 'XDG_DATA_HOME') ~ '/oh-my-zsh', true)
+    | default(lookup('env', 'HOME') ~ '/.local/share/oh-my-zsh', true)
+  }}
 
 # ==================================================
 # Task: vscode
 # ==================================================
-ide_vscode_app_dir: "{{ homebrew_cask_appdir | default('/Applications') }}/Visual\ Studio\ Code.app1"
-ide_vscode_code_bin: "{{ ide_vscode_app_dir }}/Contents/Resources/app/bin/code"
-ide_vscode_code_dest_dir: /usr/local/bin
 ide_vscode_extensions: []

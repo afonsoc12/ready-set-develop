@@ -10,6 +10,7 @@
   find:
     paths: "{{ dotfiles_dir }}"
     file_type: file
+    hidden: true
     recurse: true
   register: dotfiles_found
   changed_when: false
