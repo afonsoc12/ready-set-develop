@@ -2,18 +2,14 @@
 # ==================================================
 # Role: dotfiles
 # ==================================================
-# dotfiles_repo: https://github.com/afonsoc12/dotfiles
-# dotfiles_version: HEAD
-# dotfiles_repo_dest: "{{ lookup('env','HOME') }}/.config/dotfiles"
 # dotfiles_use_links: true
-# dotfiles_extra_zshrc:  # If set, must set dotfiles_use_links to true
 
 # ==================================================
 # Role: geerlingguy.mac.homebrew
 #   - docs: https://github.com/geerlingguy/ansible-collection-mac/blob/master/roles/homebrew/README.md
 # ==================================================
 # homebrew_upgrade_all_packages: false
-homebrew_taps: []  # don't install default taps to avoid warnings in brew doctor
+homebrew_taps: [] # don't install default taps to avoid warnings in brew doctor
 # homebrew_installed_packages:
 #   - git
 #   - gh
@@ -67,12 +63,12 @@ mas_installed_apps: []
 # ==================================================
 # Role: dock
 # ==================================================
-# dock_persistent_apps:
+# dockitems_persist:
 # - {name: "iTerm", path: "/Applications/iTerm.app"}
 # - {name: "Activity Monitor", path: "/System/Applications/Utilities/Activity Monitor.app"}
 # - {name: "Google Chrome", path: "/Applications/Google Chrome.app"}
 
-# dock_persistent_others:
+# dockitems_remove:
 #   - {name: Applications, path: /Applications}
 #   - {name: Downloads, path: "/Users/{{ ansible_env.USER }}/Downloads"}
 
@@ -97,24 +93,6 @@ mas_installed_apps: []
 #    key_file: ~/.ssh/id_rsa
 #    proxy_command: ssh -W %h:%p jumphost
 #    strict_host_key_checking: false
-
-# ==================================================
-# Role: git
-# ==================================================
-# git_global_name: John Doe
-# git_global_email: johndoe@test.com
-# git_global_signing_key: ~/.ssh/my-ssh-key.pub
-# git_global_present_configs:
-# - { name: user.email, value: "{{ git_global_email }}" }
-# - { name: user.signingkey, value: "{{ git_global_signing_key }}" }
-# - { name: pull.rebase, value: "true" }
-# - { name: commit.gpgsign, value: "true" }
-# - { name: tag.gpgsign, value: "true" }
-# - { name: init.defaultBranch, value: master }
-# git_global_absent_configs:
-# - gpg.format
-# git_clone_repos:
-# - { repo: git@github.com:<USER>/<REPO>.git, dest: $HOME/git/<REPO> }
 
 # ==================================================
 # Role: vscode
