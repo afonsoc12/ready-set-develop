@@ -11,9 +11,13 @@
     paths: "{{ dotfiles_dir }}"
     file_type: file
 <<<<<<< HEAD
+<<<<<<< HEAD
     hidden: true
 =======
 >>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)
+=======
+    hidden: true
+>>>>>>> a7efc97 (Add bootstrap script, license and updated readme)
     recurse: true
   register: dotfiles_found
   changed_when: false

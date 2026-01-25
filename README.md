@@ -25,10 +25,40 @@ This repository codifies workstation setup with version-controlled configuration
 - **Git** configuration and repository cloning
 - **Zsh** shell setup with Oh My Zsh
 - **Editor / IDE / terminal** configuration
+<<<<<<< HEAD
+=======
 
 ### 📁 Dotfiles Management
 Dotfiles are now **first-class citizens** of this project.
 
+- 📂 XDG Base Directory compliant (where possible)
+- 🏠 Minimal `$HOME` clutter
+- 🔗 Deploy via symlink or copy
+- ⚙️ Templated with Ansible
+- 🔐 Secrets management via SOPS
+
+**Pre-configured for:**
+- zsh, Git, GnuPG, VS Code, rclone, rsync, k9s, and more
+
+### 🎨 macOS Customization
+- 🔧 System defaults
+- 📌 Dock layout and ordering
+- 💡 Developer-focused tweaks
+
+---
+## Getting Started
+
+### Prerequisites
+
+- macOS 12 or later (tested only on 26+)
+- Approximately 30 minutes
+- Internet connection
+>>>>>>> a7efc97 (Add bootstrap script, license and updated readme)
+
+### 📁 Dotfiles Management
+Dotfiles are now **first-class citizens** of this project.
+
+<<<<<<< HEAD
 - 📂 XDG Base Directory compliant (where possible)
 - 🏠 Minimal `$HOME` clutter
 - 🔗 Deploy via symlink or copy
@@ -136,6 +166,72 @@ ansible-playbook main.yml -e sops_file=<PATH SOPS FILE> --ask-become-pass
 
 ---
 
+=======
+## Installation Options
+
+### ⚡ One-Command Bootstrap
+
+This method is ideal if you want a **fully automated setup**. It will:
+
+- Install XCode Command Line Tools
+- Clone this repository to `~/.local/share/ready-set-develop` (XDG-compliant)
+- Install Python packages and Ansible with system python
+- Install Ansible Galaxy packages
+- Run the full playbook
+
+**Run:**
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/afonsoc12/ready-set-develop/main/bootstrap.zsh | SOPS_AGE_KEY_FILE=<PATH AGE KEY FILE> zsh -
+```
+
+### Step-by-step Installation
+
+#### 1️⃣ Install Command Line Tools
+
+```bash
+xcode-select --install
+```
+
+Accept the license when prompted.
+
+#### 2️⃣ Set Environment Variables
+
+```bash
+export PATH="$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$PATH"
+export ANSIBLE_HOME="$HOME/.local/share/ansible"
+```
+
+#### 3️⃣ Install Ansible
+
+```bash
+/usr/bin/pip3 install --upgrade pip
+/usr/bin/pip3 install ansible
+```
+
+#### 4️⃣ Clone Repository
+
+```bash
+git clone https://github.com/afonsoc12/ready-set-develop.git
+cd ready-set-develop
+```
+
+#### 5️⃣ Install Ansible Requirements
+
+```bash
+ansible-galaxy install -r requirements.yml
+```
+
+#### 6️⃣ Run Playbook
+
+```bash
+export SOPS_AGE_KEY_FILE=<PATH AGE KEY FILE>
+ansible-playbook main.yml --ask-become-pass
+```
+
+---
+
+>>>>>>> a7efc97 (Add bootstrap script, license and updated readme)
 ## Running
 
 ### Standard Execution
