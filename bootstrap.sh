@@ -11,7 +11,7 @@ export ANSIBLE_HOME="$XDG_DATA_HOME/ansible"
 REPO_DIR="$XDG_DATA_HOME/ready-set-develop"
 export PATH="$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$PATH"
 
-# Optional SOPS file
+# Optional SOPS file (relative to repo)
 SOPS_FILE=""
 
 # -----------------------------
@@ -50,7 +50,7 @@ else
 fi
 
 # -----------------------------
-# 3. SOPS check
+# 3. SOPS AGE key check
 # -----------------------------
 if [[ -z "${SOPS_AGE_KEY_FILE:-}" ]]; then
   echo "❌ SOPS_AGE_KEY_FILE is not set."
@@ -65,14 +65,6 @@ if [[ ! -f "$SOPS_AGE_KEY_FILE" ]]; then
 fi
 
 echo "🔐 SOPS AGE key detected"
-
-if [[ -n "$SOPS_FILE" ]]; then
-  if [[ ! -f "$SOPS_FILE" ]]; then
-    echo "❌ Provided SOPS file does not exist: $SOPS_FILE"
-    exit 1
-  fi
-  echo "🗝 Using SOPS file: $SOPS_FILE"
-fi
 
 # -----------------------------
 # 4. Ensure directories exist
@@ -104,13 +96,24 @@ fi
 cd "$REPO_DIR"
 
 # -----------------------------
-# 7. Install Ansible requirements
+# 7. Optional SOPS file check
+# -----------------------------
+if [[ -n "$SOPS_FILE" ]]; then
+  if [[ ! -f "$SOPS_FILE" ]]; then
+    echo "❌ Provided SOPS file does not exist in repo: $SOPS_FILE"
+    exit 1
+  fi
+  echo "🗝 Using SOPS file: $SOPS_FILE"
+fi
+
+# -----------------------------
+# 8. Install Ansible requirements
 # -----------------------------
 echo "📚 Installing Ansible Galaxy requirements"
 ansible-galaxy install -r requirements.yml
 
 # -----------------------------
-# 8. Run playbook
+# 9. Run playbook
 # -----------------------------
 echo
 echo "▶️  Running Ansible playbook"
