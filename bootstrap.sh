@@ -2,8 +2,6 @@
 set -euo pipefail
 
 # -----------------------------
-<<<<<<< HEAD
-<<<<<<< HEAD
 # Defaults
 # -----------------------------
 RSD_REPO_URL="${RSD_REPO_URL:-https://github.com/afonsoc12/ready-set-develop.git}"
@@ -196,16 +194,22 @@ cd "$REPO_DIR"
 
 # -----------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
 # 7. Install Ansible requirements
 >>>>>>> a7efc97 (Add bootstrap script, license and updated readme)
 =======
 # 7. Optional SOPS file check
+=======
+# 7. Optional SOPS file check (inside repo!)
+>>>>>>> c078f01 (Update bootstrap script)
 # -----------------------------
 if [[ -n "$SOPS_FILE" ]]; then
-  if [[ ! -f "$SOPS_FILE" ]]; then
+  if [[ ! -f "$REPO_DIR/$SOPS_FILE" ]]; then
     echo "❌ Provided SOPS file does not exist in repo: $SOPS_FILE"
     exit 1
   fi
+  # Make path absolute inside repo
+  SOPS_FILE="$REPO_DIR/$SOPS_FILE"
   echo "🗝 Using SOPS file: $SOPS_FILE"
 fi
 
