@@ -6,6 +6,9 @@
     mode: "0755"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4dc2d0a (Dotfiles installation for gnupg)
 - name: Build list of VS Code files for symlinking
   set_fact:
     dotfiles_vscode_files: >-
@@ -21,6 +24,7 @@
   loop: "{{ dotfiles_found.files | selectattr('path', 'search', '(^|/)vscode(/|$)') | list }}"
   loop_control:
     label: "{{ item.path }}"
+<<<<<<< HEAD
 
 - name: Symlink VS Code config files
   file:
@@ -66,14 +70,48 @@
     file_type: "{{ 'link' if dotfiles_use_links is truthy else 'file' }}"
     recurse: false
   register: dotfiles_vscode_files
+=======
+>>>>>>> 4dc2d0a (Dotfiles installation for gnupg)
 
 - name: Symlink VS Code config files
   file:
-    src: "{{ item.path }}"
-    dest: "{{ dotfiles_links_vscode_settings_dir }}/{{ item.path | basename }}"
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
     state: link
     force: true
-  loop: "{{ dotfiles_vscode_files.files }}"
+  loop: "{{ dotfiles_vscode_files }}"
   loop_control:
+<<<<<<< HEAD
     label: "{{ item.path | basename }}"
 >>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)
+=======
+    label: "{{ item.basename }}"
+
+- name: Find GNUPG config files
+  set_fact:
+    dotfiles_gnupg_files: >-
+      {{ (dotfiles_gnupg_files | default([])) +
+         [{
+            'src': XDG_BASE_DIRS.XDG_CONFIG_HOME ~ '/' ~ (item.path | regex_replace('^' + dotfiles_dir + '/', '')),
+            'dest': dotfiles_auth_home ~ '/' ~ (item.path | regex_replace('^' + dotfiles_dir + '/', '')),
+            'basename': item.path | basename
+         }]}}
+  loop: >-
+    {{
+      dotfiles_found.files
+      | selectattr('path', 'search', '(^|/)gnupg(/|$)')
+      | list
+    }}
+  loop_control:
+    label: "{{ item.path }}"
+
+- name: Symlink GNUPG config files
+  file:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+    force: true
+  loop: "{{ dotfiles_gnupg_files }}"
+  loop_control:
+    label: "{{ item.basename }}"
+>>>>>>> 4dc2d0a (Dotfiles installation for gnupg)

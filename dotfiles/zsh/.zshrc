@@ -7,6 +7,7 @@ export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 COMPLETION_WAITING_DOTS="true"
 zstyle ':omz:update' frequency 15
 <<<<<<< HEAD
+<<<<<<< HEAD
 plugins=(aliases alias-finder)
 [ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
@@ -17,11 +18,20 @@ zstyle ':omz:plugins:alias-finder' autoload yes
 =======
 plugins=(git)
 
+=======
+plugins=(aliases alias-finder)
+>>>>>>> 4dc2d0a (Dotfiles installation for gnupg)
 [ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
+# ─────────── plugins:alias-finder ───────────
+zstyle ':omz:plugins:alias-finder' autoload yes
+
 # ─────────── Pure Prompt ───────────
+<<<<<<< HEAD
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
 >>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)
+=======
+>>>>>>> 4dc2d0a (Dotfiles installation for gnupg)
 autoload -U promptinit; promptinit
 prompt pure
 
@@ -43,8 +53,14 @@ zstyle :prompt:pure:user color 242
 zstyle :prompt:pure:user:root color default
 zstyle :prompt:pure:virtualenv show yes
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 # ─────────── Aliases ───────────
 source $ZDOTDIR/aliases.zsh
 =======
 >>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)
+=======
+
+# ─────────── Aliases ───────────
+source $ZDOTDIR/aliases.zsh
+>>>>>>> 4dc2d0a (Dotfiles installation for gnupg)

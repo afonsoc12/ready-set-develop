@@ -1,9 +1,13 @@
 {
   "explorer.confirmDragAndDrop": false,
 <<<<<<< HEAD
+<<<<<<< HEAD
   "files.autoSave": "onFocusChange",
 =======
 >>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)
+=======
+  "files.autoSave": "onFocusChange",
+>>>>>>> 4dc2d0a (Dotfiles installation for gnupg)
   "files.exclude": {
     "**/.git": false
   },
@@ -14,6 +18,9 @@
   "git.enableCommitSigning": true,
   "security.workspace.trust.untrustedFiles": "open",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4dc2d0a (Dotfiles installation for gnupg)
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.cursorWidth": 2,
@@ -24,32 +31,46 @@
   "window.title": "${activeRepositoryName}",
   "window.zoomLevel": 1,
   "window.zoomPerWindow": false,
+<<<<<<< HEAD
 =======
   "window.zoomLevel": 2,
   "workbench.iconTheme": "vscode-icons",
   "files.autoSave": "onFocusChange",
   "workbench.colorTheme": "Default Dark+",
 >>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)
+=======
+>>>>>>> 4dc2d0a (Dotfiles installation for gnupg)
   "workbench.colorCustomizations": {
     "editorCursor.foreground": "#ff0000",
     "editorMultiCursor.primary.foreground": "#ff0000",
     "editorMultiCursor.secondary.foreground": "#ff8000",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4dc2d0a (Dotfiles installation for gnupg)
     "editor.findMatchHighlightBackground": "#dba80daa",
     "editor.findMatchHighlightForeground": "#000000",
     "editor.findMatchBackground": "#0ddb10aa",
     "editor.findMatchForeground": "#000000",
+<<<<<<< HEAD
     "terminalCursor.foreground": "#ff0000"
   },
   "workbench.colorTheme": "JetBrains Darcula Theme",
   "workbench.iconTheme": "vscode-icons",
   "workbench.tree.indent": 16
 =======
+=======
+>>>>>>> 4dc2d0a (Dotfiles installation for gnupg)
     "terminalCursor.foreground": "#ff0000"
-
   },
+<<<<<<< HEAD
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorWidth": 2
 >>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)
+=======
+  "workbench.colorTheme": "JetBrains Darcula Theme",
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.tree.indent": 16
+>>>>>>> 4dc2d0a (Dotfiles installation for gnupg)
 }

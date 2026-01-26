@@ -12,6 +12,7 @@
 # ==================================================
 dotfiles_auth_home: ENC[AES256_GCM,data:UM3lDorFJ+TbUVc=,iv:NxZZtldyZMhYvtwttdagt9XzlANyd+8OYCtWcx6xaMQ=,tag:OmBSTNVAIOV/DYA0BNVQFw==,type:str]
 dotfiles_secrets_src: ENC[AES256_GCM,data:TQDNo2oTU15/lqcUiuBC0LL3E+mOY0ThMQ==,iv:ctPgOi2JMo6DNXpja1NV1wIP9veVqHKziD/LX6Ts6dI=,tag:zGdmqMJTR/V09UIig8SJXw==,type:str]
+<<<<<<< HEAD
 dotfiles_secrets:
     git:
         email: ENC[AES256_GCM,data:utnhj+BNEf2PY0Ac+y89JYYMwI7VqMzYhIXubtlULvgp8yT3tWpFxkKAGw==,iv:xc23TQXhp6EOPXazZR8Rjh4vFccXPBAB94oGkXyyIqg=,tag:6y+FSKORxBNr2BIHwb6Xgg==,type:str]
@@ -31,6 +32,12 @@ dotfiles_secrets:
         email: ENC[AES256_GCM,data:+aCz6zdPrlgifCXbAgNK6IbL/ePVz7ib5QGa6s39XumDeYzOTWfzY6jDBg==,iv:ZGoBY0P6eqhJUoMOt09MTgrh9VAknpbTmY2h2wHV8qg=,tag:ji53Gj60pbdpEP/bNU7VaA==,type:str]
         signing_key: ENC[AES256_GCM,data:9V744hYXxgt5a5f2RwwdUg==,iv:xeQ0uPLf7hMup2HNgsPwq3pcrYfeTLho5EkAF2NIoRY=,tag:k42hRcc22UbV8W0ZfpQskg==,type:str]
 >>>>>>> 37ec88c (Disable IT tests (for now))
+=======
+dotfiles_secrets:
+    git:
+        email: ENC[AES256_GCM,data:utnhj+BNEf2PY0Ac+y89JYYMwI7VqMzYhIXubtlULvgp8yT3tWpFxkKAGw==,iv:xc23TQXhp6EOPXazZR8Rjh4vFccXPBAB94oGkXyyIqg=,tag:6y+FSKORxBNr2BIHwb6Xgg==,type:str]
+        signing_key: ENC[AES256_GCM,data:DVR2TH+WKDCNMvAB3ZWQyg==,iv:6pLPczRa7JfP5e5LSQ3rhmWRxDJ+xhg2xMrOv0QHdNc=,tag:MpNlDHseyxL2EK236f54aw==,type:str]
+>>>>>>> 4dc2d0a (Dotfiles installation for gnupg)
 # ==================================================
 # Role: geerlingguy.mac.homebrew
 #   - docs: https://github.com/geerlingguy/ansible-collection-mac/blob/master/roles/homebrew/README.md
@@ -405,9 +412,13 @@ macos_add_adobe_hosts: true
 # ==================================================
 ide_vscode_extensions:
 <<<<<<< HEAD
+<<<<<<< HEAD
     - Anan.jetbrains-darcula-theme
 =======
 >>>>>>> 37ec88c (Disable IT tests (for now))
+=======
+    - Anan.jetbrains-darcula-theme
+>>>>>>> 4dc2d0a (Dotfiles installation for gnupg)
     - github.copilot
     - github.copilot-chat
     - github.vscode-github-actions
@@ -425,11 +436,15 @@ sops:
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4dc2d0a (Dotfiles installation for gnupg)
             YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB4SmFVdzM2WDR4MmxxSFlG
             UWdDUzM5R0RzRkgzQXZvUGhzVmF4TU9mSmhjCkxlU2ZWWGhYS1ZpM3BHZHp3d01v
             Y1Azb3lYdjJyTzdhRVZJSmVsTlpST3MKLS0tIGgvcG4vbGNVd3RiS1ZOTFUxNFpE
             QVJaRmNIS3pkeFZJMTYwenhyemJ2Z1EKO0sv8VtyfEsuN51R3fR+6rkkrTbdvZjG
             07jWmJjRDoYmQrle5ERGKf9PJRiUFPo9ztvWs+9j009Iw6rSJrAW+Q==
+<<<<<<< HEAD
             -----END AGE ENCRYPTED FILE-----
     lastmodified: "2026-01-27T00:08:14Z"
     mac: ENC[AES256_GCM,data:4GWBPHWZzzbK+RW/hvJ7KsWhJS1kt4uVQPQyrU++JWNAynjvKupXL4ggraWPHA5bzxj7t3Yh0w5BAw26Mjncg6TQKM9X5rsIrqax5SaGq4Ym3og12ChbciErXEHAeSw5eNbWbej1JIfji0NLImVQypGJ4pYDfvQD9x2mqRhet0o=,iv:s60huC9tjr19rvZly3TzhDuRowJ+F+OMeaCzWjNkr+Y=,tag:sVJg7X4pUc2Hq4xbN04dqw==,type:str]
@@ -445,4 +460,10 @@ sops:
     mac: ENC[AES256_GCM,data:y5T9If+axZ93zVj8UQS5xUQAMRTBjqPhO8AtTKJ433uZKixXUwlRUfxc1HpKO2N970Q6YV8oh/tpo/y6i7ASRqhZ4z5YSIJvIp1zvoHWHnpkD4Tb/q18wkMubaA2CqJCd+OEGbWASLzrVPcZA7Hychf/gFPDFwVHXbCA6OXWLos=,iv:IXrSzWkSBy0SmSzh3XMXhTmRkdwgWV3cvacJYSj+S3Y=,tag:tyPM9HIqKIRtmsaelPyWoA==,type:str]
     encrypted_regex: ^(dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets)$
 >>>>>>> 37ec88c (Disable IT tests (for now))
+=======
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2026-01-26T23:20:02Z"
+    mac: ENC[AES256_GCM,data:chmGc/kMsFpBHeNUbSVltN2MAM/YB9qXLKLwTp27f6UUenlVULVq+LGhjMit5olgLm3IKhWSqZVdI7U7mq38JTiel/s0YnZOBAaiFe4RRhD7sExhRhGV9MimsS1j8Y/Lk3ObVOa93LTmCIvB7tR0zs4oPvwiT8yqcDzZ8mPoGas=,iv:feDzO4WeJscpnxLjS5eOoeUb53qsQrwS4r6D0QBqWYg=,tag:jCJTx9Cyta4ZmTlutYoeww==,type:str]
+    encrypted_regex: ^(dotfiles_auth_home|dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets)$
+>>>>>>> 4dc2d0a (Dotfiles installation for gnupg)
     version: 3.11.0

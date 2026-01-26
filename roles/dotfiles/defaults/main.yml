@@ -6,10 +6,14 @@ dotfiles_use_links: true
 
 dotfiles_links_vscode_settings_dir: "{{ lookup('env', 'HOME') }}/Library/Application Support/Code/User"
 <<<<<<< HEAD
+<<<<<<< HEAD
 dotfiles_auth_home: "{{ lookup('env', 'HOME') }}/.secrets"
 =======
 dotfiles_links_vscode_settings_src: "{{ XDG_BASE_DIRS.XDG_CONFIG_HOME ~ '/vscode' }}"
 >>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)
+=======
+dotfiles_auth_home: "{{ lookup('env', 'HOME') }}/.secrets"
+>>>>>>> 4dc2d0a (Dotfiles installation for gnupg)
 
 # XDG Base Directory Specification (https://specifications.freedesktop.org/basedir/latest/)
 XDG_BASE_DIRS: # noqa var-naming[pattern]

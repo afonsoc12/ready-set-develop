@@ -3,12 +3,17 @@
   include_tasks: install.yml
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 - name: Link dotfiles that cannot be used from XDG_CONFIG_HOME
   include_tasks: links.yml
 =======
 # - name: Link dotfiles that cannot be used from XDG_CONFIG_HOME
 #   include_tasks: links.yml
 >>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)
+=======
+- name: Link dotfiles that cannot be used from XDG_CONFIG_HOME
+  include_tasks: links.yml
+>>>>>>> 4dc2d0a (Dotfiles installation for gnupg)
 
 # - name: Append extra block to .zshrc
 #   blockinfile:
