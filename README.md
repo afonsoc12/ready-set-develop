@@ -52,6 +52,19 @@ Dotfiles are now **first-class citizens** of this project.
 - Approximately 30 minutes
 - Internet connection
 
+## Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `RSD_REPO_URL` | `https://github.com/afonsoc12/ready-set-develop.git` | Git URL of the repository to clone. |
+| `RSD_REPO_DIR` | `$XDG_DATA_HOME/ready-set-develop` | Local path where the repository is cloned. |
+| `RSD_REPO_VERSION` | master | Optional branch, tag, or commit hash to checkout after cloning. |
+| `RSD_FORCE_REPO` | `false` | If `true`, removes existing repository before cloning and re-clones. |
+| `SOPS_AGE_KEY_FILE` | _required_ | Path to your AGE key for decrypting SOPS secrets. Must exist before running the script. |
+| `RSD_SOPS_FILE` | _none_ | Optional SOPS-encrypted configuration file inside the repository, passed to Ansible as `-e sops_file=<file>`. |
+| `XDG_DATA_HOME` | `$HOME/.local/share` | Base directory for application data (XDG standard). |
+| `RSD_ANSIBLE_HOME` | `$XDG_DATA_HOME/ansible` | Directory for Ansible runtime, roles, and collections. |
+| `PATH` | `$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$PATH` | Ensures user Python and Homebrew binaries are available. |
 
 ## Installation Options
 
