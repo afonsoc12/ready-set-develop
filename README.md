@@ -55,6 +55,7 @@ Dotfiles are now **first-class citizens** of this project.
 - Internet connection
 >>>>>>> a7efc97 (Add bootstrap script, license and updated readme)
 
+<<<<<<< HEAD
 ### 📁 Dotfiles Management
 Dotfiles are now **first-class citizens** of this project.
 
@@ -82,6 +83,8 @@ Dotfiles are now **first-class citizens** of this project.
 - Approximately 30 minutes
 - Internet connection
 
+=======
+>>>>>>> 6e9a1ea (Improve docs)
 ## Environment Variables
 
 | Variable | Default | Description |
