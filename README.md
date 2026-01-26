@@ -68,7 +68,10 @@ This method is ideal if you want a **fully automated setup**. It will:
 **Run:**
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/afonsoc12/ready-set-develop/main/bootstrap.zsh | SOPS_AGE_KEY_FILE=<PATH AGE KEY FILE> zsh -
+curl -sSL https://raw.githubusercontent.com/afonsoc12/ready-set-develop/main/bootstrap.sh | SOPS_AGE_KEY_FILE=<SOPS_AGE_KEY_FILE> zsh -s --
+
+# With sops encrypted config
+curl -sSL https://raw.githubusercontent.com/afonsoc12/ready-set-develop/main/bootstrap.sh | SOPS_AGE_KEY_FILE=<SOPS_AGE_KEY_FILE> zsh -s -- -e sops_file=<ENCRYPTED CONFIG>
 ```
 
 ### Step-by-step Installation

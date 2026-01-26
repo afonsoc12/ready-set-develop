@@ -2,18 +2,27 @@
 set -euo pipefail
 
 # -----------------------------
-# Configuration
+# Defaults
 # -----------------------------
 REPO_URL="https://github.com/afonsoc12/ready-set-develop.git"
 
-# XDG defaults
 export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 export ANSIBLE_HOME="$XDG_DATA_HOME/ansible"
-
 REPO_DIR="$XDG_DATA_HOME/ready-set-develop"
-
-# Python user bin (3.*)
 export PATH="$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$PATH"
+
+# Optional SOPS file
+SOPS_FILE=""
+
+# -----------------------------
+# Parse flags
+# -----------------------------
+while getopts ":e:" opt; do
+  case $opt in
+    e) SOPS_FILE="$OPTARG" ;;
+    *) echo "Usage: $0 [-e sops_file]"; exit 1 ;;
+  esac
+done
 
 echo
 echo "🚀 Ready, Set, Develop — bootstrap"
@@ -45,29 +54,31 @@ fi
 # -----------------------------
 if [[ -z "${SOPS_AGE_KEY_FILE:-}" ]]; then
   echo "❌ SOPS_AGE_KEY_FILE is not set."
-  echo
   echo "Export your AGE key file before running:"
   echo "  export SOPS_AGE_KEY_FILE=<PATH AGE KEY>"
-  echo
   exit 1
 fi
 
 if [[ ! -f "$SOPS_AGE_KEY_FILE" ]]; then
-  echo "❌ SOPS_AGE_KEY_FILE does not exist:"
-  echo "  $SOPS_AGE_KEY_FILE"
+  echo "❌ SOPS_AGE_KEY_FILE does not exist: $SOPS_AGE_KEY_FILE"
   exit 1
 fi
 
 echo "🔐 SOPS AGE key detected"
 
+if [[ -n "$SOPS_FILE" ]]; then
+  if [[ ! -f "$SOPS_FILE" ]]; then
+    echo "❌ Provided SOPS file does not exist: $SOPS_FILE"
+    exit 1
+  fi
+  echo "🗝 Using SOPS file: $SOPS_FILE"
+fi
+
 # -----------------------------
 # 4. Ensure directories exist
 # -----------------------------
 echo "📁 Ensuring directories exist"
-
-mkdir -p \
-  "$XDG_DATA_HOME" \
-  "$ANSIBLE_HOME"
+mkdir -p "$XDG_DATA_HOME" "$ANSIBLE_HOME"
 
 # -----------------------------
 # 5. Install Ansible (user)
@@ -84,12 +95,10 @@ fi
 # 6. Clone repository
 # -----------------------------
 if [[ ! -d "$REPO_DIR" ]]; then
-  echo "📥 Cloning ready-set-develop into:"
-  echo "   $REPO_DIR"
+  echo "📥 Cloning ready-set-develop into: $REPO_DIR"
   git clone "$REPO_URL" "$REPO_DIR"
 else
-  echo "📂 Repository already exists:"
-  echo "   $REPO_DIR"
+  echo "📂 Repository already exists: $REPO_DIR"
 fi
 
 cd "$REPO_DIR"
@@ -107,8 +116,10 @@ echo
 echo "▶️  Running Ansible playbook"
 echo
 
-ansible-playbook main.yml --ask-become-pass -v
+ANSIBLE_CMD="ansible-playbook main.yml --ask-become-pass -v"
+[[ -n "$SOPS_FILE" ]] && ANSIBLE_CMD+=" -e sops_file=$SOPS_FILE"
 
+eval "$ANSIBLE_CMD"
 
 echo
 echo "🎉 Ready, Set, Develop completed successfully"
