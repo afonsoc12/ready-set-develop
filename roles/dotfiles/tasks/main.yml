@@ -2,8 +2,8 @@
 - name: Install dotfiles
   include_tasks: install.yml
 
-# - name: Link dotfiles that cannot be used from XDG_CONFIG_HOME
-#   include_tasks: links.yml
+- name: Link dotfiles that cannot be used from XDG_CONFIG_HOME
+  include_tasks: links.yml
 
 # - name: Append extra block to .zshrc
 #   blockinfile:

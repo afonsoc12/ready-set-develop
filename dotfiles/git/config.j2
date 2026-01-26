@@ -14,3 +14,23 @@
     defaultBranch = master
 [push]
     autoSetupRemote = true
+[alias]
+    rebase-dance = "!f() { \
+        upstream=$(git remote show origin | awk '/HEAD branch/ {print $NF}'); \
+        echo \"📡 Upstream main branch: $upstream\"; \
+        if [ -n \"$(git status --porcelain --untracked-files=no)\" ]; then \
+            echo '💾 Stashing tracked changes…'; \
+            git stash && stashed=1; \
+        else \
+            stashed=0; \
+        fi; \
+        echo '⬇️  Fetching origin…'; \
+        git fetch origin; \
+        echo '🔄 Rebase in progress…'; \
+        git rebase origin/$upstream; \
+        if [ $stashed -eq 1 ]; then \
+            echo '📥 Popping stash…'; \
+            git stash pop; \
+        fi; \
+        echo '✅ Rebase dance complete!'; \
+    }; f"

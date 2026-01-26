@@ -8,11 +8,12 @@
 # ==================================================
 # Role: dotfiles
 # ==================================================
-dotfiles_secrets_src: ENC[AES256_GCM,data:YeVwiPjKPpC7f3/bOldKf8pshF8TxscT6g==,iv:GBx5OyEtwSeV+JP43xvER7hlV1TpXQO/5A7gcJ8+VYs=,tag:rrHpEZhdp3KCdyJkFpzh0w==,type:str]
+dotfiles_auth_home: ENC[AES256_GCM,data:UM3lDorFJ+TbUVc=,iv:NxZZtldyZMhYvtwttdagt9XzlANyd+8OYCtWcx6xaMQ=,tag:OmBSTNVAIOV/DYA0BNVQFw==,type:str]
+dotfiles_secrets_src: ENC[AES256_GCM,data:TQDNo2oTU15/lqcUiuBC0LL3E+mOY0ThMQ==,iv:ctPgOi2JMo6DNXpja1NV1wIP9veVqHKziD/LX6Ts6dI=,tag:zGdmqMJTR/V09UIig8SJXw==,type:str]
 dotfiles_secrets:
     git:
-        email: ENC[AES256_GCM,data:+aCz6zdPrlgifCXbAgNK6IbL/ePVz7ib5QGa6s39XumDeYzOTWfzY6jDBg==,iv:ZGoBY0P6eqhJUoMOt09MTgrh9VAknpbTmY2h2wHV8qg=,tag:ji53Gj60pbdpEP/bNU7VaA==,type:str]
-        signing_key: ENC[AES256_GCM,data:9V744hYXxgt5a5f2RwwdUg==,iv:xeQ0uPLf7hMup2HNgsPwq3pcrYfeTLho5EkAF2NIoRY=,tag:k42hRcc22UbV8W0ZfpQskg==,type:str]
+        email: ENC[AES256_GCM,data:utnhj+BNEf2PY0Ac+y89JYYMwI7VqMzYhIXubtlULvgp8yT3tWpFxkKAGw==,iv:xc23TQXhp6EOPXazZR8Rjh4vFccXPBAB94oGkXyyIqg=,tag:6y+FSKORxBNr2BIHwb6Xgg==,type:str]
+        signing_key: ENC[AES256_GCM,data:DVR2TH+WKDCNMvAB3ZWQyg==,iv:6pLPczRa7JfP5e5LSQ3rhmWRxDJ+xhg2xMrOv0QHdNc=,tag:MpNlDHseyxL2EK236f54aw==,type:str]
 # ==================================================
 # Role: geerlingguy.mac.homebrew
 #   - docs: https://github.com/geerlingguy/ansible-collection-mac/blob/master/roles/homebrew/README.md
@@ -372,6 +373,7 @@ macos_add_adobe_hosts: true
 # Role: ide
 # ==================================================
 ide_vscode_extensions:
+    - Anan.jetbrains-darcula-theme
     - github.copilot
     - github.copilot-chat
     - github.vscode-github-actions
@@ -388,13 +390,13 @@ sops:
         - recipient: age1n2g0g2z9jdgnqx826e8d0d78y8z0lc7ngdadm3jw9gzpxj2nf5rs0hm6p6
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBUeTVvQUM5TDM3NGljYm9u
-            a3hYSmYrYUtRQlo1U3N3cnZTUlk4elMxNm1BCnFQeTJJVkdpNm5VeEREOTExNXpT
-            OW1YUDlkb3lKdmZBRU1TVDVEd1o0ODQKLS0tIDFSak5ISk9XUkNOdUVvMXlpS2Ur
-            SjlORWhPZWFtT0NubC95WlZhT1p5T3MKADyhh7HtyyH/46ypcQNb1qES1ilHjLkE
-            qY7/YPalK8FWXZ/wLwjVguczAkhRe6LuSTBsfghgkVhXtt9nUidgMA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB4SmFVdzM2WDR4MmxxSFlG
+            UWdDUzM5R0RzRkgzQXZvUGhzVmF4TU9mSmhjCkxlU2ZWWGhYS1ZpM3BHZHp3d01v
+            Y1Azb3lYdjJyTzdhRVZJSmVsTlpST3MKLS0tIGgvcG4vbGNVd3RiS1ZOTFUxNFpE
+            QVJaRmNIS3pkeFZJMTYwenhyemJ2Z1EKO0sv8VtyfEsuN51R3fR+6rkkrTbdvZjG
+            07jWmJjRDoYmQrle5ERGKf9PJRiUFPo9ztvWs+9j009Iw6rSJrAW+Q==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-01-26T10:41:06Z"
-    mac: ENC[AES256_GCM,data:y5T9If+axZ93zVj8UQS5xUQAMRTBjqPhO8AtTKJ433uZKixXUwlRUfxc1HpKO2N970Q6YV8oh/tpo/y6i7ASRqhZ4z5YSIJvIp1zvoHWHnpkD4Tb/q18wkMubaA2CqJCd+OEGbWASLzrVPcZA7Hychf/gFPDFwVHXbCA6OXWLos=,iv:IXrSzWkSBy0SmSzh3XMXhTmRkdwgWV3cvacJYSj+S3Y=,tag:tyPM9HIqKIRtmsaelPyWoA==,type:str]
-    encrypted_regex: ^(dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets)$
+    lastmodified: "2026-01-26T23:20:02Z"
+    mac: ENC[AES256_GCM,data:chmGc/kMsFpBHeNUbSVltN2MAM/YB9qXLKLwTp27f6UUenlVULVq+LGhjMit5olgLm3IKhWSqZVdI7U7mq38JTiel/s0YnZOBAaiFe4RRhD7sExhRhGV9MimsS1j8Y/Lk3ObVOa93LTmCIvB7tR0zs4oPvwiT8yqcDzZ8mPoGas=,iv:feDzO4WeJscpnxLjS5eOoeUb53qsQrwS4r6D0QBqWYg=,tag:jCJTx9Cyta4ZmTlutYoeww==,type:str]
+    encrypted_regex: ^(dotfiles_auth_home|dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets)$
     version: 3.11.0

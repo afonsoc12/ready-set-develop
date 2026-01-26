@@ -6,12 +6,13 @@
 export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 COMPLETION_WAITING_DOTS="true"
 zstyle ':omz:update' frequency 15
-plugins=(git)
-
+plugins=(aliases alias-finder)
 [ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
+# ─────────── plugins:alias-finder ───────────
+zstyle ':omz:plugins:alias-finder' autoload yes
+
 # ─────────── Pure Prompt ───────────
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
 autoload -U promptinit; promptinit
 prompt pure
 
@@ -32,3 +33,6 @@ zstyle :prompt:pure:suspended_jobs color red
 zstyle :prompt:pure:user color 242
 zstyle :prompt:pure:user:root color default
 zstyle :prompt:pure:virtualenv show yes
+
+# ─────────── Aliases ───────────
+source $ZDOTDIR/aliases.zsh

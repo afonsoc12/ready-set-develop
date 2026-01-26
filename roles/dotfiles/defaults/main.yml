@@ -5,7 +5,7 @@ dotfiles_secrets_dest: "{{ ansible_env.HOME }}"
 dotfiles_use_links: true
 
 dotfiles_links_vscode_settings_dir: "{{ lookup('env', 'HOME') }}/Library/Application Support/Code/User"
-dotfiles_links_vscode_settings_src: "{{ XDG_BASE_DIRS.XDG_CONFIG_HOME ~ '/vscode' }}"
+dotfiles_auth_home: "{{ lookup('env', 'HOME') }}/.secrets"
 
 # XDG Base Directory Specification (https://specifications.freedesktop.org/basedir/latest/)
 XDG_BASE_DIRS: # noqa var-naming[pattern]

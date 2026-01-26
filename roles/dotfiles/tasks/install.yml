@@ -68,7 +68,7 @@
       {{
         XDG_BASE_DIRS.XDG_CONFIG_HOME ~ '/' ~
         (item.path | dirname | regex_replace('^' + dotfiles_dir + '/','')) ~ '/' ~
-        (item.path | basename | regex_replace('\\.j2$',''))
+        (item.path | basename | regex_replace('\.j2$', ''))
       }}
     mode: "0644"
   loop: "{{ dotfiles_templates }}"
