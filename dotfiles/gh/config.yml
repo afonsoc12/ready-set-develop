@@ -5,5 +5,7 @@ editor: nano
 prompt: enabled
 pager: cat
 aliases:
-  co: pr checkout
-  ghw: pr view --web
+  prc: pr create -f
+  prcd: pr create -f --draft
+  prdy: pr ready
+  v: pr view --web
