@@ -6,7 +6,6 @@
 
   vars_files:
     - config.default.yml
-    - config.sops.yml # Can't be loaded with -e @config.sops.yml, because precedence would be higher than set_fact
 
   pre_tasks:
     - name: Python interpreter

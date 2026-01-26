@@ -15,4 +15,7 @@ creation_rules:
 >>>>>>> c57576d (Merged dotfiles from afonsoc12/dotfiles)
     key_groups:
       - age: [age1n2g0g2z9jdgnqx826e8d0d78y8z0lc7ngdadm3jw9gzpxj2nf5rs0hm6p6]
+  - path_regex: "config.work.sops.yml"
+    key_groups:
+      - age: [age1n2g0g2z9jdgnqx826e8d0d78y8z0lc7ngdadm3jw9gzpxj2nf5rs0hm6p6]
   - age: age1n2g0g2z9jdgnqx826e8d0d78y8z0lc7ngdadm3jw9gzpxj2nf5rs0hm6p6

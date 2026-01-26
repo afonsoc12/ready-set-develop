@@ -227,6 +227,9 @@ ansible-galaxy install -r requirements.yml
 ```bash
 export SOPS_AGE_KEY_FILE=<PATH AGE KEY FILE>
 ansible-playbook main.yml --ask-become-pass
+
+# If passing a sops encrypted vars
+ansible-playbook main.yml -e sops_file=<PATH SOPS FILE> --ask-become-pass
 ```
 
 ---

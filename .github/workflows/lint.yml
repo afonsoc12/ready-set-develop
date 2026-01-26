@@ -1,6 +1,7 @@
 name: Lint
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 on: # yamllint disable-line rule:truthy
   workflow_dispatch:
   pull_request:
@@ -9,6 +10,9 @@ on: # yamllint disable-line rule:truthy
     types: [submitted]
 =======
 on:
+=======
+on: # yamllint disable-line rule:truthy
+>>>>>>> 2439371 (Updated configs)
   workflow_dispatch:
   pull_request:
     types: [opened, synchronize, reopened]

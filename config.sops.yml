@@ -4,6 +4,7 @@
 # Recursively merges itself with the unencrypted
 # variables in this file
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Add this flag when running the playbook:
 #   -e sops_file=config.sops.yml
 # ==================================================
@@ -17,6 +18,10 @@ dotfiles_secrets:
         signing_key: ENC[AES256_GCM,data:UWfSnN3ECfgErbHL/V0+Ag==,iv:E1ukvftoEOUZ0hlzHr9kEV2MQVbgKxl+VZRE66Sjwtk=,tag:NERv2hNd3bqYjTbQCIpuhQ==,type:str]
 =======
 sops_file: config.sops.yml
+=======
+# Add this flag when running the playbook:
+#   -e sops_file=config.sops.yml
+>>>>>>> 2439371 (Updated configs)
 # ==================================================
 # Role: dotfiles
 # ==================================================
@@ -56,9 +61,13 @@ homebrew_installed_packages:
     - gnupg
     - pinentry-mac
 <<<<<<< HEAD
+<<<<<<< HEAD
     - sops
 =======
 >>>>>>> 37ec88c (Disable IT tests (for now))
+=======
+    - sops
+>>>>>>> 2439371 (Updated configs)
     # Kubernetes / Cloud / DevOps
     - ansible
     - argocd
@@ -180,9 +189,13 @@ python_uv_tools:
     - ansible
     - black
 <<<<<<< HEAD
+<<<<<<< HEAD
     - pre-commit
 =======
 >>>>>>> 37ec88c (Disable IT tests (for now))
+=======
+    - pre-commit
+>>>>>>> 2439371 (Updated configs)
     - firefly-cli
     - isort
     - versioneer
@@ -428,8 +441,8 @@ sops:
             SjlORWhPZWFtT0NubC95WlZhT1p5T3MKADyhh7HtyyH/46ypcQNb1qES1ilHjLkE
             qY7/YPalK8FWXZ/wLwjVguczAkhRe6LuSTBsfghgkVhXtt9nUidgMA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-01-25T12:50:19Z"
-    mac: ENC[AES256_GCM,data:9sWTIonuFM7JCvruaBRvCh5XkVWJYfGYlEbWKuvltw3fuLxc4yn5FSb/pxvbZKyqK2AgoZj1HOzPcR76hCLfzbZbUwDU0rN06R/ysVdEwAIcNIrkP7pQeLfCShlXD00y5+piQgc7nsk/Zc9eg7PM1/uGX+FNfiXygczGOx7W/ec=,iv:/ousGrLbomSp6uEVkrHFcxerZcVsj++WNhF2WWvoWlo=,tag:0DmX9VgQGGeOCD4x1OK4HA==,type:str]
+    lastmodified: "2026-01-26T10:41:06Z"
+    mac: ENC[AES256_GCM,data:y5T9If+axZ93zVj8UQS5xUQAMRTBjqPhO8AtTKJ433uZKixXUwlRUfxc1HpKO2N970Q6YV8oh/tpo/y6i7ASRqhZ4z5YSIJvIp1zvoHWHnpkD4Tb/q18wkMubaA2CqJCd+OEGbWASLzrVPcZA7Hychf/gFPDFwVHXbCA6OXWLos=,iv:IXrSzWkSBy0SmSzh3XMXhTmRkdwgWV3cvacJYSj+S3Y=,tag:tyPM9HIqKIRtmsaelPyWoA==,type:str]
     encrypted_regex: ^(dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets)$
 >>>>>>> 37ec88c (Disable IT tests (for now))
     version: 3.11.0
