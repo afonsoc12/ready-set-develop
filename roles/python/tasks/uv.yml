@@ -1,0 +1,25 @@
+---
+- name: Install uv (homebrew)
+  homebrew:
+    name: uv
+    state: present
+
+- name: Test uv command works
+  ansible.builtin.command: uv --version
+  register: python_uv_test
+  changed_when: false
+  failed_when: python_uv_test.rc != 0 or "uv" not in python_uv_test.stdout
+
+- name: Install Python {{ python_uv_versions | join(' ') }}
+  ansible.builtin.command: uv python install {{ item }}
+  register: python_uv_install
+  with_items: "{{ python_uv_versions }}"
+  changed_when:
+    - python_uv_install.rc == 0
+    - "'is already installed' not in python_uv_install.stderr"
+
+- name: Install uv tools
+  command: uv tool install {{ item }}
+  register: python_uv_tools_install
+  changed_when: "'Installed' in python_uv_tools_install.stderr"
+  loop: "{{ python_uv_tools }}"

@@ -1,0 +1,402 @@
+# ==================================================
+# SOPS encrypted variables file
+# ==================================================
+# Recursively merges itself with the unencrypted
+# variables in this file
+# Add this flag when running the playbook:
+#   -e sops_file=config.sops.yml
+# ==================================================
+# Role: dotfiles
+# ==================================================
+dotfiles_auth_home: ENC[AES256_GCM,data:UM3lDorFJ+TbUVc=,iv:NxZZtldyZMhYvtwttdagt9XzlANyd+8OYCtWcx6xaMQ=,tag:OmBSTNVAIOV/DYA0BNVQFw==,type:str]
+dotfiles_secrets_src: ENC[AES256_GCM,data:TQDNo2oTU15/lqcUiuBC0LL3E+mOY0ThMQ==,iv:ctPgOi2JMo6DNXpja1NV1wIP9veVqHKziD/LX6Ts6dI=,tag:zGdmqMJTR/V09UIig8SJXw==,type:str]
+dotfiles_secrets:
+    git:
+        email: ENC[AES256_GCM,data:utnhj+BNEf2PY0Ac+y89JYYMwI7VqMzYhIXubtlULvgp8yT3tWpFxkKAGw==,iv:xc23TQXhp6EOPXazZR8Rjh4vFccXPBAB94oGkXyyIqg=,tag:6y+FSKORxBNr2BIHwb6Xgg==,type:str]
+        signing_key: ENC[AES256_GCM,data:UWfSnN3ECfgErbHL/V0+Ag==,iv:E1ukvftoEOUZ0hlzHr9kEV2MQVbgKxl+VZRE66Sjwtk=,tag:NERv2hNd3bqYjTbQCIpuhQ==,type:str]
+# ==================================================
+# Role: geerlingguy.mac.homebrew
+#   - docs: https://github.com/geerlingguy/ansible-collection-mac/blob/master/roles/homebrew/README.md
+# ==================================================
+homebrew_upgrade_all_packages: true
+homebrew_taps:
+    - cirruslabs/cli
+    - derailed/k9s
+    - teamookla/speedtest
+homebrew_installed_packages:
+    # CLI Utilities
+    - bat
+    - eza
+    - fzf
+    - htop
+    - iftop
+    - jq
+    - make
+    - pure
+    - rsync
+    - tree
+    - watch
+    - yq
+    # Git / Version Control
+    - gh
+    - ghorg
+    - git
+    - gnupg
+    - pinentry-mac
+    - sops
+    # Kubernetes / Cloud / DevOps
+    - ansible
+    - argocd
+    - cirruslabs/cli/cirrus
+    - cmctl
+    - cloudflared
+    - cf-terraforming
+    - derailed/k9s/k9s
+    - age
+    - helm
+    - influxdb-cli
+    - kind
+    - kopia
+    - ktop
+    - kubectx
+    - oci-cli
+    - rclone
+    - sops
+    - stern
+    - cirruslabs/cli/tart
+    - terraform
+    - velero
+    - etcd
+    # Network / Monitoring
+    - iperf3
+    - nmap
+    - teamookla/speedtest/speedtest
+    - telnet
+    - wakeonlan
+    # Media / Download tools
+    - exiftool
+    - yt-dlp
+homebrew_cask_apps:
+    # Development / IDEs
+    - arduino
+    - balenaetcher
+    - bruno
+    - cyberduck
+    - datagrip
+    - docker-desktop
+    - iterm2
+    - lens
+    - macfuse
+    - mqtt-explorer
+    - pycharm
+    - raspberry-pi-imager
+    - tailscale-app
+    - veracrypt
+    - visual-studio-code
+    - yubico-authenticator
+    # Communication / Collaboration
+    - discord
+    - obs
+    - vlc
+    - whatsapp
+    - zoom
+    # Utilities / Productivity
+    - drawio
+    - firefox
+    - google-chrome
+    - keepassxc
+    - kopiaui
+    - logi-options-plus
+    - megasync
+    - obsidian
+    - openboardview
+    - rectangle
+    - sigil
+    - spotify
+    - surfshark
+    - tor-browser
+    - trezor-suite
+    - transmission
+# ==================================================
+# Role: mas (prefer brew cask when possible)
+# ==================================================
+mas_upgrade_all_apps: true
+mas_installed_apps:
+    - name: AmorphousDiskMark
+      id: 1168254295
+    - name: GeoTag
+      id: 1465180184
+    - name: Keynote
+      id: 409203825
+    - name: Microsoft Excel
+      id: 462058435
+    - name: Microsoft PowerPoint
+      id: 462062816
+    - name: Microsoft Word
+      id: 462054704
+    - name: Numbers
+      id: 409203825
+    - name: Pages
+      id: 409201541
+    - name: Panorama Stitcher Mini
+      id: 1062350226
+    - name: Spherical Viewer
+      id: 1489700765
+    - name: Surfshark
+      id: 1437809329
+    - name: Trello
+      id: 1278508951
+    - name: WireGuard
+      id: 1451685025
+mas_uninstalled_apps:
+    - name: GarageBand
+      id: 682658836
+    - name: iMovie
+      id: 408981434
+# ==================================================
+# Role: python
+# ==================================================
+python_pyenv_versions:
+    - 3.11.14
+    - 3.14.2
+python_pyenv_global: 3.14.2
+python_uv_versions: []
+python_uv_tools:
+    - ansible
+    - black
+    - pre-commit
+    - firefly-cli
+    - isort
+    - versioneer
+# ==================================================
+# Role: java
+# ==================================================
+java_versions: []
+java_jenv_global: []
+# ==================================================
+# Role: dock
+# ==================================================
+dockitems_persist:
+    - name: iTerm
+      path: /Applications/iTerm.app
+      pos: 1
+    - name: Activity Monitor
+      path: /System/Applications/Utilities/Activity Monitor.app
+      pos: 2
+    - name: Firefox
+      path: /Applications/Firefox.app
+      pos: 3
+    - name: KeePassXC
+      path: /Applications/KeePassXC.app
+      pos: 4
+    - name: Messages
+      path: /System/Applications/Messages.app
+      pos: 5
+    - name: FaceTime
+      path: /System/Applications/FaceTime.app
+      pos: 6
+    - name: WhatsApp
+      path: /Applications/WhatsApp.app
+      pos: 7
+    - name: Calendar
+      path: /System/Applications/Calendar.app
+      pos: 8
+    - name: Reminders
+      path: /System/Applications/Reminders.app
+      pos: 9
+    - name: Stickies
+      path: /System/Applications/Stickies.app
+      pos: 10
+    - name: Obsidian
+      path: /Applications/Obsidian.app
+      pos: 11
+    - name: Spotify
+      path: /Applications/Spotify.app
+      pos: 12
+    - name: Photos
+      path: /System/Applications/Photos.app
+      pos: 14
+    - name: VSCode
+      path: /Applications/Visual Studio Code.app
+      pos: 15
+    - name: PyCharm
+      path: /Applications/PyCharm.app
+      pos: 16
+    - name: Docker
+      path: /Applications/Docker.app
+      pos: 17
+    - name: Bruno
+      path: /Applications/Bruno.app
+      pos: 18
+    - name: Adobe Lightroom Classic
+      path: /Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app
+      pos: 19
+    - name: Adobe Bridge 2023
+      path: /Applications/Adobe Bridge 2023/Adobe Bridge 2023.app
+      pos: 20
+    - name: System Settings
+      path: /System/Applications/System Settings.app
+      pos: 21
+    - name: Applications
+      path: /Applications
+      pos: 22
+    - name: Downloads
+      path: /Users/{{ ansible_env.USER }}/Downloads
+      pos: 23
+# ==================================================
+# Role: macos
+# ==================================================
+macos_config_files:
+    - src: files/smb/nsmb.conf
+      dest: /etc
+      become: true
+    - src: files/rectangle/com.knollsoft.Rectangle.plist
+      dest: $HOME/Library/Preferences
+macos_ini_properties:
+    # KeePassXC
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: General
+      option: AutoReloadOnChange
+      value: "false"
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: General
+      option: AutoSaveAfterEveryChange
+      value: "false"
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: General
+      option: AutoSaveNonDataChanges
+      value: "false"
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: General
+      option: AutoSaveOnExit
+      value: "false"
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: General
+      option: AutoTypeDelay
+      value: 50
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: General
+      option: AutoTypeStartDelay
+      value: 300
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: General
+      option: BackupBeforeSave
+      value: "true"
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: General
+      option: ConfigVersion
+      value: 2
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: General
+      option: GlobalAutoTypeKey
+      value: 80
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: General
+      option: GlobalAutoTypeModifiers
+      value: 201326592
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: General
+      option: UpdateCheckMessageShown
+      value: "true"
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: GUI
+      option: TrayIconAppearance
+      value: monochrome
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: PasswordGenerator
+      option: AdvancedMode
+      value: "true"
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: PasswordGenerator
+      option: ExcludeAlike
+      value: "false"
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: PasswordGenerator
+      option: ExcludedChars
+      value: '^`~;:'
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: PasswordGenerator
+      option: Length
+      value: 20
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: PasswordGenerator
+      option: Logograms
+      value: "true"
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: PasswordGenerator
+      option: LowerCase
+      value: "true"
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: PasswordGenerator
+      option: Math
+      value: "true"
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: PasswordGenerator
+      option: Type
+      value: 0
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: PasswordGenerator
+      option: WordCount
+      value: 2
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: Security
+      option: ClearClipboardTimeout
+      value: 60
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: Security
+      option: EnableCopyOnDoubleClick
+      value: "true"
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: Security
+      option: HidePasswordPreviewPanel
+      value: "false"
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: Security
+      option: IconDownloadFallback
+      value: "true"
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: Security
+      option: PasswordsHidden
+      value: "false"
+    - path: $HOME/Library/Application Support/KeePassXC/keepassxc.ini
+      section: Security
+      option: PasswordsRepeatVisible
+      value: "false"
+# macos_hosts:
+# - {ip: 127.0.0.1, hosts: tst}
+# - {ip: 127.0.0.1, hosts: tst2}
+# - {ip: 127.0.0.1, hosts: tst3}
+# - {ip: 127.0.0.1, hosts: tst4}
+macos_add_adobe_hosts: true
+# macos_ssh_config:  # Moved to vars/ssh_config.enc.yml
+# ==================================================
+# Role: ide
+# ==================================================
+ide_vscode_extensions:
+    - Anan.jetbrains-darcula-theme
+    - github.copilot
+    - github.copilot-chat
+    - github.vscode-github-actions
+    - james-yu.latex-workshop
+    - ms-kubernetes-tools.vscode-kubernetes-tools
+    - ms-python.debugpy
+    - ms-python.python
+    - redhat.ansible
+    - redhat.vscode-yaml
+    - signageos.signageos-vscode-sops
+    - vscode-icons-team.vscode-icons
+sops:
+    age:
+        - recipient: age1n2g0g2z9jdgnqx826e8d0d78y8z0lc7ngdadm3jw9gzpxj2nf5rs0hm6p6
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB4SmFVdzM2WDR4MmxxSFlG
+            UWdDUzM5R0RzRkgzQXZvUGhzVmF4TU9mSmhjCkxlU2ZWWGhYS1ZpM3BHZHp3d01v
+            Y1Azb3lYdjJyTzdhRVZJSmVsTlpST3MKLS0tIGgvcG4vbGNVd3RiS1ZOTFUxNFpE
+            QVJaRmNIS3pkeFZJMTYwenhyemJ2Z1EKO0sv8VtyfEsuN51R3fR+6rkkrTbdvZjG
+            07jWmJjRDoYmQrle5ERGKf9PJRiUFPo9ztvWs+9j009Iw6rSJrAW+Q==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2026-01-27T00:08:14Z"
+    mac: ENC[AES256_GCM,data:4GWBPHWZzzbK+RW/hvJ7KsWhJS1kt4uVQPQyrU++JWNAynjvKupXL4ggraWPHA5bzxj7t3Yh0w5BAw26Mjncg6TQKM9X5rsIrqax5SaGq4Ym3og12ChbciErXEHAeSw5eNbWbej1JIfji0NLImVQypGJ4pYDfvQD9x2mqRhet0o=,iv:s60huC9tjr19rvZly3TzhDuRowJ+F+OMeaCzWjNkr+Y=,tag:sVJg7X4pUc2Hq4xbN04dqw==,type:str]
+    encrypted_regex: ^(dotfiles_auth_home|dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets)$
+    version: 3.11.0

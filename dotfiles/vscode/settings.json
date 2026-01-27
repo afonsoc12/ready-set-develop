@@ -1,0 +1,36 @@
+{
+  "explorer.confirmDragAndDrop": false,
+  "files.autoSave": "onFocusChange",
+  "files.exclude": {
+    "**/.git": false
+  },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableCommitSigning": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.cursorWidth": 2,
+  "window.confirmBeforeClose": "keyboardOnly",
+  "window.nativeTabs": true,
+  "window.newWindowProfile": "Default",
+  "window.openFilesInNewWindow": "on",
+  "window.title": "${activeRepositoryName}",
+  "window.zoomLevel": 1,
+  "window.zoomPerWindow": false,
+  "workbench.colorCustomizations": {
+    "editorCursor.foreground": "#ff0000",
+    "editorMultiCursor.primary.foreground": "#ff0000",
+    "editorMultiCursor.secondary.foreground": "#ff8000",
+    "editor.findMatchHighlightBackground": "#dba80daa",
+    "editor.findMatchHighlightForeground": "#000000",
+    "editor.findMatchBackground": "#0ddb10aa",
+    "editor.findMatchForeground": "#000000",
+    "terminalCursor.foreground": "#ff0000"
+  },
+  "workbench.colorTheme": "JetBrains Darcula Theme",
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.tree.indent": 16
+}

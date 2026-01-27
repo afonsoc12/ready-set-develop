@@ -1,6 +1,6 @@
 ---
 - name: Configure terminal (iTerm)
-  import_tasks: iterm.yml
+  import_tasks: terminal.yml
 
 - name: Configure VSCode
   import_tasks: vscode.yml

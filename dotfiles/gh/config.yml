@@ -1,0 +1,11 @@
+---
+version: "1"
+git_protocol: ssh
+editor: nano
+prompt: enabled
+pager: cat
+aliases:
+  prc: pr create -f
+  prcd: pr create -f --draft
+  prdy: pr ready
+  v: pr view --web

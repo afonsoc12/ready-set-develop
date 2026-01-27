@@ -1,0 +1,5 @@
+---
+- name: Remove sops binary
+  file:
+    path: "{{ sops_tmp_dir }}"
+    state: absent

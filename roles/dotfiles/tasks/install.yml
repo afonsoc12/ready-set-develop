@@ -1,0 +1,88 @@
+---
+- name: Ensure XDG base dirs exist
+  file:
+    path: "{{ item.value }}"
+    state: directory
+    mode: "0755"
+  loop: "{{ XDG_BASE_DIRS | dict2items }}"
+
+- name: Find all dotfiles
+  find:
+    paths: "{{ dotfiles_dir }}"
+    file_type: file
+    hidden: true
+    recurse: true
+  register: dotfiles_found
+  changed_when: false
+
+- name: Find template files (.j2)
+  set_fact:
+    dotfiles_templates: "{{ dotfiles_found.files | selectattr('path', 'search', '\\.j2$') | list }}"
+
+- name: Find non-template files
+  set_fact:
+    dotfiles_files: "{{ dotfiles_found.files | rejectattr('path', 'search', '\\.j2$') | list }}"
+
+- name: Create parent directories for dotfiles in XDG_CONFIG_HOME
+  file:
+    path: "{{ XDG_BASE_DIRS.XDG_CONFIG_HOME }}/{{ item.path | dirname | regex_replace('^' + dotfiles_dir + '/', '') }}"
+    state: directory
+    mode: "0700"
+  loop: "{{ dotfiles_found.files }}"
+  loop_control: { label: "{{ item.path | dirname }}" }
+
+- name: Link dotfiles files
+  when: dotfiles_use_links | default(true)
+  file:
+    src: "{{ item.path }}"
+    dest: >-
+      {{
+        XDG_BASE_DIRS.XDG_CONFIG_HOME ~ '/' ~
+        (item.path | dirname | regex_replace('^' + dotfiles_dir + '/','')) ~ '/' ~
+        (item.path | basename)
+      }}
+    state: link
+    force: true
+    mode: "0644"
+  loop: "{{ dotfiles_files }}"
+  loop_control: { label: "{{ item.path }}" }
+
+- name: Copy dotfiles files (if not using links)
+  when: dotfiles_use_links is defined and not dotfiles_use_links
+  copy:
+    src: "{{ item.path }}"
+    dest: >-
+      {{
+        XDG_BASE_DIRS.XDG_CONFIG_HOME ~ '/' ~
+        (item.path | dirname | regex_replace('^' + dotfiles_dir + '/','')) ~ '/' ~
+        (item.path | basename)
+      }}
+    mode: "0644"
+  loop: "{{ dotfiles_files }}"
+  loop_control: { label: "{{ item.path }}" }
+
+- name: Copy dotfiles templates
+  template:
+    src: "{{ item.path }}"
+    dest: >-
+      {{
+        XDG_BASE_DIRS.XDG_CONFIG_HOME ~ '/' ~
+        (item.path | dirname | regex_replace('^' + dotfiles_dir + '/','')) ~ '/' ~
+        (item.path | basename | regex_replace('\.j2$', ''))
+      }}
+    mode: "0644"
+  loop: "{{ dotfiles_templates }}"
+  loop_control: { label: "{{ item.path }}" }
+
+- name: Create /etc/zshenv entrypoint
+  become: true
+  copy:
+    dest: /etc/zshenv
+    content: |
+      export ZDOTDIR="$HOME/.config/zsh"
+      if [ -f "$ZDOTDIR/.zshenv" ]; then
+          . "$ZDOTDIR/.zshenv"
+      else
+          echo "ERROR: $ZDOTDIR/.zshenv not found! This file is managed by afonsoc12/dotfiles." >&2
+      fi
+    mode: "0444"

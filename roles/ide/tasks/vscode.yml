@@ -1,25 +1,14 @@
 ---
-- name: Check VSCode is installed
-  stat:
-    path: "{{ ide_vscode_app_dir }}"
-  register: vscode_installed
-
-- name: Add code binary to {{ ide_vscode_code_dest_dir }}
-  become: true
-  file:
-    src: "{{ ide_vscode_code_bin }}"
-    dest: "{{ ide_vscode_code_dest_dir }}/code"
-    state: link
-    mode: "0755"
-  when: vscode_installed.stat.exists
+- name: Install VSCode
+  homebrew_cask:
+    name: visual-studio-code
+    state: present
 
 - name: Install VSCode extensions
   command: "code --install-extension {{ item }}"
   with_items: "{{ ide_vscode_extensions }}"
-  register: code_install
+  register: ide_code_install
   changed_when:
-    - code_install.rc == 0
-    - "'successfully installed' in code_install.stdout"
-  when:
-    - ide_vscode_extensions
-    - vscode_installed.stat.exists
+    - ide_code_install.rc == 0
+    - "'successfully installed' in ide_code_install.stdout"
+  when: ide_vscode_extensions is truthy

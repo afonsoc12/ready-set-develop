@@ -1,0 +1,15 @@
+[project]
+name = "ready-set-develop"
+version = "0.1.0"
+description = "Ready, Set, Develop™ is a collection of automation scripts to streamline setting up new machines (almost) from scratch or to synchronising configs across computers."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "ansible>=13.2,<14",
+]
+
+[dependency-groups]
+dev = [
+    "ansible-lint>=26.1,<27",
+    "yamllint>=1.38,<2",
+]

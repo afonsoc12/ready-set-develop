@@ -1,3 +1,6 @@
 ---
+profile: production
 skip_list:
   - fqcn
+exclude_paths:
+  - config.sops.yml

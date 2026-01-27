@@ -1,7 +1,6 @@
 ---
 - name: Configure local host
   hosts: localhost
-
   vars:
     ansible_python_interpreter: /usr/bin/python3
 
@@ -10,40 +9,27 @@
 
   pre_tasks:
     - name: Python interpreter
-      debug:
-        var: ansible_python_interpreter
+      debug: { var: ansible_python_interpreter }
       tags: [always]
     - name: Ensure python3
-      assert:
-        that: ansible_python_version > "2"
+      assert: { that: ansible_facts.python_version > "2" }
       tags: [always]
-    - name: Include playbook configuration.
-      include_vars: "{{ item }}"
-      with_fileglob:
-        - "{{ playbook_dir }}/config.yml"
-      tags: [always]
-    - name: Include secret playbook configuration.  # noqa ignore-errors
-      include_vars: "ssh_config.enc.yml"
-      ignore_errors: true
+    - name: Provision SOPS and variables
+      include_role:
+        name: sops
+        apply: { tags: [always] }
+      when: sops_file is defined
       tags: [always]
 
   roles:
-    - {role: elliotweiser.osx-command-line-tools, tags: [install]}
-    - {role: dotfiles, tags: [dotfiles]}
-    - {role: geerlingguy.mac.homebrew, tags: [homebrew]}
-    - {role: mas, tags: [mas]}
-    - {role: python, tags: [python]}
-    - {role: java, tags: [java]}
-    - {role: macos, tags: [macos]}
-    - {role: ide, tags: [ide]}
-    - {role: git, tags: [git]}
-    - {role: dock, tags: [dock]}
+    - { role: elliotweiser.osx-command-line-tools, tags: [install] }
+    - { role: dotfiles, tags: [dotfiles] }
+    - { role: geerlingguy.mac.homebrew, tags: [brew] }
+    - { role: geerlingguy.mac.mas, tags: [mas] }
 
-  tasks:
-    # Import custom tasks
-    - tags: [extras]
-      block:  # noqa name[missing]
-        - name: Import custom tasks
-          include_tasks: "{{ item }}"
-          with_fileglob:
-            - "extra_tasks/**.y*ml"
+    - { role: python, tags: [python] }
+    - { role: java, tags: [java] }
+    # - {role: macos, tags: [macos]}
+    - { role: ide, tags: [ide] }
+
+    # - {role: geerlingguy.mac.dock, tags: [dock]}

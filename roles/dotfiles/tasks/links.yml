@@ -1,0 +1,60 @@
+---
+- name: Ensure VS Code User settings directory exists
+  file:
+    path: "{{ dotfiles_links_vscode_settings_dir }}"
+    state: directory
+    mode: "0755"
+
+- name: Build list of VS Code files for symlinking
+  set_fact:
+    dotfiles_vscode_files: >-
+      {{ (dotfiles_vscode_files | default([])) +
+         [
+           {
+             'src': XDG_BASE_DIRS.XDG_CONFIG_HOME ~ '/' ~ (item.path | regex_replace('^' + dotfiles_dir + '/', '')),
+             'dest': dotfiles_links_vscode_settings_dir ~ '/' ~ (item.path | basename),
+             'basename': item.path | basename
+           }
+         ]
+      }}
+  loop: "{{ dotfiles_found.files | selectattr('path', 'search', '(^|/)vscode(/|$)') | list }}"
+  loop_control:
+    label: "{{ item.path }}"
+
+- name: Symlink VS Code config files
+  file:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+    force: true
+  loop: "{{ dotfiles_vscode_files }}"
+  loop_control:
+    label: "{{ item.basename }}"
+
+- name: Find GNUPG config files
+  set_fact:
+    dotfiles_gnupg_files: >-
+      {{ (dotfiles_gnupg_files | default([])) +
+         [{
+            'src': XDG_BASE_DIRS.XDG_CONFIG_HOME ~ '/' ~ (item.path | regex_replace('^' + dotfiles_dir + '/', '')),
+            'dest': dotfiles_auth_home ~ '/' ~ (item.path | regex_replace('^' + dotfiles_dir + '/', '')),
+            'basename': item.path | basename
+         }]}}
+  loop: >-
+    {{
+      dotfiles_found.files
+      | selectattr('path', 'search', '(^|/)gnupg(/|$)')
+      | list
+    }}
+  loop_control:
+    label: "{{ item.path }}"
+
+- name: Symlink GNUPG config files
+  file:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+    force: true
+  loop: "{{ dotfiles_gnupg_files }}"
+  loop_control:
+    label: "{{ item.basename }}"

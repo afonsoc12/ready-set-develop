@@ -1,0 +1,48 @@
+---
+- name: Check if SOPS is already installed
+  command: which sops
+  register: sops_check
+  changed_when: false
+  ignore_errors: true
+
+- name: Set fact for existing SOPS binary
+  set_fact:
+    sops_binary: "{{ sops_check.stdout }}"
+  when: sops_check.rc == 0
+
+- name: Confirm sops install
+  pause:
+    prompt: "sops not found. Will be temporarily installed in {{ sops_tmp_dir }}. Press ENTER to continue"
+  when: sops_check.rc != 0
+
+- name: Install sops in {{ sops_tmp_dir }}
+  import_tasks: install_sops.yml
+  when: sops_check.rc != 0
+  notify: Remove sops binary
+
+- name: Test sops command works
+  command: "{{ sops_binary }} --version"
+  register: sops_test
+  changed_when: false
+  failed_when: sops_test.rc != 0
+
+- name: Load sops file if defined
+  set_fact:
+    sops_decrypted: "{{ lookup('community.sops.sops', sops_file) | from_yaml | default({}) }}"
+  when: sops_file is truthy
+
+- name: Warn if SOPS file is empty
+  debug:
+    msg: "WARNING: {{ sops_file }} exists but contains no variables"
+    warn: true
+  when:
+    - sops_file is truthy
+    - sops_decrypted | length == 0
+
+- name: Inject SOPS variables at top-level
+  set_fact:
+    "{{ item.key }}": "{{ item.value }}"
+  loop: "{{ sops_decrypted | dict2items }}"
+  loop_control:
+    label: "{{ item.key }}"
+  when: sops_decrypted is defined
