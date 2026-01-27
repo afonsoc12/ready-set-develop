@@ -36,8 +36,12 @@ dotfiles_secrets:
 dotfiles_secrets:
     git:
         email: ENC[AES256_GCM,data:utnhj+BNEf2PY0Ac+y89JYYMwI7VqMzYhIXubtlULvgp8yT3tWpFxkKAGw==,iv:xc23TQXhp6EOPXazZR8Rjh4vFccXPBAB94oGkXyyIqg=,tag:6y+FSKORxBNr2BIHwb6Xgg==,type:str]
+<<<<<<< HEAD
         signing_key: ENC[AES256_GCM,data:DVR2TH+WKDCNMvAB3ZWQyg==,iv:6pLPczRa7JfP5e5LSQ3rhmWRxDJ+xhg2xMrOv0QHdNc=,tag:MpNlDHseyxL2EK236f54aw==,type:str]
 >>>>>>> 4dc2d0a (Dotfiles installation for gnupg)
+=======
+        signing_key: ENC[AES256_GCM,data:UWfSnN3ECfgErbHL/V0+Ag==,iv:E1ukvftoEOUZ0hlzHr9kEV2MQVbgKxl+VZRE66Sjwtk=,tag:NERv2hNd3bqYjTbQCIpuhQ==,type:str]
+>>>>>>> b73e4a9 (Rolled GPG key)
 # ==================================================
 # Role: geerlingguy.mac.homebrew
 #   - docs: https://github.com/geerlingguy/ansible-collection-mac/blob/master/roles/homebrew/README.md
@@ -462,8 +466,8 @@ sops:
 >>>>>>> 37ec88c (Disable IT tests (for now))
 =======
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-01-26T23:20:02Z"
-    mac: ENC[AES256_GCM,data:chmGc/kMsFpBHeNUbSVltN2MAM/YB9qXLKLwTp27f6UUenlVULVq+LGhjMit5olgLm3IKhWSqZVdI7U7mq38JTiel/s0YnZOBAaiFe4RRhD7sExhRhGV9MimsS1j8Y/Lk3ObVOa93LTmCIvB7tR0zs4oPvwiT8yqcDzZ8mPoGas=,iv:feDzO4WeJscpnxLjS5eOoeUb53qsQrwS4r6D0QBqWYg=,tag:jCJTx9Cyta4ZmTlutYoeww==,type:str]
+    lastmodified: "2026-01-27T00:08:14Z"
+    mac: ENC[AES256_GCM,data:4GWBPHWZzzbK+RW/hvJ7KsWhJS1kt4uVQPQyrU++JWNAynjvKupXL4ggraWPHA5bzxj7t3Yh0w5BAw26Mjncg6TQKM9X5rsIrqax5SaGq4Ym3og12ChbciErXEHAeSw5eNbWbej1JIfji0NLImVQypGJ4pYDfvQD9x2mqRhet0o=,iv:s60huC9tjr19rvZly3TzhDuRowJ+F+OMeaCzWjNkr+Y=,tag:sVJg7X4pUc2Hq4xbN04dqw==,type:str]
     encrypted_regex: ^(dotfiles_auth_home|dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets)$
 >>>>>>> 4dc2d0a (Dotfiles installation for gnupg)
     version: 3.11.0
