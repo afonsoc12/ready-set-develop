@@ -40,11 +40,17 @@ jobs:
         run: uv sync --dev
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       - name: Install Ansible Galaxy collections
         run: ansible-galaxy install -r requirements.yml
 
 =======
 >>>>>>> 37ec88c (Disable IT tests (for now))
+=======
+      - name: Install Ansible Galaxy collections
+        run: ansible-galaxy install -r requirements.yml
+
+>>>>>>> 5283b6c (fix ci)
       - name: YAML lint
         run: yamllint .
 
