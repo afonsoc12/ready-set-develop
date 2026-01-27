@@ -87,11 +87,12 @@ alias gs="git status"
 alias ga="git add"
 alias gp="git push"
 alias gl="git log --oneline --graph --decorate"
+alias gls="gl --show-signature"
 alias gco="git checkout"
 alias gcb="git checkout -b"
 alias gpl="git pull"
 alias gst="git stash"
 alias gsta="git stash apply"
-gc() { git commit -m "$*"; }
+gcm() { git commit -m "$*"; }
 gcmp() { gcm "$@" && git push ; }
 >>>>>>> 4dc2d0a (Dotfiles installation for gnupg)
