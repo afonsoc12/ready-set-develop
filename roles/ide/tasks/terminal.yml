@@ -30,6 +30,6 @@
   changed_when: true
   when: ide_zsh_dir.stat.exists is false
 
-- name: Install pure theme
+- name: Install Powerlevel10k theme
   homebrew:
-    name: pure
+    name: powerlevel10k
