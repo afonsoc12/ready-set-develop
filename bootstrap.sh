@@ -88,7 +88,8 @@ if [[ ! -d "$RSD_REPO_DIR" ]]; then
   echo "📥 Cloning ready-set-develop into: $RSD_REPO_DIR"
   git clone "$RSD_REPO_URL" "$RSD_REPO_DIR"
 else
-  echo "📂 Repository already exists: $RSD_REPO_DIR"
+  echo "📂 Repository already exists: $RSD_REPO_DIR, cloning..."
+  git -C "$RSD_REPO_DIR" pull
 fi
 
 cd "$RSD_REPO_DIR"
@@ -126,7 +127,7 @@ echo
 echo "▶️  Running Ansible playbook"
 echo
 
-ANSIBLE_CMD="ansible-playbook main.yml --ask-become-pass -v"
+ANSIBLE_CMD="ansible-playbook main.yml --ask-become-pass"
 [[ -n "$RSD_SOPS_FILE" ]] && ANSIBLE_CMD+=" -e sops_file=$RSD_SOPS_FILE"
 
 eval "$ANSIBLE_CMD"
