@@ -276,7 +276,11 @@ echo
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ANSIBLE_CMD="ansible-playbook main.yml --ask-become-pass -v"
+=======
+ANSIBLE_CMD="ansible-playbook main.yml --ask-become-pass"
+>>>>>>> 0f5bfca (Added p10k, removed pure)
 [[ -n "$RSD_SOPS_FILE" ]] && ANSIBLE_CMD+=" -e sops_file=$RSD_SOPS_FILE"
 
 eval "$ANSIBLE_CMD"

@@ -113,18 +113,20 @@ This method is ideal if you want a **fully automated setup**. It will:
 
 **Run:**
 
-```bash
-curl -sSL https://raw.githubusercontent.com/afonsoc12/ready-set-develop/main/bootstrap.sh | SOPS_AGE_KEY_FILE=<SOPS_AGE_KEY_FILE> zsh -s --
+```zsh
+# Default values
+SOPS_AGE_KEY_FILE=<SOPS_AGE_KEY_FILE>zsh -i <(curl -fsSL https://raw.githubusercontent.com/afonsoc12/ready-set-develop/master/bootstrap.sh )
 
+```zsh
 # With sops encrypted config
-curl -sSL https://raw.githubusercontent.com/afonsoc12/ready-set-develop/main/bootstrap.sh | SOPS_AGE_KEY_FILE=<SOPS_AGE_KEY_FILE> zsh -s -- -e sops_file=<ENCRYPTED CONFIG>
+SOPS_AGE_KEY_FILE=<SOPS_AGE_KEY_FILE> RSD_SOPS_FILE=config.sops.yml zsh -i <(curl -fsSL https://raw.githubusercontent.com/afonsoc12/ready-set-develop/master/bootstrap.sh )
 ```
 
 ### Step-by-step Installation
 
 #### 1️⃣ Install Command Line Tools
 
-```bash
+```zsh
 xcode-select --install
 ```
 
@@ -132,34 +134,34 @@ Accept the license when prompted.
 
 #### 2️⃣ Set Environment Variables
 
-```bash
+```zsh
 export PATH="$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$PATH"
 export ANSIBLE_HOME="$HOME/.local/share/ansible"
 ```
 
 #### 3️⃣ Install Ansible
 
-```bash
+```zsh
 /usr/bin/pip3 install --upgrade pip
 /usr/bin/pip3 install ansible
 ```
 
 #### 4️⃣ Clone Repository
 
-```bash
+```zsh
 git clone https://github.com/afonsoc12/ready-set-develop.git
 cd ready-set-develop
 ```
 
 #### 5️⃣ Install Ansible Requirements
 
-```bash
+```zsh
 ansible-galaxy install -r requirements.yml
 ```
 
 #### 6️⃣ Run Playbook
 
-```bash
+```zsh
 export SOPS_AGE_KEY_FILE=<PATH AGE KEY FILE>
 ansible-playbook main.yml --ask-become-pass
 
@@ -247,7 +249,7 @@ ansible-playbook main.yml -e sops_file=<PATH SOPS FILE> --ask-become-pass
 
 Run the full playbook:
 
-```bash
+```zsh
 ansible-playbook main.yml --ask-become-pass
 ```
 
@@ -257,7 +259,7 @@ ansible-playbook main.yml --ask-become-pass
 
 Override default settings:
 
-```bash
+```zsh
 ansible-playbook main.yml -e @myconfig.yml --ask-become-pass
 ```
 
@@ -277,14 +279,14 @@ Or replace `config.yml` with your own configuration file.
 
 This project uses [uv](https://docs.astral.sh/uv/) to manage Python dev dependencies and sync them.
 
-```bash
+```zsh
 uv sync --dev
 pre-commit install
 ```
 
 #### 2️⃣ Activate virtual environment
 
-```bash
+```zsh
 source .venv/bin/activate
 ```
 
@@ -292,7 +294,7 @@ source .venv/bin/activate
 
 Before committing changes, run the following checks:
 
-```bash
+```zsh
 pre-commit run --all-files
 
 # OR

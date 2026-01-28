@@ -32,4 +32,4 @@
     # - {role: macos, tags: [macos]}
     - { role: ide, tags: [ide] }
 
-    # - {role: geerlingguy.mac.dock, tags: [dock]}
+    - {role: geerlingguy.mac.dock, tags: [dock]}
