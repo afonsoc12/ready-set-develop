@@ -32,7 +32,7 @@ homebrew_installed_packages:
     - iftop
     - jq
     - make
-    - pure
+    - powerlevel10k
     - rsync
     - tree
     - watch
@@ -396,7 +396,7 @@ sops:
             QVJaRmNIS3pkeFZJMTYwenhyemJ2Z1EKO0sv8VtyfEsuN51R3fR+6rkkrTbdvZjG
             07jWmJjRDoYmQrle5ERGKf9PJRiUFPo9ztvWs+9j009Iw6rSJrAW+Q==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-01-27T00:08:14Z"
-    mac: ENC[AES256_GCM,data:4GWBPHWZzzbK+RW/hvJ7KsWhJS1kt4uVQPQyrU++JWNAynjvKupXL4ggraWPHA5bzxj7t3Yh0w5BAw26Mjncg6TQKM9X5rsIrqax5SaGq4Ym3og12ChbciErXEHAeSw5eNbWbej1JIfji0NLImVQypGJ4pYDfvQD9x2mqRhet0o=,iv:s60huC9tjr19rvZly3TzhDuRowJ+F+OMeaCzWjNkr+Y=,tag:sVJg7X4pUc2Hq4xbN04dqw==,type:str]
+    lastmodified: "2026-01-28T13:55:23Z"
+    mac: ENC[AES256_GCM,data:AwKvLqFygoGrrguwBNx14BfEp+ToqoqHzpxja3BNHsSh9T96fIE1mO/bIybXzy9g0tNFKkofQ6MurBzmGMcjKWfiq+EvQruml4vG15FS6l5jtuUBM17vTe6hTNQ8AtY0O7Hi45PRxdmBUGv9OsEXvpnwJXb8Hy+R4J6aMAp2Q4c=,iv:wNE8IW1L3KB/e2eZVVcGtbw5sxI6iiyDxqMadYzL4WA=,tag:I7CRFCLMZaxqB27XTkcNlQ==,type:str]
     encrypted_regex: ^(dotfiles_auth_home|dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets)$
     version: 3.11.0
