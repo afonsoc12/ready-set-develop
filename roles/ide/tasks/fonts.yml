@@ -1,0 +1,7 @@
+---
+- name: Install Fonts
+  ansible.builtin.get_url:
+    url: "{{ item }}"
+    dest: "{{ ansible_facts.env.HOME }}/Library/Fonts/{{ item | basename | urldecode}}"
+    mode: '0644'
+  loop: "{{ ide_fonts }}"

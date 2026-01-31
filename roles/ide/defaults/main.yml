@@ -13,3 +13,13 @@ ide_zsh_path: >-
 # Task: vscode
 # ==================================================
 ide_vscode_extensions: []
+
+# ==================================================
+# Task: fonts
+# ==================================================
+ide_fonts:
+  - https://github.com/romkatv/powerlevel10k-media/raw/refs/heads/master/MesloLGS%20NF%20Regular.ttf
+  - https://github.com/romkatv/powerlevel10k-media/raw/refs/heads/master/MesloLGS%20NF%20Bold%20Italic.ttf
+  - https://github.com/romkatv/powerlevel10k-media/raw/refs/heads/master/MesloLGS%20NF%20Bold.ttf
+  - https://github.com/romkatv/powerlevel10k-media/raw/refs/heads/master/MesloLGS%20NF%20Italic.ttf
+  - https://github.com/romkatv/powerlevel10k-media/raw/refs/heads/master/MesloLGS%20NF%20Regular.ttf

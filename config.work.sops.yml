@@ -19,6 +19,7 @@ dotfiles_secrets:
 #ENC[AES256_GCM,data:hjcyMCansc4bGbqQxJM9z1kkKhnIOIOttlhXiHKEMYzVmNSs1vl+rMxsRzOTx08pyLf2,iv:6M/Itf6ZKjCZRsDDFLr64NaZBC0vXsKB7pA6YqXmVFI=,tag:5yHtB5E586XNtkhOe1sdpQ==,type:comment]
 homebrew_upgrade_all_packages: ENC[AES256_GCM,data:NqFiCg==,iv:k+pMlZHzXrTu5BUV8h6zT4ai+A3yllr8mWt1VKqSriA=,tag:NlDQpUFD6+iuK0Lc1jtbpQ==,type:bool]
 homebrew_taps:
+    - ENC[AES256_GCM,data:Q+CHW8dCGKYIlZ/Ddw==,iv:skv3zaEoRC/TKUbkK+U1vlwil3WNKu8rcimVoe+GHV4=,tag:uGxHfJTby5q10q7YVn9zKw==,type:str]
     - ENC[AES256_GCM,data:bnrhV5U7WrkKOb4v,iv:bPQD2fsgR2zytXoR2gj7IlMIVUInFMppgycAe9XkxHs=,tag:kyOW9kKf0lV9b5g7I8xGKw==,type:str]
     - ENC[AES256_GCM,data:zFvCJxpn/4lUjGLnxVAiqdSb6A==,iv:ileV9u6MjgXroMpwkpOuFNucElU2OsGD8F9O13EHPpo=,tag:nOlMlOC6LE3eeAOIDZSMQg==,type:str]
 homebrew_installed_packages:
@@ -31,11 +32,13 @@ homebrew_installed_packages:
     - ENC[AES256_GCM,data:HAs=,iv:96ql1VIDjJmpQt5gwDv3OEZDS4aGRo3BtYRRfOLE/IM=,tag:HzjdA2iwX605w2f9e4eeFw==,type:str]
     - ENC[AES256_GCM,data:iLTdeg==,iv:wSR7FzHMlumwRXpThb7LVUgopTBDVs0Ts5IKkFyOZ6E=,tag:qPxQI8Nntd6aTmdv+2gSrQ==,type:str]
     - ENC[AES256_GCM,data:q3K6DSVfCNfxLZbaSg==,iv:Zzed/0n0E19xUfZv6UAqxsj766hoTFpOHPAYk8fqhRo=,tag:f5AgTtenf5NrLiStVNmv2w==,type:str]
+    - ENC[AES256_GCM,data:uQpBiWiXEBLc6Q==,iv:vFUmDMlviLWa8F19icUiPlmbl05t4vZhkPiYEphVDhM=,tag:r2WRdhtYmsX3UfwxGVZHKw==,type:str]
     - ENC[AES256_GCM,data:BXiWDKw=,iv:4Rem97o7gWZnSTewv023HEEbVVtxL2ViDFVVUDs1khw=,tag:4uv/rvR1d+9VdYKuCWbqRw==,type:str]
     - ENC[AES256_GCM,data:NUmMzw==,iv:sEhq1vlJiGACCx5hjIdFhqdQkwgJiZiUFM51gl/t3qA=,tag:0zxN2qpT0OFxVbyytOjl0g==,type:str]
     - ENC[AES256_GCM,data:8EjLBzQ=,iv:Oj/zF+Rxffm7pDEjIEkY0Hk2KDHV9bkpM72qYJ8sH+k=,tag:qx4vWGLbO0YIqFqwGSInNQ==,type:str]
     - ENC[AES256_GCM,data:JXY=,iv:TfYhX25qfxRJ24Ty9Fjcmp++ccid3dVJbLCxi2LfZNI=,tag:5dEQEUqftpKGLfQyXm0B7w==,type:str]
     - ENC[AES256_GCM,data:HnJES/cJAuJ1AIv4r3Y/qMiSUNivWQ==,iv:5boyU4ZAn+Dv/NrBiB8DoECqQ68U7i5FuiY2XxNGNxE=,tag:MWsZeKkPknMqWM5wQLAruQ==,type:comment]
+    - ENC[AES256_GCM,data:fgKJUjG7fvf3bkRb14thvCEOeDId4w==,iv:sCWuccbZ4EV+RDo8+bWSpqQh6U0dp5FnuYpKYZ6Zplg=,tag:l0cjku1CMm+hIImPmhEyjA==,type:str]
     - ENC[AES256_GCM,data:hes=,iv:y0pUTnrKrxu2wKv3Bgox9Bynp2klD1YXoRofKZEU5oQ=,tag:eB3vSmgQq/6ve5OuAtQ+gw==,type:str]
     - ENC[AES256_GCM,data:N+2y,iv:dBKXhLzQ1pPoyeaHm0hcAR7ZjH1WDyAvsFQQpwdQmp8=,tag:ixrLClPtAEC8rBTNS9gF7g==,type:str]
     - ENC[AES256_GCM,data:0fmqAtI=,iv:ThWhJQH6xHD+gmVRKz9+T+TLNKApq2i9RE/TPRwMklQ=,tag:y/kuDxTjcw85LC1dDLRCaQ==,type:str]
@@ -43,6 +46,7 @@ homebrew_installed_packages:
     - ENC[AES256_GCM,data:76usUA==,iv:QJx0sABJ3XuGsCtpx0piZ/B1isL2enYuxdG7t4ngiNw=,tag:E871b/a9i+oT/dVa8is+FQ==,type:str]
     - ENC[AES256_GCM,data:JBIXYDu0AhrQhblDJ5Y4JYBqAtQLewScqh3PAA==,iv:T500wGJtmPzgoYKADzlibEQhk+dFE551HwX6uY92/JI=,tag:kMSjMQXFos1ZTPNhz5unBw==,type:comment]
     - ENC[AES256_GCM,data:DocXwyW5,iv:p9HdwGhOXv7VtNuI1Q6GV8Ln5mbv6GJu2hT6KlAoE08=,tag:NrOaRhozTgCER0vf1UqONw==,type:str]
+    - ENC[AES256_GCM,data:bk4iW+b0672oG6s0KJ7C,iv:Mg2lbBcVFZzIDTspGruHtRGFeG6w2NiKZsHf4UM4eyg=,tag:bCJhd2H12enDve/J7qyrKw==,type:str]
     - ENC[AES256_GCM,data:4oC7rumQmhv2Xq+xRyKFrQ==,iv:piTs4LU9ikv6xt5ODXg6JQJguVYY4HN1+WxvRCL7ZF4=,tag:tDQTxqj4asz24LsE9yRgWQ==,type:str]
     - ENC[AES256_GCM,data:+tkbVQ==,iv:DR3atR5MbosQ8HsvxB5HOKg+NsFm5VsmUGgVE0B1JgI=,tag:DQnLFxTMgCDV+WjNB4oHAw==,type:str]
     - ENC[AES256_GCM,data:tbFk9w==,iv:CrBhf91ppSFvIauxcQQdn3mu/p/1gAGGYskRDwOU4hg=,tag:mEPOyviMfpRbQf/ysYzasw==,type:str]
@@ -52,6 +56,7 @@ homebrew_installed_packages:
     - ENC[AES256_GCM,data:qjbWphfn25Q/,iv:ZcBbsTCf/CRNRnpb+0Ig9qtnHVR597bOnM7kvSgqYV0=,tag:ID7WCwQEg35WYp0OiG5S1Q==,type:str]
     - ENC[AES256_GCM,data:DvrJWBFgwRRfg5JewSQWCHtaa5JY,iv:n4/pww4CydmXyYKm+X9B0vTQOXLPkIeSnb3eKbbGNvs=,tag:11l7Gazt07XDgiDqSlX5rg==,type:comment]
     - ENC[AES256_GCM,data:BSQnYyCL,iv:9vQNZp/VaVxy9Iyosn7v/dINoFSag70FmlzAXZsV3mg=,tag:oTYSUNajVbYUypA3a8kOyA==,type:str]
+    - ENC[AES256_GCM,data:HilFtg==,iv:lG19EaFh+4YmKTSv4HkrGJ+sJYKfQn1bAjA9dJ6tC40=,tag:96P3wNP0+1aqLSFgfFrXDA==,type:str]
     - ENC[AES256_GCM,data:8iFODjfZ4Md2iZ/zrHAmLanf4TseUXQ2yiH6UTE=,iv:ZtHX0CtYZ1ZcBFq1jmS45nFHwG5+o9iTely2AjVvjlM=,tag:wlAaeay21MCGGq0UzMq/vw==,type:str]
     - ENC[AES256_GCM,data:bHaVu9XY,iv:OEcc9Ry7IuFDuHzJnAWBSuXvIavjnEyUYLdXV5IZBvc=,tag:mkKUyKgJ3ru/1TdNcp5l9A==,type:str]
 homebrew_cask_apps:
@@ -274,7 +279,7 @@ sops:
             ckZ0ZFprZnhRMmJ2TXNCOVJRam1xNVUK+YjMpjIPt0FJXurXmfREgeF9N187wRJt
             lHCEd6yyW8Lhbo+lbhybgvmJpy4zz16X2TfLAr9FGtPzJy66vnDv1A==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-01-28T18:50:16Z"
-    mac: ENC[AES256_GCM,data:9yzEDWDxq7vs3bYZYMBlAuLsnlVzq+N1SiKrWM9SNfkmFljRoy23xsqnRResw4K7Bz8S4hfudz5GT/Ux58hOqRkkMqhj3OSIO8sbQCgntfqT9OcB0ZKl02nKrtpSU+/xMzCGAkWVzNekW07i39lfYMAZaIwBBkUpQZ6vaEs2JEE=,iv:IikE0/T+9aIcah9gS2lZSalOgf700sl7MtBAfCR5Ooo=,tag:rGgHKTLPFPXsWjuMRcWvyQ==,type:str]
+    lastmodified: "2026-01-31T11:46:05Z"
+    mac: ENC[AES256_GCM,data:IsTpcQtw0THxBKcEhdOC44cy8FNX4qqKgrh9PSGys7+hBUJHQ4LrMobeq+0malzq/XxMdiNcwamfDYiXApmGh4jPtYIggjLM6JVvOzmIh7/6a/0NhuCr+2IdYdgdnoJFQ/556iV/cxmlhz04aY0RZiz/+khrc4qbIONLa7tdQ1s=,iv:7JDIkxR5uUdSETotOrLbsUJdnSxCYUCQtvvSXp8cRhk=,tag:Z8ZroazOpIcNGEiM+RyUcA==,type:str]
     unencrypted_suffix: _unencrypted
     version: 3.11.0

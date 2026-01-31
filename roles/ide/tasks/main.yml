@@ -1,4 +1,7 @@
 ---
+- name: Configure Fonts
+  import_tasks: fonts.yml
+
 - name: Configure terminal (iTerm)
   import_tasks: terminal.yml
 
