@@ -1,10 +1,11 @@
 # Ready, Set, Develop
 
-[![CI](https://github.com/afonsoc12/ready-set-develop/actions/workflows/ci.yml/badge.svg)](https://github.com/afonsoc12/ready-set-develop/actions/workflows/ci.yml)
+[![Lint](https://github.com/afonsoc12/ready-set-develop/actions/workflows/lint.yml/badge.svg)](https://github.com/afonsoc12/ready-set-develop/actions/workflows/lint.yml)
 
 **Ready, Set, Develop™** is an opinionated, reproducible workstation bootstrap system built with [Ansible](https://www.ansible.com/).
 
-![](./.github/images/banner.png)
+
+<p align="center"><img src="./.github/images/banner.png" alt="ready-set-develop" width="600"/></p>
 
 Automate setting up macOS development machines from scratch and keep configuration consistent across computers — including dotfiles, tooling, system preferences, and development environments.
 
@@ -27,16 +28,15 @@ This repository codifies workstation setup with version-controlled configuration
 - **Editor / IDE / terminal** configuration
 
 ### 📁 Dotfiles Management
-Dotfiles are now **first-class citizens** of this project.
-
 - 📂 XDG Base Directory compliant (where possible)
 - 🏠 Minimal `$HOME` clutter
 - 🔗 Deploy via symlink or copy
+- 🔧 Modular, reusable Ansible tasks
 - ⚙️ Templated with Ansible
 - 🔐 Secrets management via SOPS
 
-**Pre-configured for:**
-- zsh, Git, GnuPG, VS Code, rclone, rsync, k9s, and more
+**Pre-configured applications:**
+- **zsh**, **Git**, **GnuPG**, **VS Code**, **k9s**, **rclone**, **rsync**, and more
 
 ### 🎨 macOS Customization
 - 🔧 System defaults
@@ -47,51 +47,35 @@ Dotfiles are now **first-class citizens** of this project.
 ## Getting Started
 
 ### Prerequisites
-
-- macOS 12 or later (tested only on 26+)
-- Approximately 30 minutes
+- macOS 12 or later (tested on 26+)
+- ~30 minutes
 - Internet connection
 
-## Environment Variables
+### Quick Start ⚡
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `RSD_REPO_URL` | `https://github.com/afonsoc12/ready-set-develop.git` | Git URL of the repository to clone. |
-| `RSD_REPO_DIR` | `$XDG_DATA_HOME/ready-set-develop` | Local path where the repository is cloned. |
-| `RSD_REPO_VERSION` | master | Optional branch, tag, or commit hash to checkout after cloning. |
-| `RSD_FORCE_REPO` | `false` | If `true`, removes existing repository before cloning and re-clones. |
-| `SOPS_AGE_KEY_FILE` | _required_ | Path to your AGE key for decrypting SOPS secrets. Must exist before running the script. |
-| `RSD_SOPS_FILE` | _none_ | Optional SOPS-encrypted configuration file inside the repository, passed to Ansible as `-e sops_file=<file>`. |
-| `XDG_DATA_HOME` | `$HOME/.local/share` | Base directory for application data (XDG standard). |
-| `RSD_ANSIBLE_HOME` | `$XDG_DATA_HOME/ansible` | Directory for Ansible runtime, roles, and collections. |
-| `PATH` | `$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$PATH` | Ensures user Python and Homebrew binaries are available. |
+**Fastest way to get started** — one command:
 
-## Installation Options
+```zsh
+SOPS_AGE_KEY_FILE=<path-to-key> zsh -i <(curl -fsSL https://raw.githubusercontent.com/afonsoc12/ready-set-develop/master/bootstrap.sh)
+```
 
-### ⚡ One-Command Bootstrap
+**With encrypted config:**
+```zsh
+SOPS_AGE_KEY_FILE=<path-to-key> RSD_SOPS_FILE=config.sops.yml zsh -i <(curl -fsSL https://raw.githubusercontent.com/afonsoc12/ready-set-develop/master/bootstrap.sh)
+```
 
-This method is ideal if you want a **fully automated setup**. It will:
-
+The bootstrap script will:
 - Install XCode Command Line Tools
-- Clone this repository to `~/.local/share/ready-set-develop` (XDG-compliant)
-- Install Python packages and Ansible with system python
+- Clone the repository (to `~/.local/share/ready-set-develop`)
+- Install Python packages and Ansible
 - Install Ansible Galaxy packages
 - Run the full playbook
 
-**Run:**
+---
 
-```zsh
-# Default values
-SOPS_AGE_KEY_FILE=<SOPS_AGE_KEY_FILE> zsh -i <(curl -fsSL https://raw.githubusercontent.com/afonsoc12/ready-set-develop/master/bootstrap.sh)
+### Step-by-Step Installation
 
-```zsh
-# With sops encrypted config
-SOPS_AGE_KEY_FILE=<SOPS_AGE_KEY_FILE> RSD_SOPS_FILE=config.sops.yml zsh -i <(curl -fsSL https://raw.githubusercontent.com/afonsoc12/ready-set-develop/master/bootstrap.sh)
-```
-
-### Step-by-step Installation
-
-#### 1️⃣ Install Command Line Tools
+##### 1️⃣ Install Command Line Tools
 
 ```zsh
 xcode-select --install
@@ -99,50 +83,59 @@ xcode-select --install
 
 Accept the license when prompted.
 
-#### 2️⃣ Set Environment Variables
-
-```zsh
-export PATH="$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$PATH"
-export ANSIBLE_HOME="$HOME/.local/share/ansible"
-```
-
-#### 3️⃣ Install Ansible
-
-```zsh
-/usr/bin/pip3 install --upgrade pip
-/usr/bin/pip3 install ansible
-```
-
-#### 4️⃣ Clone Repository
+##### 2️⃣ Clone Repository
 
 ```zsh
 git clone https://github.com/afonsoc12/ready-set-develop.git
 cd ready-set-develop
 ```
 
-#### 5️⃣ Install Ansible Requirements
+##### 3️⃣ Install Ansible
+
+```zsh
+export PATH="$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$PATH"
+/usr/bin/pip3 install --upgrade pip ansible
+```
+
+##### 4️⃣ Install Ansible Requirements
 
 ```zsh
 ansible-galaxy install -r requirements.yml
 ```
 
-#### 6️⃣ Run Playbook
+##### 5️⃣ Run Playbook
 
 ```zsh
-export SOPS_AGE_KEY_FILE=<PATH AGE KEY FILE>
+export SOPS_AGE_KEY_FILE=<path-to-your-age-key>
 ansible-playbook main.yml --ask-become-pass
 
-# If passing a sops encrypted vars
-ansible-playbook main.yml -e sops_file=<PATH SOPS FILE> --ask-become-pass
+# Or with encrypted config
+ansible-playbook main.yml -e sops_file=config.sops.yml --ask-become-pass
 ```
 
 ---
 
-## Running
+### Configuration Reference
+
+#### Bootstrap Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `RSD_REPO_URL` | `https://github.com/afonsoc12/ready-set-develop.git` | Git repository URL |
+| `RSD_REPO_DIR` | `$XDG_DATA_HOME/ready-set-develop` | Local clone path |
+| `RSD_REPO_VERSION` | `master` | Branch, tag, or commit to checkout |
+| `RSD_FORCE_REPO` | `false` | Re-clone if repository exists |
+| `SOPS_AGE_KEY_FILE` | _(required)_ | Path to AGE key for SOPS decryption |
+| `RSD_SOPS_FILE` | _(optional)_ | SOPS-encrypted config file path |
+| `XDG_DATA_HOME` | `$HOME/.local/share` | Application data directory |
+| `RSD_ANSIBLE_HOME` | `$XDG_DATA_HOME/ansible` | Ansible runtime directory |
+| `PATH` | (modified) | Ensures homebrew & Python binaries are available |
+
+---
+
+## Running the Playbook
 
 ### Standard Execution
-
-Run the full playbook:
 
 ```zsh
 ansible-playbook main.yml --ask-become-pass
@@ -150,50 +143,34 @@ ansible-playbook main.yml --ask-become-pass
 
 ### Custom Configuration
 
-> TODO
-
-Override default settings:
+Override defaults with your own config:
 
 ```zsh
 ansible-playbook main.yml -e @myconfig.yml --ask-become-pass
 ```
 
-Or replace `config.yml` with your own configuration file.
-
 ---
 
 ## Development
 
-### Prerequisites
+### Setup
 
-- [uv](https://docs.astral.sh/uv/)
-
-### Installation
-
-#### 1️⃣ Setup development environment
-
-This project uses [uv](https://docs.astral.sh/uv/) to manage Python dev dependencies and sync them.
+This project uses [uv](https://docs.astral.sh/uv/) for Python dependency management.
 
 ```zsh
 uv sync --dev
 pre-commit install
-```
-
-#### 2️⃣ Activate virtual environment
-
-```zsh
 source .venv/bin/activate
 ```
 
-#### 3️⃣ Linting & syntax checks
+### Quality Checks
 
-Before committing changes, run the following checks:
+Before committing:
 
 ```zsh
 pre-commit run --all-files
 
-# OR
-
+# Or individually:
 yamllint .
 ansible-lint .
 ansible-playbook main.yml --syntax-check
