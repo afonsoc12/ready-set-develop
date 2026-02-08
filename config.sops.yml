@@ -8,12 +8,15 @@
 # ==================================================
 # Role: dotfiles
 # ==================================================
-dotfiles_auth_home: ENC[AES256_GCM,data:UM3lDorFJ+TbUVc=,iv:NxZZtldyZMhYvtwttdagt9XzlANyd+8OYCtWcx6xaMQ=,tag:OmBSTNVAIOV/DYA0BNVQFw==,type:str]
-dotfiles_secrets_src: ENC[AES256_GCM,data:TQDNo2oTU15/lqcUiuBC0LL3E+mOY0ThMQ==,iv:ctPgOi2JMo6DNXpja1NV1wIP9veVqHKziD/LX6Ts6dI=,tag:zGdmqMJTR/V09UIig8SJXw==,type:str]
+dotfiles_auth_home: ENC[AES256_GCM,data:gNAWHvT1zeUMuuo=,iv:z1jqWZvWDHVMfIh2BbP6Y/gAtHzYnCiCSoPc90KyC/8=,tag:MxDdKDGdCbVhL5TW3DrVWQ==,type:str]
+dotfiles_secrets_src: ENC[AES256_GCM,data:vtX/lMsY60sfI7jrHyZfVqbs2CqNruqAJA==,iv:+smlIS85zVXutL2BpObPaFhUfudNZRmzQ/NsSXMmgog=,tag:1NYiSDBg3Y0ghJwGI6NeEw==,type:str]
 dotfiles_secrets:
     git:
-        email: ENC[AES256_GCM,data:utnhj+BNEf2PY0Ac+y89JYYMwI7VqMzYhIXubtlULvgp8yT3tWpFxkKAGw==,iv:xc23TQXhp6EOPXazZR8Rjh4vFccXPBAB94oGkXyyIqg=,tag:6y+FSKORxBNr2BIHwb6Xgg==,type:str]
-        signing_key: ENC[AES256_GCM,data:UWfSnN3ECfgErbHL/V0+Ag==,iv:E1ukvftoEOUZ0hlzHr9kEV2MQVbgKxl+VZRE66Sjwtk=,tag:NERv2hNd3bqYjTbQCIpuhQ==,type:str]
+        email: ENC[AES256_GCM,data:WmXwb8SY1IYV5vMHGeGCi//mR0o0p2yoXxedTgbZEffjW/WQCzhdPWfhnQ==,iv:SHh0SR6GRnyDwsgZvF7RM0Be02R0JEw6ICt1y+tqX6w=,tag:tsml8v6vDxoYXnXqyF04Ng==,type:str]
+        signing_key: ENC[AES256_GCM,data:kHRViPPdMTQcDcPmKbFjFA==,iv:OKG4jfgHoWuokWAVxPmH7+gCM6eh3IjsZeFXke7jFF0=,tag:e2APhNh0/P8PM9YOwLp2CQ==,type:str]
+dotfiles_zsh_extra_aliases:
+    cdgit: ENC[AES256_GCM,data:oMsDlCRc5pDK0oGIMJhqFEWuLlMpNV+RCETVBe0=,iv:eTfssfQBa/jdW+SDBf+CD1059Lnqj/PK3eVmRvyodDc=,tag:BoUHtzjIOuSVJVO8mmh82A==,type:str]
+    cdmega: ENC[AES256_GCM,data:vXVDd38WrXXU,iv:wJco8paymiUUatkyMM4M9sjWr5o7YBoX7clapQwNa+Y=,tag:vy40HOpaW99xw4/ehew6Tg==,type:str]
 # ==================================================
 # Role: geerlingguy.mac.homebrew
 #   - docs: https://github.com/geerlingguy/ansible-collection-mac/blob/master/roles/homebrew/README.md
@@ -390,13 +393,13 @@ sops:
         - recipient: age1n2g0g2z9jdgnqx826e8d0d78y8z0lc7ngdadm3jw9gzpxj2nf5rs0hm6p6
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB4SmFVdzM2WDR4MmxxSFlG
-            UWdDUzM5R0RzRkgzQXZvUGhzVmF4TU9mSmhjCkxlU2ZWWGhYS1ZpM3BHZHp3d01v
-            Y1Azb3lYdjJyTzdhRVZJSmVsTlpST3MKLS0tIGgvcG4vbGNVd3RiS1ZOTFUxNFpE
-            QVJaRmNIS3pkeFZJMTYwenhyemJ2Z1EKO0sv8VtyfEsuN51R3fR+6rkkrTbdvZjG
-            07jWmJjRDoYmQrle5ERGKf9PJRiUFPo9ztvWs+9j009Iw6rSJrAW+Q==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBsSTc1Uit2UjBaNWVZNVpi
+            M1FzZHl0NlN1cWhkWUxLTlBTZm9ib0QveUJNCmM0T1RDUnp6RHhUT1ZGR3BaYVdq
+            RXBMNjFFK2VNVUVrVmNiQThBRzdDV1EKLS0tIFhiekNCQUhvV3NKNFQ4ODBzU2F1
+            N0lKZUZOREJLbmpHVEMwNVVGNUVWeWMK8HmAHGKygTLVsvCa3cAfto+jlKifKjB8
+            9pwg+7MuEc6A76e1cnURmE6ZPgyp5+X6qOZ5HerBOZfEjZ/8tC31Dg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-01-28T13:55:23Z"
-    mac: ENC[AES256_GCM,data:AwKvLqFygoGrrguwBNx14BfEp+ToqoqHzpxja3BNHsSh9T96fIE1mO/bIybXzy9g0tNFKkofQ6MurBzmGMcjKWfiq+EvQruml4vG15FS6l5jtuUBM17vTe6hTNQ8AtY0O7Hi45PRxdmBUGv9OsEXvpnwJXb8Hy+R4J6aMAp2Q4c=,iv:wNE8IW1L3KB/e2eZVVcGtbw5sxI6iiyDxqMadYzL4WA=,tag:I7CRFCLMZaxqB27XTkcNlQ==,type:str]
-    encrypted_regex: ^(dotfiles_auth_home|dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets)$
+    lastmodified: "2026-02-08T19:44:45Z"
+    mac: ENC[AES256_GCM,data:g6zQ5/9i4BcAh07XpNSTFfqFDBpPRz0FgddOQd1cjW5EQHg12j16G36/uZ41SDYkI6hBbU6Nu5v7JMhKIBPBoelbTt38XLBumJrpMw4Zb5ipiiqTBggwwaacVh/8t/TCp1G5oPGX4FTR6EkHpInAXsdWvD3Qd5WHzR58SSOGoIo=,iv:lB83a4hL34fMhzx1ThYnlYjFix8o9gy8SLGCyeeBD+4=,tag:wc36Hi4U43sviFP+HoJPjw==,type:str]
+    encrypted_regex: ^(dotfiles_auth_home|dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets|dotfiles_zsh_extra_aliases)$
     version: 3.11.0

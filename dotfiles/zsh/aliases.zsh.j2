@@ -48,3 +48,10 @@ alias gst="git stash"
 alias gsta="git stash apply"
 gcm() { git commit -m "$*"; }
 gcmp() { gcm "$@" && git push ; }
+{% if dotfiles_zsh_extra_aliases %}
+
+# ─────────── Extra Aliases ───────────
+{% for alias_name, alias_command in dotfiles_zsh_extra_aliases.items() %}
+alias {{ alias_name }}="{{ alias_command }}"
+{% endfor %}
+{% endif -%}
