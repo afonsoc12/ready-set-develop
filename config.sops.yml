@@ -37,14 +37,17 @@ homebrew_installed_packages:
     - make
     - powerlevel10k
     - rsync
+    - tmux
     - tree
     - watch
+    - xdg-ninja
     - yq
     # Git / Version Control
     - gh
     - ghorg
     - git
     - gnupg
+    - lazygit
     - pinentry-mac
     - sops
     # Kubernetes / Cloud / DevOps
@@ -78,6 +81,7 @@ homebrew_installed_packages:
     - wakeonlan
     # Media / Download tools
     - exiftool
+    - ffmpeg
     - yt-dlp
 homebrew_cask_apps:
     # Development / IDEs
@@ -399,7 +403,7 @@ sops:
             N0lKZUZOREJLbmpHVEMwNVVGNUVWeWMK8HmAHGKygTLVsvCa3cAfto+jlKifKjB8
             9pwg+7MuEc6A76e1cnURmE6ZPgyp5+X6qOZ5HerBOZfEjZ/8tC31Dg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-02-08T19:44:45Z"
-    mac: ENC[AES256_GCM,data:g6zQ5/9i4BcAh07XpNSTFfqFDBpPRz0FgddOQd1cjW5EQHg12j16G36/uZ41SDYkI6hBbU6Nu5v7JMhKIBPBoelbTt38XLBumJrpMw4Zb5ipiiqTBggwwaacVh/8t/TCp1G5oPGX4FTR6EkHpInAXsdWvD3Qd5WHzR58SSOGoIo=,iv:lB83a4hL34fMhzx1ThYnlYjFix8o9gy8SLGCyeeBD+4=,tag:wc36Hi4U43sviFP+HoJPjw==,type:str]
+    lastmodified: "2026-02-11T19:31:30Z"
+    mac: ENC[AES256_GCM,data:Q362/AAqJxCrXgJIO+wWXh4QUJaUIHFrrX9D/1ce3xleyT5oyDOrvvGyd2erZH01hIaPN9ogIu9t0ZUCU7c2i7TGz9LIQjZsfeK5oxq9y/oJcXzvP1ayBKg5E+M+iTdDudSJeQ0Nu0DdWaoHxGPjHRb/GXyICBfnUjzv+2yB9GA=,iv:ZCUrwJoRfZM2aV/vnJCzvJoeO95dq6aRyaM6f/0ByrE=,tag:qhnUbppib3JG7x2BpwTBww==,type:str]
     encrypted_regex: ^(dotfiles_auth_home|dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets|dotfiles_zsh_extra_aliases)$
     version: 3.11.0

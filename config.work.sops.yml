@@ -37,6 +37,7 @@ homebrew_installed_packages:
     - ENC[AES256_GCM,data:q3K6DSVfCNfxLZbaSg==,iv:Zzed/0n0E19xUfZv6UAqxsj766hoTFpOHPAYk8fqhRo=,tag:f5AgTtenf5NrLiStVNmv2w==,type:str]
     - ENC[AES256_GCM,data:uQpBiWiXEBLc6Q==,iv:vFUmDMlviLWa8F19icUiPlmbl05t4vZhkPiYEphVDhM=,tag:r2WRdhtYmsX3UfwxGVZHKw==,type:str]
     - ENC[AES256_GCM,data:BXiWDKw=,iv:4Rem97o7gWZnSTewv023HEEbVVtxL2ViDFVVUDs1khw=,tag:4uv/rvR1d+9VdYKuCWbqRw==,type:str]
+    - ENC[AES256_GCM,data:wZUk3g==,iv:oer63JbDaWoT5a8WfBmk5r1V5GY3eL8WpoEng23QKmg=,tag:bZA7Hn8CNR6DT/YftBUAxQ==,type:str]
     - ENC[AES256_GCM,data:NUmMzw==,iv:sEhq1vlJiGACCx5hjIdFhqdQkwgJiZiUFM51gl/t3qA=,tag:0zxN2qpT0OFxVbyytOjl0g==,type:str]
     - ENC[AES256_GCM,data:8EjLBzQ=,iv:Oj/zF+Rxffm7pDEjIEkY0Hk2KDHV9bkpM72qYJ8sH+k=,tag:qx4vWGLbO0YIqFqwGSInNQ==,type:str]
     - ENC[AES256_GCM,data:JXY=,iv:TfYhX25qfxRJ24Ty9Fjcmp++ccid3dVJbLCxi2LfZNI=,tag:5dEQEUqftpKGLfQyXm0B7w==,type:str]
@@ -282,7 +283,7 @@ sops:
             ckZ0ZFprZnhRMmJ2TXNCOVJRam1xNVUK+YjMpjIPt0FJXurXmfREgeF9N187wRJt
             lHCEd6yyW8Lhbo+lbhybgvmJpy4zz16X2TfLAr9FGtPzJy66vnDv1A==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-02-08T19:43:58Z"
-    mac: ENC[AES256_GCM,data:VEVv+lX+FcYsg+tY6LxthXTBC3oXEDKKJxmP1RD/gUY3VQykwZFbLg+p225HOERiQzwSsrHv2GI5GM/Dgo/5PqyycmcTvcs8xMwY9pHzOjdxoIlApVJyL/gFXtoZ51gRcMurGgRHhopvEy6XbgFUMnGJLUJT9Ovy4opg/C0fiTE=,iv:qgKlOP80p6jmzK2VqhOyvBQnzxyxN4/XyHvyeYKmE0g=,tag:mH2/g2N3CyD6O3zFSlVtkg==,type:str]
+    lastmodified: "2026-02-11T19:32:04Z"
+    mac: ENC[AES256_GCM,data:3G1hrg5LT3ybAkDJNHCenmKi83ncgDB6W4RazHZqstEgaOvFODYc+Hl9zGHR3KaHzV3vpDqEIFbLamfNVVVHclRvv1nIHiyrLQiwGlsLwke/D9vY4lVniulBOAb5nzHUWxjeU6LXYb8gyHNxe+kEvMCl0p1LM3mpSTCuxCS+yHo=,iv:eW1QQdEBglOxn8aE/WSPcK3fExTHgNqG0JWb5jk1h3k=,tag:DGV9qczJIs4+1o38xMjltg==,type:str]
     unencrypted_suffix: _unencrypted
     version: 3.11.0
