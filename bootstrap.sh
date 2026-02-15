@@ -130,6 +130,12 @@ echo
 ANSIBLE_CMD="ansible-playbook main.yml --ask-become-pass"
 [[ -n "$RSD_SOPS_FILE" ]] && ANSIBLE_CMD+=" -e sops_file=$RSD_SOPS_FILE"
 
+# Append any extra flags passed to this script
+if [[ $# -gt 0 ]]; then
+  ANSIBLE_CMD+=" $@"
+  echo "📋 Extra flags: $@"
+fi
+
 eval "$ANSIBLE_CMD"
 
 echo

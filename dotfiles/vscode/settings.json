@@ -17,7 +17,7 @@
   "window.nativeTabs": true,
   "window.newWindowProfile": "Default",
   "window.openFilesInNewWindow": "on",
-  "window.title": "${activeRepositoryName}",
+  "window.title": "${folderPath}",
   "window.zoomPerWindow": false,
   "workbench.colorCustomizations": {
     "editorCursor.foreground": "#ff0000",

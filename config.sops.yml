@@ -121,6 +121,7 @@ homebrew_cask_apps:
     - sigil
     - spotify
     - surfshark
+    - teamviewer
     - tor-browser
     - trezor-suite
     - transmission
@@ -403,7 +404,7 @@ sops:
             N0lKZUZOREJLbmpHVEMwNVVGNUVWeWMK8HmAHGKygTLVsvCa3cAfto+jlKifKjB8
             9pwg+7MuEc6A76e1cnURmE6ZPgyp5+X6qOZ5HerBOZfEjZ/8tC31Dg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-02-11T19:31:30Z"
-    mac: ENC[AES256_GCM,data:Q362/AAqJxCrXgJIO+wWXh4QUJaUIHFrrX9D/1ce3xleyT5oyDOrvvGyd2erZH01hIaPN9ogIu9t0ZUCU7c2i7TGz9LIQjZsfeK5oxq9y/oJcXzvP1ayBKg5E+M+iTdDudSJeQ0Nu0DdWaoHxGPjHRb/GXyICBfnUjzv+2yB9GA=,iv:ZCUrwJoRfZM2aV/vnJCzvJoeO95dq6aRyaM6f/0ByrE=,tag:qhnUbppib3JG7x2BpwTBww==,type:str]
+    lastmodified: "2026-02-12T21:34:02Z"
+    mac: ENC[AES256_GCM,data:mOWbUtiBXjf+ara0P4Zq1wb0s+T6iUu3RN6NvUj+UzkLijXxvOmJ5b1l+p+KgfdGtQxuQxnPt/9K2hF++uOIB5N34QfLYMvwGjfFCUmy+uVIXbP52QRDwQqumsSQ2v7KDHrWHVCIyzGlDzC2UHDdYEeghhxAD55mM64uGiHu8pY=,iv:/jK0qSjdClh98LgMtHwSI3Mjnc2sznA10CgPYuJqPCc=,tag:DUKCRWSddQYfpQWK99U2zg==,type:str]
     encrypted_regex: ^(dotfiles_auth_home|dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets|dotfiles_zsh_extra_aliases)$
     version: 3.11.0
