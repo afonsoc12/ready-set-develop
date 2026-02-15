@@ -2,6 +2,8 @@ name: Lint
 
 on: # yamllint disable-line rule:truthy
   workflow_dispatch:
+  push:
+    branches: [master]
   pull_request:
     types: [ready_for_review, reopened] # synchronize makes CI too chatty
   pull_request_review:
