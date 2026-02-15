@@ -17,6 +17,7 @@ dotfiles_zsh_extra_aliases:
     cdgit: ENC[AES256_GCM,data:YC9ijVi9eBImIWgRwvOYmfKVX6gcT/US1lZc1RQ=,iv:8J5XdJ47OkWskuOM/P9e59N0I4/N/pkIOaIiQ6wr0d8=,tag:kGlYqSvz+DU0B5793XvXYQ==,type:str]
     cdmp: ENC[AES256_GCM,data:nbCFlKQJrbMwb9q/,iv:7K/krYwR5kmxWCVCvQnk/ATJh2CCKMHRgDmIwnQR6ME=,tag:7px1x1THFcj+psmWL6ULsQ==,type:str]
     oc: ENC[AES256_GCM,data:6zshSwMMRyk=,iv:j/njVax5fRF9VLds1fCt7KEhxUWPyFcvr0Wj6OkeLS8=,tag:DuEXaMweRnnUIDB/fhhlPg==,type:str]
+    rsd: ENC[AES256_GCM,data:wlRaKFEhsLgeVhf+6Zyv/wh+7FuNbpwln5ynQvO5sjWobAvHUNgyJRWLgiXm4VejuE2S/xQhPCpOci9cNyHhvWAYisGSHwXLiLUVys/2lpXuXfyH3h5U7zSjwX1Ab3rKDBwD10CHIJtIhqxVUHBVOJgygqpHhFf17XRnZUtCO620vdExGESYTJOX//kiqWb8DqEcziCy/hl6HbcqEO9SsUKrShLe110tXkA0lNS3PKd9vVnjZ5AC8slUlDMRw6yWtJg4w5qc,iv:HmIl+kK2/SCPupzTFS9lBU5y/4Ox+v0Qp4Dtx9QqBt0=,tag:x3U8IUvJM78NsyiBHyI7pw==,type:str]
 #ENC[AES256_GCM,data:hjcyMCansc4bGbqQxJM9z1kkKhnIOIOttlhXiHKEMYzVmNSs1vl+rMxsRzOTx08pyLf2,iv:6M/Itf6ZKjCZRsDDFLr64NaZBC0vXsKB7pA6YqXmVFI=,tag:5yHtB5E586XNtkhOe1sdpQ==,type:comment]
 #ENC[AES256_GCM,data:LjTPMALh4a8rzejQwIH0ETsu7LBg1h8rsje24MWAbA==,iv:SE99pKTkjxEwtKesugbYuDNi2eAXuqvPLXVXIrZWd64=,tag:y/U9Yz9BMfFZumA20hANTw==,type:comment]
 #ENC[AES256_GCM,data:BfUmhmMatg4tGxaVg1wxoCMfvw7utN5j9oMWrctbnRKU506M7VG4EdaaHladhNBX/miXrD2Da9FP307tT68bXUWubm2gOQeE1eWyG+Is+SR+YL5oB5wrLKPCBVrNrMO77DYkSWY=,iv:fN8k9KdnoIcZY80hOmvdiFzFfoCPyPF5kEtijThD4A4=,tag:cL22C2+1zhCweM9fxDbipQ==,type:comment]
@@ -293,7 +294,7 @@ sops:
             ckZ0ZFprZnhRMmJ2TXNCOVJRam1xNVUK+YjMpjIPt0FJXurXmfREgeF9N187wRJt
             lHCEd6yyW8Lhbo+lbhybgvmJpy4zz16X2TfLAr9FGtPzJy66vnDv1A==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-02-15T14:46:58Z"
-    mac: ENC[AES256_GCM,data:rT4Jkih/hL20yVH1GEq6eqhOQQ1/ZqbKYdTcYYp77Wtpn+WE8ulwSdv2xEmLoTr+Gk64p7hCtirnZOr2hPqXZu40tbYLn/EhQ/XINsBuIz36KXmMi/8xRLhB/AF0mV7qKtAaRoSy8QkIrFJkgoJpZ30cvrPDQCA6yyfMP1mFigA=,iv:ZXDHoEbMybjJF3Z9KZGSKLHI1lzrwZNDcqncI7sM4qg=,tag:Rfr6WL1hvWONUuSWSrNH3w==,type:str]
+    lastmodified: "2026-02-15T14:53:43Z"
+    mac: ENC[AES256_GCM,data:KLB8Joa6Wcgp/52GtbAVdjOtS64pfAxMV0BWAWClEJhP8F8aHFRAfu6o0GPMjkQgztnx5gbT1bWv7+VeR4CigJBzOzycunWagZWIcd/7qi+cW3MYaHLlDBWVANUmPmB4UDznlsgnTZ8MIGQ1x3bB4O0x0GLPqk+rp+3qqSG2u7c=,iv:qsLDovpo6fIvTBV7UoxwC32J26C18rv41sE4EWq7DOQ=,tag:kF+QUNj2+VelpQ+m9ivqnQ==,type:str]
     unencrypted_suffix: _unencrypted
     version: 3.11.0
