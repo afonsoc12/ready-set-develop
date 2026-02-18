@@ -16,6 +16,12 @@
     defaultBranch = master
 [push]
     autoSetupRemote = true
+[gtr "ai"]
+	default = claude
+[gtr "editor"]
+	default = vscode
+[gtr "ui"]
+	color = always
 [alias]
     rebase-dance = "!f() { \
         upstream=$(git remote show origin | awk '/HEAD branch/ {print $NF}'); \

@@ -26,6 +26,7 @@ homebrew_taps:
     - cirruslabs/cli
     - derailed/k9s
     - teamookla/speedtest
+    - coderabbitai/tap
 homebrew_installed_packages:
     # CLI Utilities
     - bat
@@ -46,6 +47,7 @@ homebrew_installed_packages:
     - gh
     - ghorg
     - git
+    - coderabbitai/tap/git-gtr
     - gnupg
     - lazygit
     - pinentry-mac
@@ -71,6 +73,7 @@ homebrew_installed_packages:
     - stern
     - cirruslabs/cli/tart
     - terraform
+    - terragrunt
     - velero
     - etcd
     # Network / Monitoring
@@ -404,7 +407,7 @@ sops:
             N0lKZUZOREJLbmpHVEMwNVVGNUVWeWMK8HmAHGKygTLVsvCa3cAfto+jlKifKjB8
             9pwg+7MuEc6A76e1cnURmE6ZPgyp5+X6qOZ5HerBOZfEjZ/8tC31Dg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-02-12T21:34:02Z"
-    mac: ENC[AES256_GCM,data:mOWbUtiBXjf+ara0P4Zq1wb0s+T6iUu3RN6NvUj+UzkLijXxvOmJ5b1l+p+KgfdGtQxuQxnPt/9K2hF++uOIB5N34QfLYMvwGjfFCUmy+uVIXbP52QRDwQqumsSQ2v7KDHrWHVCIyzGlDzC2UHDdYEeghhxAD55mM64uGiHu8pY=,iv:/jK0qSjdClh98LgMtHwSI3Mjnc2sznA10CgPYuJqPCc=,tag:DUKCRWSddQYfpQWK99U2zg==,type:str]
+    lastmodified: "2026-02-18T20:27:17Z"
+    mac: ENC[AES256_GCM,data:j2lC9mBv5Y4/Ki9jccQ0wIVzZGP2+wuS4MREstK4wFduv4pM7nCIPGGbZm1qGr+jYrUEM8IvM3aEf+yXg/YgUZT26CNP+6WCjnNi4MYWr6+jYD5caOHT1Afz5A6Hi/HEcQohabU9G1Xor2HKkpt0vzOPI2MmhGbVn4Iq2yVIht0=,iv:W5WhYHd15KjlbEVFeiw4IoTjKfklVPMh22tvo7Fekvo=,tag:T27WXhZdcHVADhBcDqKP6w==,type:str]
     encrypted_regex: ^(dotfiles_auth_home|dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets|dotfiles_zsh_extra_aliases)$
     version: 3.11.0
