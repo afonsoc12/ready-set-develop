@@ -11,6 +11,7 @@ export RSD_ANSIBLE_HOME="${RSD_ANSIBLE_HOME:-$XDG_DATA_HOME/ansible}"
 
 # Repo defaults
 RSD_REPO_DIR="${RSD_REPO_DIR:-$XDG_DATA_HOME/ready-set-develop}"
+RSD_REPO_VERSION="${RSD_REPO_VERSION:-master}"
 
 export PATH="$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$PATH"
 
