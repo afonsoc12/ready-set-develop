@@ -17,6 +17,7 @@ dotfiles_secrets:
 dotfiles_zsh_extra_aliases:
     cdgit: ENC[AES256_GCM,data:oMsDlCRc5pDK0oGIMJhqFEWuLlMpNV+RCETVBe0=,iv:eTfssfQBa/jdW+SDBf+CD1059Lnqj/PK3eVmRvyodDc=,tag:BoUHtzjIOuSVJVO8mmh82A==,type:str]
     cdmega: ENC[AES256_GCM,data:vXVDd38WrXXU,iv:wJco8paymiUUatkyMM4M9sjWr5o7YBoX7clapQwNa+Y=,tag:vy40HOpaW99xw4/ehew6Tg==,type:str]
+    rsd: ENC[AES256_GCM,data:Btzb7kBws8FcUm3fhdqH0nDJDVnuyeABjnrZZOvPQiurXHA7ur+Gxcw5RV7E8B24K+VLi8PrEqRswwi9EcO/EX7e7uNj6WVdn6J+BkIaHJ5KNTgUR8XnB0rwm0pJflWYkSSEgUZ5QESlhEOFzQCB4cIJr7TD/ounYp+c/yf8Dh+3LfyuAR/zjMZlKyzui7LtLDaoNS2qbXU3z8wN8apa7aIAksecmZzvxpNXQ7fYpV+KUL7GfUf6BxWMgniCCb77GDzaBmlZp1iJYJ2zmkYi2FC09FtGmlJjGuHy5XCv5xzH0NNErKchcM47UO/RV7o+sy0=,iv:hvBopFb9q+7f8uhYjQ6vNclpz/WHBirp4UkH5xPohOs=,tag:4B7wfNm11waA16/myFC4KA==,type:str]
 # ==================================================
 # Role: geerlingguy.mac.homebrew
 #   - docs: https://github.com/geerlingguy/ansible-collection-mac/blob/master/roles/homebrew/README.md
@@ -37,6 +38,7 @@ homebrew_installed_packages:
     - jq
     - make
     - powerlevel10k
+    - ripgrep
     - rsync
     - tmux
     - tree
@@ -73,7 +75,6 @@ homebrew_installed_packages:
     - stern
     - cirruslabs/cli/tart
     - terraform
-    - terragrunt
     - velero
     - etcd
     # Network / Monitoring
@@ -384,7 +385,7 @@ macos_add_adobe_hosts: true
 # Role: ide
 # ==================================================
 ide_vscode_extensions:
-    - Anan.jetbrains-darcula-theme
+    - anan.jetbrains-darcula-theme
     - github.copilot
     - github.copilot-chat
     - github.vscode-github-actions
@@ -407,7 +408,7 @@ sops:
             N0lKZUZOREJLbmpHVEMwNVVGNUVWeWMK8HmAHGKygTLVsvCa3cAfto+jlKifKjB8
             9pwg+7MuEc6A76e1cnURmE6ZPgyp5+X6qOZ5HerBOZfEjZ/8tC31Dg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-02-18T20:27:17Z"
-    mac: ENC[AES256_GCM,data:j2lC9mBv5Y4/Ki9jccQ0wIVzZGP2+wuS4MREstK4wFduv4pM7nCIPGGbZm1qGr+jYrUEM8IvM3aEf+yXg/YgUZT26CNP+6WCjnNi4MYWr6+jYD5caOHT1Afz5A6Hi/HEcQohabU9G1Xor2HKkpt0vzOPI2MmhGbVn4Iq2yVIht0=,iv:W5WhYHd15KjlbEVFeiw4IoTjKfklVPMh22tvo7Fekvo=,tag:T27WXhZdcHVADhBcDqKP6w==,type:str]
+    lastmodified: "2026-02-21T15:05:41Z"
+    mac: ENC[AES256_GCM,data:LNd0VfC1EtISBSE4YVjQXnNehdyW1I4VE3229IDa+Fl4tM/zWH2G26CCzEC0LJUxL17MicjtSpDo2wMbfK+MnhU00YlCZCe6IDiE1cnRp22LA7q9rI9Lr/4xzNKwLEvp8mmz3GwkbKwHlb6odg70e63hh5b7c845sRtKxT15FgU=,iv:dXwKWagZ4PhfqOaajBS0FOB94JjHos8zpuHhqNBcyxU=,tag:t8MSpYnCWf6VMzkqYsQmXg==,type:str]
     encrypted_regex: ^(dotfiles_auth_home|dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets|dotfiles_zsh_extra_aliases)$
     version: 3.11.0

@@ -88,7 +88,7 @@ if [[ ! -d "$RSD_REPO_DIR" ]]; then
   echo "📥 Cloning ready-set-develop into: $RSD_REPO_DIR"
   git clone "$RSD_REPO_URL" "$RSD_REPO_DIR"
 else
-  echo "📂 Repository already exists: $RSD_REPO_DIR, cloning..."
+  echo "📂 Repository already exists: $RSD_REPO_DIR, pulling latest..."
   git -C "$RSD_REPO_DIR" pull
 fi
 
@@ -102,6 +102,23 @@ if [[ -n "${RSD_REPO_VERSION:-}" ]]; then
   git fetch --all
   git checkout "$RSD_REPO_VERSION"
 fi
+
+# -----------------------------
+# 6.1 Show last commit info
+# -----------------------------
+last_commit_hash=$(git -C "$RSD_REPO_DIR" log -1 --pretty=format:%H)
+last_commit_message=$(git -C "$RSD_REPO_DIR" log -1 --pretty=format:%s)
+last_commit_date=$(git -C "$RSD_REPO_DIR" log -1 --pretty=format:%ad --date=iso)
+
+repo_web_url=${RSD_REPO_URL%.git}
+repo_web_url=${repo_web_url#git@github.com:}
+repo_web_url=${repo_web_url#https://github.com/}
+repo_web_url="https://github.com/$repo_web_url"
+
+echo "🧾 Last commit: $last_commit_hash"
+echo "🔗 $repo_web_url/commit/$last_commit_hash"
+echo "🗨  $last_commit_message"
+echo "🕒 $last_commit_date"
 
 # -----------------------------
 # 7. SOPS file (inside repo)
