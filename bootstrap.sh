@@ -18,7 +18,9 @@ export PATH="$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$PATH"
 RSD_SOPS_FILE="${RSD_SOPS_FILE:-}"
 
 echo
+echo "========================================"
 echo "🚀 Ready, Set, Develop — bootstrap"
+echo "========================================"
 echo
 
 # -----------------------------
@@ -28,6 +30,7 @@ if [[ "$(uname -s)" != "Darwin" ]]; then
   echo "❌ This bootstrap script is intended for macOS only."
   exit 1
 fi
+echo "----------------------------------------"
 
 # -----------------------------
 # 2. Command Line Tools
@@ -41,6 +44,7 @@ if ! xcode-select -p >/dev/null 2>&1; then
 else
   echo "✅ Command Line Tools installed"
 fi
+echo "----------------------------------------"
 
 # -----------------------------
 # 3. SOPS check
@@ -58,12 +62,14 @@ if [[ ! -f "$SOPS_AGE_KEY_FILE" ]]; then
 fi
 
 echo "🔐 SOPS AGE key detected"
+echo "----------------------------------------"
 
 # -----------------------------
 # 4. Ensure directories exist
 # -----------------------------
 echo "📁 Ensuring directories exist"
 mkdir -p "$XDG_DATA_HOME" "$RSD_ANSIBLE_HOME"
+echo "----------------------------------------"
 
 # -----------------------------
 # 5. Install Ansible (user)
@@ -75,6 +81,7 @@ if ! command -v ansible >/dev/null 2>&1; then
 else
   echo "✅ Ansible already installed"
 fi
+echo "----------------------------------------"
 
 # -----------------------------
 # 6. Clone repository
@@ -102,6 +109,7 @@ if [[ -n "${RSD_REPO_VERSION:-}" ]]; then
   git fetch --all
   git checkout "$RSD_REPO_VERSION"
 fi
+echo "----------------------------------------"
 
 # -----------------------------
 # 6.1 Show last commit info
@@ -116,9 +124,10 @@ repo_web_url=${repo_web_url#https://github.com/}
 repo_web_url="https://github.com/$repo_web_url"
 
 echo "🧾 Last commit: $last_commit_hash"
-echo "🔗 $repo_web_url/commit/$last_commit_hash"
-echo "🗨  $last_commit_message"
-echo "🕒 $last_commit_date"
+echo "  🔗 $repo_web_url/commit/$last_commit_hash"
+echo "  🗨  $last_commit_message"
+echo "  🕒 $last_commit_date"
+echo "----------------------------------------"
 
 # -----------------------------
 # 7. SOPS file (inside repo)
@@ -136,6 +145,7 @@ fi
 # -----------------------------
 echo "📚 Installing Ansible Galaxy requirements"
 ansible-galaxy install -r requirements.yml
+echo "----------------------------------------"
 
 # -----------------------------
 # 9. Run playbook
@@ -156,5 +166,7 @@ fi
 eval "$ANSIBLE_CMD"
 
 echo
+echo "========================================"
 echo "🎉 Ready, Set, Develop completed successfully"
 echo "You may want to restart your terminal or log out/in"
+echo "========================================"
