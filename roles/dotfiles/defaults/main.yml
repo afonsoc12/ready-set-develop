@@ -3,9 +3,30 @@ dotfiles_dir: "{{ playbook_dir }}/dotfiles"
 # dotfiles_secrets_src:
 dotfiles_secrets_dest: "{{ ansible_env.HOME }}"
 dotfiles_use_links: true
+dotfiles_exclude: []
+# - agents
 
 dotfiles_links_vscode_settings_dir: "{{ lookup('env', 'HOME') }}/Library/Application Support/Code/User"
 dotfiles_auth_home: "{{ lookup('env', 'HOME') }}/.secrets"
+
+dotfiles_folder_links:
+  - name: vscode
+    dotfiles_pattern: '(^|/)vscode(/|$)'
+    dest_dir: "{{ dotfiles_links_vscode_settings_dir }}"
+    dest_preserve_path: false
+  - name: gnupg
+    dotfiles_pattern: '(^|/)gnupg(/|$)'
+    dest_dir: "{{ dotfiles_auth_home }}"
+    dest_preserve_path: true
+  - name: keepassxc
+    dotfiles_pattern: '(^|/)keepassxc(/|$)'
+    dest_dir: "{{ ansible_env.HOME }}/Library/Application Support/KeePassXC"
+    dest_preserve_path: false
+  - name: smb
+    dotfiles_pattern: '(^|/)smb(/|$)'
+    dest_dir: "/etc"
+    dest_preserve_path: false
+    become: true
 
 dotfiles_zsh_extra_aliases: {}
 

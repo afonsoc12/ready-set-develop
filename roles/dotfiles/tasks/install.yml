@@ -15,13 +15,37 @@
   register: dotfiles_found
   changed_when: false
 
+- name: Check dotfiles ignored by git  # noqa: command-instead-of-module
+  command: git -C "{{ playbook_dir }}" check-ignore "{{ item.path }}"
+  loop: "{{ dotfiles_found.files }}"
+  loop_control: { label: "{{ item.path }}" }
+  register: dotfiles_gitignore_checks
+  changed_when: false
+  failed_when: false
+
+- name: Exclude gitignored files from dotfiles
+  set_fact:
+    dotfiles_found:
+      files: "{{ dotfiles_gitignore_checks.results | rejectattr('rc', 'equalto', 0) | map(attribute='item') | list }}"
+
+- name: Exclude configured folders from dotfiles
+  set_fact:
+    dotfiles_found:
+      files: "{{ dotfiles_found.files | rejectattr('path', 'search', dotfiles_exclude_pattern) | list }}"
+  vars:
+    dotfiles_exclude_pattern: "/({{ dotfiles_exclude | map('regex_escape') | join('|') }})/"
+
 - name: Find template files (.j2)
   set_fact:
     dotfiles_templates: "{{ dotfiles_found.files | selectattr('path', 'search', '\\.j2$') | list }}"
 
+- name: Find encrypted dotfiles (.sops)
+  set_fact:
+    dotfiles_encrypted: "{{ dotfiles_found.files | selectattr('path', 'search', '\\.sops\\.') | list }}"
+
 - name: Find non-template files
   set_fact:
-    dotfiles_files: "{{ dotfiles_found.files | rejectattr('path', 'search', '\\.j2$') | list }}"
+    dotfiles_files: "{{ dotfiles_found.files | difference(dotfiles_templates) | difference(dotfiles_encrypted) | list }}"
 
 - name: Create parent directories for dotfiles in XDG_CONFIG_HOME
   file:
@@ -72,6 +96,27 @@
       }}
     mode: "0644"
   loop: "{{ dotfiles_templates }}"
+  loop_control: { label: "{{ item.path }}" }
+
+- name: Copy decrypted SOPS dotfiles
+  copy:
+    dest: >-
+      {{
+        XDG_BASE_DIRS.XDG_CONFIG_HOME ~ '/' ~
+        (
+          item.path
+          | dirname
+          | regex_replace('^' + dotfiles_dir + '/', '')
+        ) ~ '/' ~
+        (
+          item.path
+          | basename
+          | replace('.sops.', '.')
+        )
+      }}
+    content: "{{ lookup('community.sops.sops', item.path) }}"
+    mode: "0600"
+  loop: "{{ dotfiles_encrypted }}"
   loop_control: { label: "{{ item.path }}" }
 
 - name: Create /etc/zshenv entrypoint

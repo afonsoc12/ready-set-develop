@@ -1,5 +1,4 @@
 ---
-macos_config_files: []
 macos_ini_properties: []
 macos_hosts: []
 # - {ip: 127.0.0.1, hosts: tst.com}

@@ -1,0 +1,45 @@
+---
+- name: Ensure destination directory exists ({{ dotfiles_folder_link.name }})
+  file:
+    path: "{{ dotfiles_folder_link.dest_dir }}"
+    state: directory
+    mode: "0755"
+
+- name: Ensure parent directories exist ({{ dotfiles_folder_link.name }})
+  file:
+    path: >-
+      {{
+        dotfiles_folder_link.dest_dir ~ '/' ~
+        (
+          (
+            item.path
+            | regex_replace('^' + dotfiles_dir + '/', '')
+          )
+          | dirname
+        )
+      }}
+    state: directory
+    mode: "0755"
+  loop: "{{ dotfiles_found.files | selectattr('path', 'search', dotfiles_folder_link.dotfiles_pattern) | list }}"
+  loop_control:
+    label: "{{ item.path }}"
+  when: dotfiles_folder_link.dest_preserve_path | default(false)
+
+- name: Symlink config files ({{ dotfiles_folder_link.name }})
+  become: "{{ dotfiles_folder_link.become | default(false) }}"
+  file:
+    src: "{{ XDG_BASE_DIRS.XDG_CONFIG_HOME ~ '/' ~ (item.path | regex_replace('^' + dotfiles_dir + '/', '')) }}"
+    dest: >-
+      {{
+        dotfiles_folder_link.dest_dir ~ '/' ~
+        (
+          (item.path | regex_replace('^' + dotfiles_dir + '/', ''))
+          if (dotfiles_folder_link.dest_preserve_path | default(false))
+          else (item.path | basename)
+        )
+      }}
+    state: link
+    force: true
+  loop: "{{ dotfiles_found.files | selectattr('path', 'search', dotfiles_folder_link.dotfiles_pattern) | list }}"
+  loop_control:
+    label: "{{ item.path | basename }}"

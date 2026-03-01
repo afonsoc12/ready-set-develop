@@ -32,6 +32,5 @@
   "workbench.colorTheme": "JetBrains Darcula Theme",
   "workbench.iconTheme": "vscode-icons",
   "workbench.tree.indent": 16,
-  "github.copilot.nextEditSuggestions.enabled": true,
-  "window.zoomLevel": 1
+  "github.copilot.nextEditSuggestions.enabled": true
 }
