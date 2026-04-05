@@ -95,6 +95,8 @@ homebrew_cask_apps:
     - arduino
     - balenaetcher
     - bruno
+    - claude
+    - claude-code
     - cyberduck
     - datagrip
     - docker-desktop
@@ -179,6 +181,8 @@ python_uv_versions: []
 python_uv_tools:
     - ansible
     - black
+    - ruff
+    - mypy
     - pre-commit
     - firefly-cli
     - isort
@@ -383,6 +387,7 @@ macos_add_adobe_hosts: true
 # ==================================================
 ide_vscode_extensions:
     - anan.jetbrains-darcula-theme
+    - anthropic.claude-code
     - github.copilot
     - github.copilot-chat
     - github.vscode-github-actions
@@ -405,7 +410,7 @@ sops:
             N0lKZUZOREJLbmpHVEMwNVVGNUVWeWMK8HmAHGKygTLVsvCa3cAfto+jlKifKjB8
             9pwg+7MuEc6A76e1cnURmE6ZPgyp5+X6qOZ5HerBOZfEjZ/8tC31Dg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-03-01T15:54:41Z"
-    mac: ENC[AES256_GCM,data:sobx+gAK5YaPDWo133TYAS1zvdO7z48r/muS3+z0mffKBHxw3taO1iej9qM02QHxynPV6GXWx2KyBDmHjvqJQhbGBtpxNUj0C8MbNZA2OaTsroDvtxsE0lKuNrUUucYq6TsQ5Keqe9XT/ol3nfPVQ8xsCSc8ajAxPZmSAo4pOXY=,iv:5GfrZ+mwNS+m1LUoHoUSuJfAvuMR1w2vGKT2tl50B/M=,tag:VxfgJAYbJz/56SwQD0TFog==,type:str]
+    lastmodified: "2026-04-05T11:41:22Z"
+    mac: ENC[AES256_GCM,data:3THK+PHTc2p/V0aZqMg791r0nCAW54sgZY4bFgLyk6kIQDOswQvvboEoxFOreGGe73Jj2QuU2vUoW4k5Sp82HaNd0x/a3pkvvxt/JSOTnZPIyllMLxuVQYocSXtD4tzivJnE3t+8pNrRAkdwX/T37oA69gBdrfDmQVQyAXI14LQ=,iv:HUaKLlLPOKUf+DPWGAhxB684VZBxFXICwxA4fnYnkiU=,tag:rVMKfKXEbJ/EOqi7DMu04g==,type:str]
     encrypted_regex: ^(dotfiles_auth_home|dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets|dotfiles_zsh_extra_aliases)$
-    version: 3.12.1
+    version: 3.12.2
