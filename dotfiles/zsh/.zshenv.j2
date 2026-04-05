@@ -52,11 +52,10 @@ export OCI_CLI_CONFIG_FILE="{{ dotfiles_auth_home }}/oci/config"
 # ─────────── Postgres ───────────
 export PSQL_HISTORY="$XDG_DATA_HOME/psql_history"
 
-{%- if 'claude-code' in homebrew_cask_apps %}
+{% if 'claude-code' in homebrew_cask_apps -%}
 # ─────────── Claude Code ───────────
 export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
 export CLAUDE_AUTOCOMPACT_PCT_OVERRIDE=90
 export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
-export DISABLE_AUTOUPDATER=1
 export USE_BUILTIN_RIPGREP=0
-{%- endif %}
+{% endif %}
