@@ -181,4 +181,4 @@ ansible-playbook main.yml --syntax-check
 
 **Copyright © 2023–2026 [Afonso Costa](https://github.com/afonsoc12)**
 
-Licensed under the Apache License 2.0. See the [LICENSE](./LICENSE) file for details.
+Licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.

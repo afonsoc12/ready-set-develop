@@ -12,6 +12,10 @@ repos:
       - id: double-quote-string-fixer
       - id: name-tests-test
       - id: requirements-txt-fixer
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.1
+    hooks:
+      - id: gitleaks
   - repo: local
     hooks:
       - id: yamllint

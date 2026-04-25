@@ -39,5 +39,12 @@ jobs:
       - name: Ansible lint
         run: ansible-lint
 
+      - name: Gitleaks secret scan
+        uses: gitleaks/gitleaks-action@v2
+        with:
+          config-path: .gitleaks.toml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Check playbook syntax
         run: ansible-playbook main.yml --syntax-check

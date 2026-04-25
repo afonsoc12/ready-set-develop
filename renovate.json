@@ -1,6 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
-  ]
+    "config:recommended",
+    "python:3.14"
+  ],
+  "rangeStrategy": "pin",
+  "ansible": {
+    "enabled": true
+  }
 }
