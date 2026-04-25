@@ -8,16 +8,16 @@
 # ==================================================
 # Role: dotfiles
 # ==================================================
-dotfiles_auth_home: ENC[AES256_GCM,data:gNAWHvT1zeUMuuo=,iv:z1jqWZvWDHVMfIh2BbP6Y/gAtHzYnCiCSoPc90KyC/8=,tag:MxDdKDGdCbVhL5TW3DrVWQ==,type:str]
-dotfiles_secrets_src: ENC[AES256_GCM,data:vtX/lMsY60sfI7jrHyZfVqbs2CqNruqAJA==,iv:+smlIS85zVXutL2BpObPaFhUfudNZRmzQ/NsSXMmgog=,tag:1NYiSDBg3Y0ghJwGI6NeEw==,type:str]
+dotfiles_auth_home: ENC[AES256_GCM,data:MtLezr3yaZTbT+k=,iv:FXv/+78H99B3NED8ZeDEOgLlTWaM/8TWBeep02/Wuyo=,tag:KFsDBlxq17ufXLl/nkVqHg==,type:str]
+dotfiles_secrets_src: ENC[AES256_GCM,data:/RyJDpnH2caeA6LZMETAE+P7yxP9pcUQPA==,iv:Mtyy8OTGHZ2XHsDJkDNSaMjoE8lInqOU4gWUBud5/6Q=,tag:W5zIma3C5tdcFfhMuVszFA==,type:str]
 dotfiles_secrets:
     git:
-        email: ENC[AES256_GCM,data:WmXwb8SY1IYV5vMHGeGCi//mR0o0p2yoXxedTgbZEffjW/WQCzhdPWfhnQ==,iv:SHh0SR6GRnyDwsgZvF7RM0Be02R0JEw6ICt1y+tqX6w=,tag:tsml8v6vDxoYXnXqyF04Ng==,type:str]
-        signing_key: ENC[AES256_GCM,data:kHRViPPdMTQcDcPmKbFjFA==,iv:OKG4jfgHoWuokWAVxPmH7+gCM6eh3IjsZeFXke7jFF0=,tag:e2APhNh0/P8PM9YOwLp2CQ==,type:str]
+        email: ENC[AES256_GCM,data:RS5eaz6CPlsDfm/QW4KoPNl8OfuJewYEljaMU0Tabpl83R4D8EmkeyY6Mg==,iv:mCBY0QOAr08Nm1OOvvdxtZA6aeAS4toM5C4aZnc+Kvg=,tag:xf/WOD/fRXFgkR+eajRk5A==,type:str]
+        signing_key: ENC[AES256_GCM,data:8RNtWuJmPjLpA1613xIYsw==,iv:7pWIQkNodksfo22VTDVssBRJbz8XMi3ayH5SlZMI3vs=,tag:deQ5akxyk9Y1qiebybYzyA==,type:str]
 dotfiles_zsh_extra_aliases:
-    cdgit: ENC[AES256_GCM,data:oMsDlCRc5pDK0oGIMJhqFEWuLlMpNV+RCETVBe0=,iv:eTfssfQBa/jdW+SDBf+CD1059Lnqj/PK3eVmRvyodDc=,tag:BoUHtzjIOuSVJVO8mmh82A==,type:str]
-    cdmega: ENC[AES256_GCM,data:vXVDd38WrXXU,iv:wJco8paymiUUatkyMM4M9sjWr5o7YBoX7clapQwNa+Y=,tag:vy40HOpaW99xw4/ehew6Tg==,type:str]
-    rsd: ENC[AES256_GCM,data:Btzb7kBws8FcUm3fhdqH0nDJDVnuyeABjnrZZOvPQiurXHA7ur+Gxcw5RV7E8B24K+VLi8PrEqRswwi9EcO/EX7e7uNj6WVdn6J+BkIaHJ5KNTgUR8XnB0rwm0pJflWYkSSEgUZ5QESlhEOFzQCB4cIJr7TD/ounYp+c/yf8Dh+3LfyuAR/zjMZlKyzui7LtLDaoNS2qbXU3z8wN8apa7aIAksecmZzvxpNXQ7fYpV+KUL7GfUf6BxWMgniCCb77GDzaBmlZp1iJYJ2zmkYi2FC09FtGmlJjGuHy5XCv5xzH0NNErKchcM47UO/RV7o+sy0=,iv:hvBopFb9q+7f8uhYjQ6vNclpz/WHBirp4UkH5xPohOs=,tag:4B7wfNm11waA16/myFC4KA==,type:str]
+    cdgit: ENC[AES256_GCM,data:AquENrEZVyd32kqQsqF4n5jvNudYTObi+J4CTGM=,iv:oCQ1txvh3QugWpocGn0PACemuS6fuL+7+/B9GdArqos=,tag:PwLO0/b020Nle09foIiv0g==,type:str]
+    cdmega: ENC[AES256_GCM,data:52EYoDxy9S60,iv:vW7Wg95I0bA75ROMlQejaUc5SW8URzCOKQEp5D/7C10=,tag:Na2jJr7CeUN3/IDCcWeIwA==,type:str]
+    rsd: ENC[AES256_GCM,data:8Nt5TAPQ/yI7GxJBFLMZb3HdJiWUaTr1P2CbagPLh/iaP/0nl8/eUl1uZ1R/p5mEZgL9kmeAT5xTy3scl/8rdK6bgKCUxViVndf576Rp+4kJ7uOWMtMmCGrCAS8OuvBSdl8rY8RGGethiHeDFTKL21sAQlIi/2ffif/bzFErFEk8/ledZKaGAWNUNtaSjdxbcI17jiibHazGwZrKkJiYfqsJOlRKP9cIB4g6n3cAcU8i95OLqxuDkqxqG7DC2s6ffBldNztsXAhjpJ7jgmwWyZtxBtiGirItw4sr04knRRmNm3wvSPBspSjlLTkdT3ErlXE=,iv:YQ8Rby1I+LfY78ghc0xjaROpWUN+Dha5ilWqd6Yyyrw=,tag:9vlsN9BbXtkb5vfpkf7+cw==,type:str]
 dotfiles_exclude:
     - agents
 # ==================================================
@@ -405,13 +405,14 @@ sops:
         - recipient: age1n2g0g2z9jdgnqx826e8d0d78y8z0lc7ngdadm3jw9gzpxj2nf5rs0hm6p6
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBsSTc1Uit2UjBaNWVZNVpi
-            M1FzZHl0NlN1cWhkWUxLTlBTZm9ib0QveUJNCmM0T1RDUnp6RHhUT1ZGR3BaYVdq
-            RXBMNjFFK2VNVUVrVmNiQThBRzdDV1EKLS0tIFhiekNCQUhvV3NKNFQ4ODBzU2F1
-            N0lKZUZOREJLbmpHVEMwNVVGNUVWeWMK8HmAHGKygTLVsvCa3cAfto+jlKifKjB8
-            9pwg+7MuEc6A76e1cnURmE6ZPgyp5+X6qOZ5HerBOZfEjZ/8tC31Dg==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBQSG5wbDBEWXdVRHg5bm1N
+            WHd4dHVrWUFzMnBNQ3Nzam9rWUdyQ0xVOUJJCjNTWmFXZG5PMFFTVzhza1NDYTZw
+            NW56MVFGekRJRjhRRHJMSnlxTy9CWG8KLS0tIHIzVWkrLzFVbENzTENqZGdadjJm
+            U3NMVW5sUUZZb3BCWlZoRGhQSkpDb1kKexQz9A+2Ti9VrfQCn8hqSVpcLimqy3L5
+            7nQ7dCQhXXLQwYDPo+ziXzdE60L+/yBPFbij1yE2HsK3TOJEy2qnFg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-04-25T12:09:08Z"
-    mac: ENC[AES256_GCM,data:qvOu9cnzZxEN7z2FDlwVwy3CnxW5NtBsWooNnUeEM8GL/ssxoRDiL2hcsdQpfTF3Kwo3i70GYNz0BIq1x5QcxcPgY7MTvCbKPoyREE4F5p7zKvVZQ6LoPmO17wiI4YIUGXNLmnBr0r9mAH+1hynOSGl8/Qo6RANGZrX3rcJiz+o=,iv:naVUlK76Il1Zg2GxNsF8NA5bXnSuF8ZTBc4S0sJjLg8=,tag:KqM1MbOepcRLUaEEXmnqXg==,type:str]
+    lastmodified: "2026-04-25T12:14:36Z"
+    mac: ENC[AES256_GCM,data:r5PeH1RY3TpRAlk24VTbiJhqiQ53hC67ufzQE83BMjx8gheSPuGlPQq+6bbbLSAz9ZHUBXxksVYY5Us/F6mX+dnYG2MpsbcuVEHwL21/Hc4eEV6Zd5Wjia2zPkmuWg8PpOUC1ttjQEbJbebOJPzGCn4cHuV7h3nf9t4od+cOibs=,iv:14PjXVi/3qUU0uHfmIkZIhFRUnTKhg+9zJb0xVSeLIs=,tag:KMXFLeum8uTT3gxH4aiIvQ==,type:str]
     encrypted_regex: ^(dotfiles_auth_home|dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets|dotfiles_zsh_extra_aliases)$
+    mac_only_encrypted: true
     version: 3.12.2
