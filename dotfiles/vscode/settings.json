@@ -32,5 +32,8 @@
   "workbench.colorTheme": "JetBrains Darcula Theme",
   "workbench.iconTheme": "vscode-icons",
   "workbench.tree.indent": 16,
-  "github.copilot.nextEditSuggestions.enabled": true
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "claudeCode.preferredLocation": "panel",
+  "sops.defaults.macOnlyEncrypted": true,
+  "chat.viewSessions.orientation": "stacked"
 }

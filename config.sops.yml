@@ -182,6 +182,7 @@ python_uv_tools:
     - ansible
     - black
     - ruff
+    - flake8
     - mypy
     - pre-commit
     - firefly-cli
@@ -410,7 +411,7 @@ sops:
             N0lKZUZOREJLbmpHVEMwNVVGNUVWeWMK8HmAHGKygTLVsvCa3cAfto+jlKifKjB8
             9pwg+7MuEc6A76e1cnURmE6ZPgyp5+X6qOZ5HerBOZfEjZ/8tC31Dg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-04-05T11:41:22Z"
-    mac: ENC[AES256_GCM,data:3THK+PHTc2p/V0aZqMg791r0nCAW54sgZY4bFgLyk6kIQDOswQvvboEoxFOreGGe73Jj2QuU2vUoW4k5Sp82HaNd0x/a3pkvvxt/JSOTnZPIyllMLxuVQYocSXtD4tzivJnE3t+8pNrRAkdwX/T37oA69gBdrfDmQVQyAXI14LQ=,iv:HUaKLlLPOKUf+DPWGAhxB684VZBxFXICwxA4fnYnkiU=,tag:rVMKfKXEbJ/EOqi7DMu04g==,type:str]
+    lastmodified: "2026-04-25T12:09:08Z"
+    mac: ENC[AES256_GCM,data:qvOu9cnzZxEN7z2FDlwVwy3CnxW5NtBsWooNnUeEM8GL/ssxoRDiL2hcsdQpfTF3Kwo3i70GYNz0BIq1x5QcxcPgY7MTvCbKPoyREE4F5p7zKvVZQ6LoPmO17wiI4YIUGXNLmnBr0r9mAH+1hynOSGl8/Qo6RANGZrX3rcJiz+o=,iv:naVUlK76Il1Zg2GxNsF8NA5bXnSuF8ZTBc4S0sJjLg8=,tag:KqM1MbOepcRLUaEEXmnqXg==,type:str]
     encrypted_regex: ^(dotfiles_auth_home|dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets|dotfiles_zsh_extra_aliases)$
     version: 3.12.2

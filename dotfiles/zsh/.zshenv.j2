@@ -24,12 +24,12 @@ export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export EDITOR="nano"
 export LESSHISTFILE="$XDG_STATE_HOME/less/history"
 
-# ─────────── uv ───────────
+# ─────────── Python ───────────
 export UV_NATIVE_TLS=true
 export UV_VENV_SEED=true
-
-# ─────────── Pyenv ───────────
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
+export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 
 # ─────────── GPG ───────────
 export GPG_TTY=$(tty)
@@ -51,6 +51,14 @@ export OCI_CLI_CONFIG_FILE="{{ dotfiles_auth_home }}/oci/config"
 
 # ─────────── Postgres ───────────
 export PSQL_HISTORY="$XDG_DATA_HOME/psql_history"
+
+
+
+# ─────────── Rust ───────────
+export RUSTUP_HOME="$XDG_DATA_HOME/rustupca"
+
+# ─────────── npm ───────────
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
 {% if 'claude-code' in homebrew_cask_apps -%}
 # ─────────── Claude Code ───────────
