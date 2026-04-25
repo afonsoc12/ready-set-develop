@@ -1,4 +1,4 @@
-name: Lint
+name: "🔍 CI"
 
 on: # yamllint disable-line rule:truthy
   workflow_dispatch:
@@ -11,40 +11,40 @@ on: # yamllint disable-line rule:truthy
 
 jobs:
   lint:
-    name: Lint & Syntax Checks
+    name: "🔍 Lint"
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: "📥 Checkout"
         uses: actions/checkout@v6
 
-      - name: Set up Python # Leverage caching
+      - name: "🐍 Setup Python"
         uses: actions/setup-python@v6
         with:
           python-version-file: .python-version
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@v7
+      - name: "⚡ Setup uv"
+        uses: astral-sh/setup-uv@v8.1.0
         with:
           activate-environment: true
 
-      - name: Sync dependencies
+      - name: "📦 Install dependencies"
         run: uv sync --dev
 
-      - name: Install Ansible Galaxy collections
+      - name: "📦 Install Ansible Galaxy collections"
         run: ansible-galaxy install -r requirements.yml
 
-      - name: YAML lint
+      - name: "🔍 Run yamllint"
         run: yamllint .
 
-      - name: Ansible lint
+      - name: "🔍 Run ansible-lint"
         run: ansible-lint
 
-      - name: Gitleaks secret scan
+      - name: "🔑 Run Gitleaks"
         uses: gitleaks/gitleaks-action@v2
         with:
           config-path: .gitleaks.toml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check playbook syntax
+      - name: "📜 Check playbook syntax"
         run: ansible-playbook main.yml --syntax-check
