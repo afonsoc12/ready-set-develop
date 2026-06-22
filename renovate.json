@@ -5,6 +5,26 @@
   ],
   "labels": ["renovate"],
   "rangeStrategy": "pin",
+  "packageRules": [
+    {
+      "description": "Bundle Ansible collection updates in a single PR",
+      "matchManagers": ["ansible-galaxy"],
+      "groupName": "ansible collections",
+      "separateMajorMinor": false
+    },
+    {
+      "description": "Bundle uv/Python dependency updates in a single PR",
+      "matchManagers": ["uv", "pep621"],
+      "groupName": "uv dependencies",
+      "separateMajorMinor": false
+    },
+    {
+      "description": "Bundle GitHub Actions updates in a single PR",
+      "matchManagers": ["github-actions"],
+      "groupName": "github actions",
+      "separateMajorMinor": false
+    }
+  ],
   "ansible": {
     "enabled": true
   }
