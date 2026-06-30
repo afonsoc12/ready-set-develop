@@ -20,6 +20,34 @@
         apply: { tags: [always] }
       when: sops_file is defined
       tags: [always]
+    # Rm after tap trust is supported: https://github.com/geerlingguy/ansible-collection-mac/issues/127
+    - name: Resolve Homebrew executable path
+      set_fact:
+        homebrew_brew_cmd: "{{ (ansible_facts.machine == 'arm64') | ternary('/opt/homebrew/bin/brew', '/usr/local/bin/brew') }}"
+      tags: [brew]
+    - name: Check if Homebrew is already installed
+      stat:
+        path: "{{ homebrew_brew_cmd }}"
+      register: homebrew_brew_cmd_stat
+      tags: [brew]
+    - name: Ensure configured taps are tapped before trust
+      homebrew_tap:
+        tap: "{{ item.name | default(item) }}"
+        url: "{{ item.url | default(omit) }}"
+        state: present
+      loop: "{{ homebrew_taps | default([]) }}"
+      when:
+        - homebrew_brew_cmd_stat.stat.exists
+        - (homebrew_taps | default([])) | length > 0
+      tags: [brew]
+    - name: Trust configured taps before formula install
+      command: "{{ homebrew_brew_cmd }} trust {{ item.name | default(item) }}"
+      loop: "{{ homebrew_taps | default([]) }}"
+      changed_when: false
+      when:
+        - homebrew_brew_cmd_stat.stat.exists
+        - (homebrew_taps | default([])) | length > 0
+      tags: [brew]
 
   roles:
     - { role: elliotweiser.osx-command-line-tools, tags: [install] }

@@ -15,9 +15,9 @@ dotfiles_secrets:
         email: ENC[AES256_GCM,data:RS5eaz6CPlsDfm/QW4KoPNl8OfuJewYEljaMU0Tabpl83R4D8EmkeyY6Mg==,iv:mCBY0QOAr08Nm1OOvvdxtZA6aeAS4toM5C4aZnc+Kvg=,tag:xf/WOD/fRXFgkR+eajRk5A==,type:str]
         signing_key: ENC[AES256_GCM,data:8RNtWuJmPjLpA1613xIYsw==,iv:7pWIQkNodksfo22VTDVssBRJbz8XMi3ayH5SlZMI3vs=,tag:deQ5akxyk9Y1qiebybYzyA==,type:str]
 dotfiles_zsh_extra_aliases:
-    cdgit: ENC[AES256_GCM,data:AquENrEZVyd32kqQsqF4n5jvNudYTObi+J4CTGM=,iv:oCQ1txvh3QugWpocGn0PACemuS6fuL+7+/B9GdArqos=,tag:PwLO0/b020Nle09foIiv0g==,type:str]
-    cdmega: ENC[AES256_GCM,data:52EYoDxy9S60,iv:vW7Wg95I0bA75ROMlQejaUc5SW8URzCOKQEp5D/7C10=,tag:Na2jJr7CeUN3/IDCcWeIwA==,type:str]
-    rsd: ENC[AES256_GCM,data:8Nt5TAPQ/yI7GxJBFLMZb3HdJiWUaTr1P2CbagPLh/iaP/0nl8/eUl1uZ1R/p5mEZgL9kmeAT5xTy3scl/8rdK6bgKCUxViVndf576Rp+4kJ7uOWMtMmCGrCAS8OuvBSdl8rY8RGGethiHeDFTKL21sAQlIi/2ffif/bzFErFEk8/ledZKaGAWNUNtaSjdxbcI17jiibHazGwZrKkJiYfqsJOlRKP9cIB4g6n3cAcU8i95OLqxuDkqxqG7DC2s6ffBldNztsXAhjpJ7jgmwWyZtxBtiGirItw4sr04knRRmNm3wvSPBspSjlLTkdT3ErlXE=,iv:YQ8Rby1I+LfY78ghc0xjaROpWUN+Dha5ilWqd6Yyyrw=,tag:9vlsN9BbXtkb5vfpkf7+cw==,type:str]
+    cdgit: ENC[AES256_GCM,data:Dv9guIv4/6BqWNyQIRFINeVhXnzUT01xY23DkFS4,iv:fMUfjNVILsQReeMtnmCaR0Z/Xso5MGnPnPiEGJ2wCe0=,tag:8oF1HPeaLrWkxQMqHfWJ9Q==,type:str]
+    cddrive: ENC[AES256_GCM,data:3R9pYUVZIQkiJQ==,iv:l/AqSWm3ocvVNpxpuFjoFER7YPMQvG06hgS3IJ+EMlQ=,tag:QNU90vDhc0BQKRTARKBYyg==,type:str]
+    rsd: ENC[AES256_GCM,data:IcAybHNCsr2aIQX2UdJhs/RKB/uTqOQvNMvQDzrVfdY3ZwKWkAfgM2oqtFgGRbk3J5i5qtB/TEkU94La94oCc36q08jNsmMzcmKD7fej/sTt5KMt4Uob9bSx4K/1Xon8gJ+AnlMJ18OerG1AupdpuOlWZnvUqAdg1G1yLwDQMf5suP4CSn5Ac+HQO//soFBlfI20aUcVd7bKxVa8cHPM9acot1GadigCqXk0lKPJfBM1uzF6mL8VWOljyJklqkEYD5O45vbmR3kJwYJ5bAop9m593VbNaTztE8yeLWhZeqya0Xfay8+//UA6cSOYUp/V/bwm,iv:qcJia/M1XVZGBoIC8oabyAhyyx/DJklUWkHhnJ+/Qb8=,tag:qYpeGkwFFSWxOTNgMX6tYA==,type:str]
 dotfiles_exclude:
     - agents
 # ==================================================
@@ -27,12 +27,13 @@ dotfiles_exclude:
 homebrew_upgrade_all_packages: true
 homebrew_taps:
     - cirruslabs/cli
-    - derailed/k9s
     - teamookla/speedtest
     - coderabbitai/tap
+    - hashicorp/tap
 homebrew_installed_packages:
     # CLI Utilities
     - bat
+    - bruno-cli
     - eza
     - fzf
     - htop
@@ -64,9 +65,10 @@ homebrew_installed_packages:
     - cmctl
     - cloudflared
     - cf-terraforming
-    - derailed/k9s/k9s
+    - k9s
     - age
     - helm
+    - helmfile
     - influxdb-cli
     - kind
     - kopia
@@ -92,11 +94,11 @@ homebrew_installed_packages:
     - yt-dlp
 homebrew_cask_apps:
     # Development / IDEs
-    - arduino
+    - arduino-ide
     - balenaetcher
     - bruno
     - claude
-    - claude-code
+    - claude-code@latest
     - cyberduck
     - datagrip
     - docker-desktop
@@ -123,7 +125,6 @@ homebrew_cask_apps:
     - keepassxc
     - kopiaui
     - logi-options-plus
-    - megasync
     - obsidian
     - openboardview
     - rectangle
@@ -402,8 +403,7 @@ ide_vscode_extensions:
     - vscode-icons-team.vscode-icons
 sops:
     age:
-        - recipient: age1n2g0g2z9jdgnqx826e8d0d78y8z0lc7ngdadm3jw9gzpxj2nf5rs0hm6p6
-          enc: |
+        - enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
             YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBQSG5wbDBEWXdVRHg5bm1N
             WHd4dHVrWUFzMnBNQ3Nzam9rWUdyQ0xVOUJJCjNTWmFXZG5PMFFTVzhza1NDYTZw
@@ -411,8 +411,9 @@ sops:
             U3NMVW5sUUZZb3BCWlZoRGhQSkpDb1kKexQz9A+2Ti9VrfQCn8hqSVpcLimqy3L5
             7nQ7dCQhXXLQwYDPo+ziXzdE60L+/yBPFbij1yE2HsK3TOJEy2qnFg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-04-25T12:14:36Z"
-    mac: ENC[AES256_GCM,data:r5PeH1RY3TpRAlk24VTbiJhqiQ53hC67ufzQE83BMjx8gheSPuGlPQq+6bbbLSAz9ZHUBXxksVYY5Us/F6mX+dnYG2MpsbcuVEHwL21/Hc4eEV6Zd5Wjia2zPkmuWg8PpOUC1ttjQEbJbebOJPzGCn4cHuV7h3nf9t4od+cOibs=,iv:14PjXVi/3qUU0uHfmIkZIhFRUnTKhg+9zJb0xVSeLIs=,tag:KMXFLeum8uTT3gxH4aiIvQ==,type:str]
+          recipient: age1n2g0g2z9jdgnqx826e8d0d78y8z0lc7ngdadm3jw9gzpxj2nf5rs0hm6p6
     encrypted_regex: ^(dotfiles_auth_home|dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets|dotfiles_zsh_extra_aliases)$
+    lastmodified: "2026-06-29T00:08:30Z"
+    mac: ENC[AES256_GCM,data:xSuQ23Fvwnsrbyyq9A7xZdGwq5nuzgR2G/Qd7mmhTO4hSU+nV0rc7zwmwNGUbOfN8bhzd7s2MCL2SRCw94SLtk6EkIhNvVwIKsaQMz5z33N1uep5IHkRIJ5g7YYcOi5kobuUjLsT6+4SKb9Ss+WoE2NbZHqcVn8UeE1Qa9dE37w=,iv:E4kka8Qm/NWb5pOVR8dtlLaDSckCHqDrw0csqc/tdp0=,tag:OylgAxssUpvq3kuNoVhvGw==,type:str]
     mac_only_encrypted: true
-    version: 3.12.2
+    version: 3.13.1
