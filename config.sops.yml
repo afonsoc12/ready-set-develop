@@ -8,16 +8,16 @@
 # ==================================================
 # Role: dotfiles
 # ==================================================
-dotfiles_auth_home: ENC[AES256_GCM,data:MtLezr3yaZTbT+k=,iv:FXv/+78H99B3NED8ZeDEOgLlTWaM/8TWBeep02/Wuyo=,tag:KFsDBlxq17ufXLl/nkVqHg==,type:str]
-dotfiles_secrets_src: ENC[AES256_GCM,data:/RyJDpnH2caeA6LZMETAE+P7yxP9pcUQPA==,iv:Mtyy8OTGHZ2XHsDJkDNSaMjoE8lInqOU4gWUBud5/6Q=,tag:W5zIma3C5tdcFfhMuVszFA==,type:str]
+dotfiles_auth_home: ENC[AES256_GCM,data:WoTYGKbmZPgOrXo=,iv:DFhbBx2BA44Lfd5wdO59SxUZkCEAg3E3ygix/ADS2eI=,tag:bAh8KGpxuqEyc6ugT990kw==,type:str]
+dotfiles_secrets_src: ENC[AES256_GCM,data:NwJm9akJwp7vqSF+Q3pwLV+BqiDutdGT5w==,iv:+mDLoVDyyWG2bPgN9gM7caCfEEG1CahC+fja9k7M784=,tag:NB8Pk8/GN6jruwd3DqUBrQ==,type:str]
 dotfiles_secrets:
     git:
-        email: ENC[AES256_GCM,data:RS5eaz6CPlsDfm/QW4KoPNl8OfuJewYEljaMU0Tabpl83R4D8EmkeyY6Mg==,iv:mCBY0QOAr08Nm1OOvvdxtZA6aeAS4toM5C4aZnc+Kvg=,tag:xf/WOD/fRXFgkR+eajRk5A==,type:str]
-        signing_key: ENC[AES256_GCM,data:8RNtWuJmPjLpA1613xIYsw==,iv:7pWIQkNodksfo22VTDVssBRJbz8XMi3ayH5SlZMI3vs=,tag:deQ5akxyk9Y1qiebybYzyA==,type:str]
+        email: ENC[AES256_GCM,data:fuwU/h30WOfzVPR92pDN+IPKp8690duAEI16pawZnPrwsTye1Aoqnvv/4A==,iv:IhoDgGPOxAt81MVjuJUWHAhZfSiCqlZPuI0VYzMK7Lw=,tag:pz3iapBqcpEEjKPx79KlWg==,type:str]
+        signing_key: ENC[AES256_GCM,data:0O4OTIH9FhSaOv1UURTieA==,iv:a2xpktayMo0LH4if7VMiRXOuWDpGyOKppSImbb3lock=,tag:annKbcd5N8dwRFPmrO733A==,type:str]
 dotfiles_zsh_extra_aliases:
-    cdgit: ENC[AES256_GCM,data:Dv9guIv4/6BqWNyQIRFINeVhXnzUT01xY23DkFS4,iv:fMUfjNVILsQReeMtnmCaR0Z/Xso5MGnPnPiEGJ2wCe0=,tag:8oF1HPeaLrWkxQMqHfWJ9Q==,type:str]
-    cddrive: ENC[AES256_GCM,data:3R9pYUVZIQkiJQ==,iv:l/AqSWm3ocvVNpxpuFjoFER7YPMQvG06hgS3IJ+EMlQ=,tag:QNU90vDhc0BQKRTARKBYyg==,type:str]
-    rsd: ENC[AES256_GCM,data:IcAybHNCsr2aIQX2UdJhs/RKB/uTqOQvNMvQDzrVfdY3ZwKWkAfgM2oqtFgGRbk3J5i5qtB/TEkU94La94oCc36q08jNsmMzcmKD7fej/sTt5KMt4Uob9bSx4K/1Xon8gJ+AnlMJ18OerG1AupdpuOlWZnvUqAdg1G1yLwDQMf5suP4CSn5Ac+HQO//soFBlfI20aUcVd7bKxVa8cHPM9acot1GadigCqXk0lKPJfBM1uzF6mL8VWOljyJklqkEYD5O45vbmR3kJwYJ5bAop9m593VbNaTztE8yeLWhZeqya0Xfay8+//UA6cSOYUp/V/bwm,iv:qcJia/M1XVZGBoIC8oabyAhyyx/DJklUWkHhnJ+/Qb8=,tag:qYpeGkwFFSWxOTNgMX6tYA==,type:str]
+    cdgit: ENC[AES256_GCM,data:KXjBNC0PuKMsxaZ6Du1T3QH1qPh9B0bCE7ZWpfqj,iv:bFaiJRk2Dc7ZpFT/Z5kD7gCD57+sxf61kl1/8raTqic=,tag:bbQY9eIVsoZtuegED4IH1A==,type:str]
+    cddrive: ENC[AES256_GCM,data:6V/9fJh+38mjDA==,iv:nQDbI/YlE/Zyv1LCdlxVr3ZW2asarS7WJrCc36Vey/8=,tag:mq/1tWO1giBB0YLxU665mQ==,type:str]
+    rsd: ENC[AES256_GCM,data:1kWxg6ugW9QoCt8LjxM8upPBMPw/hgkVBna/WPttpaEWv+jfZGqKNv8TR+1+cbaEkbpF3RfhVzpVz2vhwMJIBLqnFshfxaRvADG/IOb0hfkFantcJhhd7ysLTAreniobObyC5+DgpSa38GVeYiOaDem94/wFMNfCvJXv5yVOzYsA74HR63s2otEq0cfqHPxMsm2GO56QAVCnjoqCwtlMzZSIgkL0F/8jVYA8rw1cX8RneCUQjnNp9DKTFR5h90piqb+kUJLlOAqchqRfWMDXMeIa9WXlzFbg19LIiRuQR5jgEs2IPfq+DYhhofrjyvYbc6Xx,iv:l9YlVg6paMEbhtqBmrAtq1P3qWD+NevoR78mvWdYMfs=,tag:nXAoti1tXoTSuof1FsAJwg==,type:str]
 dotfiles_exclude:
     - agents
 # ==================================================
@@ -27,73 +27,67 @@ dotfiles_exclude:
 homebrew_upgrade_all_packages: true
 homebrew_taps:
     - cirruslabs/cli
-    - teamookla/speedtest
     - coderabbitai/tap
     - hashicorp/tap
+    - teamookla/speedtest
 homebrew_installed_packages:
-    # CLI Utilities
+    - age
+    - ansible
+    - argocd
     - bat
     - bruno-cli
+    - cf-terraforming
+    - cirruslabs/cli/cirrus
+    - cirruslabs/cli/tart
+    - cloudflared
+    - cmctl
+    - coderabbitai/tap/git-gtr
+    - etcd
+    - exiftool
     - eza
+    - ffmpeg
     - fzf
-    - htop
-    - iftop
-    - jq
-    - make
-    - node
-    - powerlevel10k
-    - ripgrep
-    - rsync
-    - tmux
-    - tree
-    - watch
-    - xdg-ninja
-    - yq
-    # Git / Version Control
     - gh
     - ghorg
     - git
-    - coderabbitai/tap/git-gtr
     - gnupg
-    - lazygit
-    - pinentry-mac
-    - sops
-    # Kubernetes / Cloud / DevOps
-    - ansible
-    - argocd
-    - cirruslabs/cli/cirrus
-    - cmctl
-    - cloudflared
-    - cf-terraforming
-    - k9s
-    - age
     - helm
     - helmfile
+    - htop
+    - iftop
     - influxdb-cli
+    - iperf3
+    - jq
+    - k9s
     - kind
     - kopia
     - ktop
     - kubectx
+    - lazygit
+    - make
+    - nmap
+    - node
     - oci-cli
+    - pinentry-mac
+    - powerlevel10k
     - rclone
+    - ripgrep
+    - rsync
+    - sops
     - sops
     - stern
-    - cirruslabs/cli/tart
-    - terraform
-    - velero
-    - etcd
-    # Network / Monitoring
-    - iperf3
-    - nmap
     - teamookla/speedtest/speedtest
     - telnet
+    - terraform
+    - tmux
+    - tree
+    - velero
     - wakeonlan
-    # Media / Download tools
-    - exiftool
-    - ffmpeg
+    - watch
+    - xdg-ninja
+    - yq
     - yt-dlp
 homebrew_cask_apps:
-    # Development / IDEs
     - arduino-ide
     - balenaetcher
     - bruno
@@ -101,40 +95,38 @@ homebrew_cask_apps:
     - claude-code@latest
     - cyberduck
     - datagrip
-    - docker-desktop
-    - iterm2
-    - lens
-    - macfuse
-    - mqtt-explorer
-    - pycharm
-    - raspberry-pi-imager
-    - tailscale-app
-    - veracrypt
-    - visual-studio-code
-    - yubico-authenticator
-    # Communication / Collaboration
     - discord
-    - obs
-    - vlc
-    - whatsapp
-    - zoom
-    # Utilities / Productivity
+    - docker-desktop
     - drawio
     - firefox
     - google-chrome
+    - iterm2
     - keepassxc
     - kopiaui
+    - lens
     - logi-options-plus
+    - macfuse
+    - mqtt-explorer
+    - obs
     - obsidian
     - openboardview
+    - pycharm
+    - raspberry-pi-imager
     - rectangle
     - sigil
     - spotify
     - surfshark
+    - tailscale-app
     - teamviewer
     - tor-browser
-    - trezor-suite
     - transmission
+    - trezor-suite
+    - veracrypt
+    - visual-studio-code
+    - vlc
+    - whatsapp
+    - yubico-authenticator
+    - zoom
 # ==================================================
 # Role: mas (prefer brew cask when possible)
 # ==================================================
@@ -182,12 +174,12 @@ python_uv_versions: []
 python_uv_tools:
     - ansible
     - black
-    - ruff
+    - firefly-cli
     - flake8
+    - isort
     - mypy
     - pre-commit
-    - firefly-cli
-    - isort
+    - ruff
     - versioneer
 # ==================================================
 # Role: java
@@ -405,15 +397,15 @@ sops:
     age:
         - enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBQSG5wbDBEWXdVRHg5bm1N
-            WHd4dHVrWUFzMnBNQ3Nzam9rWUdyQ0xVOUJJCjNTWmFXZG5PMFFTVzhza1NDYTZw
-            NW56MVFGekRJRjhRRHJMSnlxTy9CWG8KLS0tIHIzVWkrLzFVbENzTENqZGdadjJm
-            U3NMVW5sUUZZb3BCWlZoRGhQSkpDb1kKexQz9A+2Ti9VrfQCn8hqSVpcLimqy3L5
-            7nQ7dCQhXXLQwYDPo+ziXzdE60L+/yBPFbij1yE2HsK3TOJEy2qnFg==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBHcWdlcHlpZ0ZaUW5rUENM
+            TzFxaGhwT0NKQVhja0d4LzFTOEV5YW9MT1RNCnhzdFFkNkRXcGw0NmRBV3YrVmox
+            NGZCZGc5TlROd2pUYy81UGJ3Q3VYUlkKLS0tIEdRL1ovRUFxVFlzRVlOREhDOWV4
+            SnlTdzlLSzZ4bEFLQVJ4MHdsYXdtMmMKvEuV/o6iWIFCuR7sXH+WeS3otM4TIza+
+            bQmc2qA8bh2EjwhV2IdDw4hWmpjRdmEzneLVTKiaztPRpSyjfVOyNQ==
             -----END AGE ENCRYPTED FILE-----
           recipient: age1n2g0g2z9jdgnqx826e8d0d78y8z0lc7ngdadm3jw9gzpxj2nf5rs0hm6p6
     encrypted_regex: ^(dotfiles_auth_home|dotfiles_repo|dotfiles_secrets_src|dotfiles_secrets|dotfiles_zsh_extra_aliases)$
-    lastmodified: "2026-06-29T00:08:30Z"
-    mac: ENC[AES256_GCM,data:xSuQ23Fvwnsrbyyq9A7xZdGwq5nuzgR2G/Qd7mmhTO4hSU+nV0rc7zwmwNGUbOfN8bhzd7s2MCL2SRCw94SLtk6EkIhNvVwIKsaQMz5z33N1uep5IHkRIJ5g7YYcOi5kobuUjLsT6+4SKb9Ss+WoE2NbZHqcVn8UeE1Qa9dE37w=,iv:E4kka8Qm/NWb5pOVR8dtlLaDSckCHqDrw0csqc/tdp0=,tag:OylgAxssUpvq3kuNoVhvGw==,type:str]
+    lastmodified: "2026-07-02T23:27:57Z"
+    mac: ENC[AES256_GCM,data:eAjiebTDWK3SOaAFmBpDauA8k/lfBPqPbaLg7fY4DJsOx65pFyUlIC4nuA0jrjTj3LP2GzDo3qzt98E7wDsFpzI2T5EMdprJ3jBZ6GL2k/zmKwmCaTDVAlsyu6JML4izaUTAf1nwSD5ZFZ+//owaVfchWY4zYg4RBQTK20/QVnM=,iv:aFLxQ99MS7myngD0HkKh8UYYqgVHiU3U/CL7USSx6Bo=,tag:E6zfqwfIfZexTNP5rd97TA==,type:str]
     mac_only_encrypted: true
-    version: 3.13.1
+    version: 3.13.2

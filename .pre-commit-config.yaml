@@ -4,9 +4,12 @@ repos:
     rev: v6.0.0
     hooks:
       - id: trailing-whitespace
+        exclude: \.sops\.ya?ml$
       - id: end-of-file-fixer
+        exclude: \.sops\.ya?ml$
       - id: check-merge-conflict
       - id: check-yaml
+        exclude: \.sops\.ya?ml$
       - id: detect-private-key
       - id: debug-statements
       - id: double-quote-string-fixer
