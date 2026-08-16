@@ -90,6 +90,7 @@ homebrew_installed_packages:
 homebrew_cask_apps:
     - arduino-ide
     - balenaetcher
+    - bambu-studio
     - bruno
     - claude
     - claude-code@latest
