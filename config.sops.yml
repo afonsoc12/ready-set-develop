@@ -90,9 +90,12 @@ homebrew_installed_packages:
 homebrew_cask_apps:
     - arduino-ide
     - balenaetcher
+    - bambu-studio
     - bruno
+    - chatgpt
     - claude
     - claude-code@latest
+    - codex
     - cyberduck
     - datagrip
     - discord
