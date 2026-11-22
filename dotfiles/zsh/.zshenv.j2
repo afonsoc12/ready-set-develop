@@ -30,7 +30,7 @@ export LESSHISTFILE="$XDG_STATE_HOME/less/history"
 export GIT_CONFIG_NOSYSTEM=1
 
 # ─────────── Python ───────────
-export UV_NATIVE_TLS=true
+export UV_SYSTEM_CERTS=true
 export UV_VENV_SEED=true
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
@@ -70,3 +70,6 @@ export CLAUDE_AUTOCOMPACT_PCT_OVERRIDE=90
 export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 export USE_BUILTIN_RIPGREP=0
 {% endif %}
+
+# ─────────── Codex ───────────
+export CODEX_HOME="$XDG_CONFIG_HOME/codex"
