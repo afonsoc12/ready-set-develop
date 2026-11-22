@@ -62,3 +62,16 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustupca"
 
 # ─────────── npm ───────────
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+
+{% if homebrew_cask_apps | select('search', '^claude-code') | list | length > 0 -%}
+# ─────────── Claude Code ───────────
+export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
+export CLAUDE_AUTOCOMPACT_PCT_OVERRIDE=90
+export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
+export USE_BUILTIN_RIPGREP=0
+{% endif %}
+
+{% if 'codex' in homebrew_cask_apps -%}
+# ─────────── Codex ───────────
+export CODEX_HOME="$XDG_CONFIG_HOME/codex"
+{% endif %}
