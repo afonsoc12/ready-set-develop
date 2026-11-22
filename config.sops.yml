@@ -92,8 +92,10 @@ homebrew_cask_apps:
     - balenaetcher
     - bambu-studio
     - bruno
+    - chatgpt
     - claude
     - claude-code@latest
+    - codex
     - cyberduck
     - datagrip
     - discord
