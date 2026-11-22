@@ -62,13 +62,3 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustupca"
 
 # ─────────── npm ───────────
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-
-{% if homebrew_cask_apps | select('search', '^claude-code') | list | length > 0 -%}
-# ─────────── Claude Code ───────────
-# Only the config dir lives here: it tells Claude Code where settings.json is.
-# Everything else is in dotfiles/claude/settings.json.j2 under "env".
-export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
-{% endif %}
-
-# ─────────── Codex ───────────
-export CODEX_HOME="$XDG_CONFIG_HOME/codex"
