@@ -37,13 +37,5 @@
   "claudeCode.preferredLocation": "panel",
   "sops.defaults.macOnlyEncrypted": true,
   "chat.viewSessions.orientation": "stacked",
-  "scm.repositories.selectionMode": "single",
-  "yaml.disableSchemaDetection": [
-    "**/.github/workflows/*.yml",
-    "**/.github/workflows/*.yaml",
-    "**/.gitea/workflows/*.yml",
-    "**/.gitea/workflows/*.yaml",
-    "**/.forgejo/workflows/*.yml",
-    "**/.forgejo/workflows/*.yaml"
-  ]
+  "scm.repositories.selectionMode": "single"
 }
