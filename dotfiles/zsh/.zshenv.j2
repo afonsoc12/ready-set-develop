@@ -24,6 +24,11 @@ export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export EDITOR="nano"
 export LESSHISTFILE="$XDG_STATE_HOME/less/history"
 
+# ─────────── Git ───────────
+# Skip Homebrew's system gitconfig (/opt/homebrew/etc/gitconfig). Its directory is group-writable,
+# which gtr rejects. The credential helper it provided is set in dotfiles/git/config.j2.
+export GIT_CONFIG_NOSYSTEM=1
+
 # ─────────── Python ───────────
 export UV_NATIVE_TLS=true
 export UV_VENV_SEED=true
