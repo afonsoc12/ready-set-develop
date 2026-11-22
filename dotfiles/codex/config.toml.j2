@@ -1,0 +1,12 @@
+# Codex CLI config. Managed by ready-set-develop; rendered to $CODEX_HOME/config.toml.
+# Reference: https://developers.openai.com/codex/config-reference
+
+# Codex is installed by Homebrew (cask), so it should not self-update.
+check_for_update_on_startup = false
+
+# Open citations from Codex output in VS Code.
+file_opener = "vscode"
+
+[history]
+# Save session transcripts to $CODEX_HOME/history.jsonl.
+persistence = "save-all"

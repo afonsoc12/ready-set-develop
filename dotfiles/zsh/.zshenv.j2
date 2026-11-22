@@ -63,12 +63,21 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustupca"
 # ─────────── npm ───────────
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
-{% if 'claude-code' in homebrew_cask_apps -%}
+{% if homebrew_cask_apps | select('search', '^claude-code') | list | length > 0 -%}
 # ─────────── Claude Code ───────────
 export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
 export CLAUDE_AUTOCOMPACT_PCT_OVERRIDE=90
 export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 export USE_BUILTIN_RIPGREP=0
+export CLAUDE_CODE_SUBAGENT_MODEL="claude-sonnet-5-5"
+export DISABLE_AUTOUPDATER=1
+export DISABLE_TELEMETRY=1
+export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
+export CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY=1
+export CLAUDE_CODE_DISABLE_TERMINAL_TITLE=1
+# Bash tool timeouts (ms): default 10 min, max 30 min, so long Ansible runs finish
+export BASH_DEFAULT_TIMEOUT_MS=600000
+export BASH_MAX_TIMEOUT_MS=1800000
 {% endif %}
 
 # ─────────── Codex ───────────
